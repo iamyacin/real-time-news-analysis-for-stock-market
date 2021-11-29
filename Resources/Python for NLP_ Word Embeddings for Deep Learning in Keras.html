@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//cdn.thisiswaldo.com" rel="dns-prefetch">
+    <link href="//fonts.googleapis.com" rel="dns-prefetch">
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Python for NLP: Word Embeddings for Deep Learning in Keras</title>
+    <meta name="HandheldFriendly" content="True" />
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- fav icons -->
+	<link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=ee992ffd4b">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png?v=ee992ffd4b">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png?v=ee992ffd4b">
+    <!-- header scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                var e = document.createElement("script");
+                e.type="text/javascript",
+                e.src="//cdn.thisiswaldo.com/static/js/3873.js",
+                document.getElementsByTagName("head")[0].appendChild(e);
+            }, 1000);
+        }, false);
+    </script>
+	<!-- stylesheets -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,400i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=ee992ffd4b">
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css?v=ee992ffd4b">
+	<link rel="stylesheet" type="text/css" href="/assets/css/screen.css?v=ee992ffd4b">
+	<link rel="stylesheet" type="text/css" href="/assets/css/hl-styles/atom_one_dark.css?v=ee992ffd4b">
+	<script>
+/*====================================================
+  THEME SETTINGS & GLOBAL VARIABLES
+====================================================*/
+//  1. Disqus comment settings
+var disqus_shortname = 'stackabuse'; // required: replace example with your forum shortname
+
+//	2. Sidebar Position
+var sidebar_left = false; // Set true or flase for positioning sidebar on left
+
+//  3. Recent Post count
+var recent_post_count = 3;
+
+//	4. Google+ badge settings
+var badge_type = 'page'; // person / page / community ----- three type of google badge
+var google_plus_url = 'https://plus.google.com/111813546240107028721';
+
+//	5. Facebook Page Setting
+var facebook_page_url = 'https://www.facebook.com/stackabuse';
+
+//	6. Twitter Setting
+var twitter_url = 'https://twitter.com/ScottWRobinson';
+var twitter_widget_id = '722928793669607425';
+var number_of_tweet = 3;
+
+//	7. Mailchimp signup form Setting
+var mailchimp_form_url = '//stackabuse.us10.list-manage.com/subscribe/post?u=90b216fdbe02b25619ec94fc3&amp;id=bc2bb312cd';
+var success_message = "Please check your inbox and confirm your email address. Thank you!";
+
+//	8. Flickr Setting
+//var flickr_id = '52617155@N08';
+var flickr_id = '';
+</script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Stack Abuse" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Python for NLP: Word Embeddings for Deep Learning in Keras" />
+    <meta property="og:description" content="This is the 16th article in my series of articles on Python for NLP. In my 
+previous article
+[/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/]  I
+explained how N-Grams technique can be used to develop a simple automatic text
+filler in Python. N-Gram model is basically a way to convert text data into
+numeric form so that it can be used by statisitcal algorithms.
+
+Before N-Grams, I explained the bag of words
+[/python-for-nlp-creating-bag-of-words-model-from-scratch/]  and TF-IDF" />
+    <meta property="og:url" content="https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/" />
+    <meta property="article:tag" content="python" />
+    <meta property="article:tag" content="nlp" />
+    <meta property="article:tag" content="keras" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Python for NLP: Word Embeddings for Deep Learning in Keras" />
+    <meta name="twitter:description" content="This is the 16th article in my series of articles on Python for NLP. In my 
+previous article
+[/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/]  I
+explained how N-Grams technique can be used to develop a simple automatic text
+filler in Python. N-Gram model is basically a way to convert text data into
+numeric form so that it can be used by statisitcal algorithms.
+
+Before N-Grams, I explained the bag of words
+[/python-for-nlp-creating-bag-of-words-model-from-scratch/]  and TF-IDF" />
+    <meta name="twitter:url" content="https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Usman Malik" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="python, nlp, keras" />
+    <meta name="twitter:site" content="@ScottWRobinson" />
+    <meta name="twitter:creator" content="@usman_malikk" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Stack Abuse",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Usman Malik",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/content/images/2018/04/pic3.jpg",
+            "width": 413,
+            "height": 433
+        },
+        "url": "https://stackabuse.com/author/usman/",
+        "sameAs": [
+            "https://twitter.com/usman_malikk"
+        ]
+    },
+    "headline": "Python for NLP: Word Embeddings for Deep Learning in Keras",
+    "url": "https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/",
+    "keywords": "python, nlp, keras",
+    "description": "This is the 16th article in my series of articles on Python for NLP. In my \nprevious article\n[/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/]  I\nexplained how N-Grams technique can be used to develop a simple automatic text\nfiller in Python. N-Gram model is basically a way to convert text data into\nnumeric form so that it can be used by statisitcal algorithms.\n\nBefore N-Grams, I explained the bag of words\n[/python-for-nlp-creating-bag-of-words-model-from-scratch/]  and TF-IDF",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://stackabuse.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 2.23" />
+    <link rel="alternate" type="application/rss+xml" title="Stack Abuse" href="https://stackabuse.com/rss/" />
+    <!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '525232124909042');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=525232124909042&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- Repixel Code -->
+<script>
+  (function(w, d, s, id, src){
+  w.Repixel = r = {
+    init: function(id) {
+      w.repixelId = id;
+    }
+  };
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)){ return; }
+  js = d.createElement(s); 
+  js.id = id;
+  js.async = true;
+  js.onload = function(){
+      Repixel.init(w.repixelId);
+  };
+  js.src = src;
+  fjs.parentNode.insertBefore(js, fjs);
+  }(window, document, 'script', 'repixel', 
+  'https://sdk.repixel.co/r.js'));
+  Repixel.init('5cefff7fce3aad00089e44e5');
+</script>
+<!-- Repixel Code -->
+</head>
+<body class="post-template tag-python tag-nlp tag-keras">
+	<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="/">Stack <span style="color:#f16334;">Abuse</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" role="navigation" aria-label="Site navigation">
+	<li class="nav-javascript"><a href="https://stackabuse.com/tag/javascript/">JavaScript</a></li>
+	<li class="nav-python"><a href="https://stackabuse.com/tag/python">Python</a></li>
+	<li class="nav-java"><a href="https://stackabuse.com/tag/java/">Java</a></li>
+    <li class="nav-hireremote">
+        <a rel="noopener nofollow" target="_blank" href="https://hireremote.io/"
+           ga-on="click"
+           ga-event-category="Jobs"
+           ga-event-action="Click"
+           ga-event-label="HR-Nav-Link"
+        >
+            Jobs
+        </a>
+    </li>
+</ul>
+
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+	<!-- start site's main content area -->
+<section class="content-wrap">
+	<div class="container">
+		<div class="row">
+			<!-- start main post area -->
+			<div class="col-md-8 main-content">
+				<!-- start post -->
+				<article id="5d3062ff05f16e6a7271d7ac" class="post tag-python tag-nlp tag-keras">
+					<div class="post-head">
+						<h2 class="post-title">Python for NLP: Word Embeddings for Deep Learning in Keras</h2>
+						<div class="post-meta">
+							<span class="author">
+                                By
+                                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/usman_malikk">
+                                    <i class="fa fa-twitter" style="color:#55acee;"></i>
+                                    Usman Malik
+                                </a>
+                            </span> &bull;
+							<span class="comment-count"><a href="/python-for-nlp-word-embeddings-for-deep-learning-in-keras/#disqus_thread">0 Comments</a></span>
+						</div>
+					</div>
+                    <div class="post-ad">
+                        <!-- 728x90/320x50 -->
+<div id="waldo-tag-3878"></div>                    </div>
+					<div class="post-content">
+						<!--kg-card-begin: markdown--><p>This is the 16th article in my series of articles on Python for NLP. In my <a target="_blank" href="/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/">previous article</a> I explained how N-Grams technique can be used to develop a simple automatic text filler in Python. N-Gram model is basically a way to convert text data into numeric form so that it can be used by statisitcal algorithms.</p>
+<p>Before N-Grams, I explained the <a target="_blank" href="/python-for-nlp-creating-bag-of-words-model-from-scratch/">bag of words</a> and <a target="_blank" href="/python-for-nlp-creating-tf-idf-model-from-scratch/">TF-IDF</a> approaches, which can also be used to generate numeric feature vectors from text data. Till now we have been using machine learning appraoches to perform different NLP tasks such as text classification, topic modeling, sentimental analysis, text summarization, etc. In this article we will start our discussion about deep learning techniques for NLP.</p>
+<p>Deep learning approaches consist of different types of densely connected neural networks. These approaches have been proven efficient to solve several complex tasks such as self-driving cars, image generation, image segmentation, etc. Deep learning approaches have also been proven quite efficient for NLP tasks.</p>
+<p>In this article, we will study word embeddings for NLP tasks that involve deep learning. We will see how word embeddings can be used to perform simple classification task using deep neural network in Python's <a rel="nofollow" target="_blank" href="https://keras.io/">Keras Library</a>.</p>
+<h3 id="problemswithonehotencodedfeaturevectorapproaches">Problems with One-Hot Encoded Feature Vector Approaches</h3>
+<p>A potential drawback with one-hot encoded feature vector approaches such as N-Grams, bag of words and TF-IDF approach is that the feature vector for each document can be huge. For instance, if you have a half million unique words in your corpus and you want to represent a sentence that contains 10 words, your feature vector will be a half million dimensional one-hot encoded vector where only 10 indexes will have 1. This is a wastage of space and increases algorithm complexity exponentially resulting in the <a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimentionality</a>.</p>
+<h3 id="wordembeddings">Word Embeddings</h3>
+<p>In word embeddings, every word is represented as an n-dimensional dense vector. The words that are similar will have similar vector. Word embeddings techniques such as <a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/GloVe_(machine_learning)">GloVe</a> and <a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Word2vec">Word2Vec</a> have proven to be extremely efficient for converting words into corresponding dense vectors. The vector size is small and none of the indexes in the vector is actually empty.</p>
+<h4 id="implementingwordembeddingswithkerassequentialmodels">Implementing Word Embeddings with Keras Sequential Models</h4>
+<p>The Keras library is one of the most famous and commonly used deep learning libraries for Python that is built on top of <a rel="nofollow" target="_blank" href="https://www.tensorflow.org/">TensorFlow</a>.</p>
+<p>Keras support two types of APIs: Sequential and Functional. In this section we will see how word embeddings are used with Keras Sequential API. In the next section, I will explain how to implement the same model via the Keras functional API.</p>
+<p>To implement word embeddings, the Keras library contains a layer called <code>Embedding()</code>. The embedding layer is implemented in the form of a class in Keras and is normally used as a first layer in the sequential model for NLP tasks.</p>
+<p>The embedding layer can be used to peform three tasks in Keras:</p>
+<ul>
+<li>It can be used to learn word embeddings and save the resulting model</li>
+<li>It can be used to learn the word embeddings in addition to performing the NLP tasks such as text classification, sentiment analysis, etc.</li>
+<li>It can be used to load pretrained word embeddings and use them in a new model</li>
+</ul>
+<p>In this article, we will see the second and third use-case of the Embedding layer. The first use-case is a subset of the second use-case.</p>
+<p>Let's see how the embedding layer looks:</p>
+<pre><code class="language-python">embedding_layer = Embedding(200, 32, input_length=50)
+</code></pre>
+<p>The first parameter in the embeddig layer is the size of the vocabulary or the total number of unique words in a corpus. The second parameter is the number of the dimensions for each word vector. For instance, if you want each word vector to have 32 dimensions, you will specify 32 as the second parameter. And finally, the third parameter is the length of the input sentence.</p>
+<p>The output of the word embedding is a 2D vector where words are represented in rows, whereas their corresponding dimensions are presented in columns. Finally, if you wish to directly connect your word embedding layer with a densely connected layer, you first have to flatten your 2D word embeddings into 1D. These concepts will become more understandable once we see word embedding in action.</p>
+<h5 id="customwordembeddings">Custom Word Embeddings</h5>
+<p>As I said earlier, Keras can be used to either learn custom words embedding or it can be used to load pretrained word embeddings. In this section, we will see how the Keras Embedding Layer can be used to learn custom word embeddings.</p>
+<p>We will perform simple text classification tasks that will use word embeddings. Execute the following script to download the required libraries:</p>
+<pre><code class="language-python">from numpy import array
+from keras.preprocessing.text import one_hot
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Flatten
+from keras.layers.embeddings import Embedding
+</code></pre>
+<p>Next, we need to define our dataset. We will be using a very simple custom dataset that will contain reviews above movies. The following script creates our dataset:</p>
+<pre><code class="language-python">corpus = [
+    # Positive Reviews
+
+    'This is an excellent movie',
+    'The move was fantastic I like it',
+    'You should watch it is brilliant',
+    'Exceptionally good',
+    'Wonderfully directed and executed I like it',
+    'Its a fantastic series',
+    'Never watched such a brillent movie',
+    'It is a Wonderful movie',
+
+    # Negtive Reviews
+
+    &quot;horrible acting&quot;,
+    'waste of money',
+    'pathetic picture',
+    'It was very boring',
+    'I did not like the movie',
+    'The movie was horrible',
+    'I will not recommend',
+    'The acting is pathetic'
+]
+</code></pre>
+<p>Our corpus has 8 positive reviews and 8 negative reviews. The next step is to create label set for our data.</p>
+<pre><code class="language-python">sentiments = array([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0])
+</code></pre>
+<p>You can see that the first 8 items in the sentiment array contain 1, which correspond to positive sentiment. The last 8 items are zero that correspond to negative sentiment.</p>
+<p>Earlier we said that the first parameter to the <code>Embedding()</code> layer is the vocabulary, or number of unique words in the corpus. Let's first find the total number of words in our corpus:</p>
+<pre><code class="language-python">from nltk.tokenize import word_tokenize
+
+all_words = []
+for sent in corpus:
+    tokenize_word = word_tokenize(sent)
+    for word in tokenize_word:
+        all_words.append(word)
+</code></pre>
+<p>In the script above, we simply iterate through each sentence in our corpus and then tokenize the sentence into words. Next, we iterate through the list of all the words and append the words into the <code>all_words</code> list. Once you execute the above script, you should see all the words in the <code>all_words</code> dictionary. However, we do not want the duplicate words.</p>
+<p>We can retrieve all the unique words from a list by passing the list into the <code>set</code> function, as shown below.</p>
+<pre><code class="language-python">unique_words = set(all_words)
+print(len(unique_words))
+</code></pre>
+<p>In the output you will see &quot;45&quot;, which is the number of unique words in our corpus. We will add a buffer of 5 to our vocabulary size and will set the value of <code>vocab_length</code> to 50.</p>
+<p>The Embedding layer expects the words to be in numeric form. Therefore, we need to convert the sentences in our corpus to numbers. One way to convert text to numbers is by using the <code>one_hot</code> function from the <code>keras.preprocessing.text</code> library. The function takes sentence and the total length of the vocabulary and returns the sentence in numeric form.</p>
+<pre><code class="language-python">embedded_sentences = [one_hot(sent, vocab_length) for sent in corpus]
+print(embedded_sentences )
+</code></pre>
+<p>In the script above, we convert all the sentences in our corpus to their numeric form and display them on the console. The output looks like this:</p>
+<pre><code>[[31, 12, 31, 14, 9], [20, 3, 20, 16, 18, 45, 14], [16, 26, 29, 14, 12, 1], [16, 23], [32, 41, 13, 20, 18, 45, 14], [15, 28, 16, 43], [7, 9, 31, 28, 31, 9], [14, 12, 28, 46, 9], [4, 22], [5, 4, 9], [23, 46], [14, 20, 32, 14], [18, 1, 26, 45, 20, 9], [20, 9, 20, 4], [18, 8, 26, 34], [20, 22, 12, 23]]
+</code></pre>
+<p>You can see that our first sentence contained five words, therefore we have five integers in the first list item. Also, notice that the last word of the first sentence was &quot;movie&quot; in the first list item, and we have digit 9 at the fifth place of the resulting 2D array, which means that &quot;movie&quot; has been encoded as 9 and so on.</p>
+<p>The embedding layer expects sentences to be of equal size. However, our encoded sentences are of different sizes. One way to make all the sentences of uniform size is to increase the lenght of all the sentences and make it equal to the length of the largest sentence. Let's first find the largest sentence in our corpus and then we will increase the length of all the sentences to the length of the largest sentence. To do so, execute the following script:</p>
+<pre><code class="language-python">word_count = lambda sentence: len(word_tokenize(sentence))
+longest_sentence = max(corpus, key=word_count)
+length_long_sentence = len(word_tokenize(longest_sentence))
+</code></pre>
+<p>In the sentence above, we use a <a target="_blank" href="/lambda-functions-in-python/">lambda expression</a> to find the length of all the sentences. We then use the <code>max</code> function to return the longest sentence. Finally the longest sentence is tokenized into words and the number of words are counted using the <code>len</code> function.</p>
+<p>Next to make all the sentences of equal size, we will add zeros to the empty indexes that will be created as a result of increasing the sentence length. To append the zeros at the end of the sentencses, we can use the <code>pad_sequences</code> method. The first parameter is the list of encoded sentences of unequal sizes, the second parameter is the size of the longest sentence or the padding index, while the last parameter is <code>padding</code> where you specify <code>post</code> to add padding at the end of sentences.</p>
+<p>Execute the following script:</p>
+<pre><code class="language-python">padded_sentences = pad_sequences(embedded_sentences, length_long_sentence, padding='post')
+print(padded_sentences)
+</code></pre>
+<p>In the output, you should see sentences with padding.</p>
+<pre><code>[[31 12 31 14  9  0  0]
+ [20  3 20 16 18 45 14]
+ [16 26 29 14 12  1  0]
+ [16 23  0  0  0  0  0]
+ [32 41 13 20 18 45 14]
+ [15 28 16 43  0  0  0]
+ [ 7  9 31 28 31  9  0]
+ [14 12 28 46  9  0  0]
+ [ 4 22  0  0  0  0  0]
+ [ 5  4  9  0  0  0  0]
+ [23 46  0  0  0  0  0]
+ [14 20 32 14  0  0  0]
+ [18  1 26 45 20  9  0]
+ [20  9 20  4  0  0  0]
+ [18  8 26 34  0  0  0]
+ [20 22 12 23  0  0  0]]
+</code></pre>
+<p>You can see zeros at the end of the padded sentences.</p>
+<p>Now we have everything that we need to create a sentiment classification model using word embeddings.</p>
+<p>We will create a very simple text classification model with an embedding layer and no hidden layers. Look at the following script:</p>
+<pre><code class="language-python">model = Sequential()
+model.add(Embedding(vocab_length, 20, input_length=length_long_sentence))
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
+</code></pre>
+<p>In the script above, we create a <code>Sequential</code> model and add the <code>Embedding</code> layer as the first layer to the model. The length of the vocabulary is specified by the <code>vocab_length</code> parameter. The dimension of each word vector will be 20 and the <code>input_length</code> will be the length of the longest sentence, which is 7. Next, the <code>Embedding</code> layer is flattened so that it can be directly used with the densely connected layer. Since it is a binary classification problem, we use the <code>sigmoid</code> function as the loss function at the dense layer.</p>
+<p>Next, we will compile the model and print the summary of our model, as shown below:</p>
+<pre><code class="language-python">model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
+print(model.summary())
+</code></pre>
+<p>The summary of the model is as follows:</p>
+<pre><code>Layer (type)                 Output Shape              Param #
+=================================================================
+embedding_1 (Embedding)      (None, 7, 20)             1000
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 140)               0
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 141
+=================================================================
+Total params: 1,141
+Trainable params: 1,141
+Non-trainable params: 0
+</code></pre>
+<p>You can see that the first layer has 1000 trainable parameters. This is because our vocabulary size is 50 and each word will be presented as a 20 dimensional vector. Hence the total number of trainable parameters will be 1000. Similarly, the output from the embedding layer will be a sentence with 7 words where each word is represented by a 20 dimensional vector. However, when the 2D output is flattened, we get a 140 dimensional vector (7 x 20). The flattened vector is directly connected to the dense layer that contains 1 neuran.</p>
+<p>Now let's train the model on our data using the <code>fit</code> method, as shown below:</p>
+<pre><code class="language-python">model.fit(padded_sentences, sentiments, epochs=100, verbose=1)
+</code></pre>
+<p>The model will be trained for 100 epochs.</p>
+<p>We will train and test the model using the same corpus. Execute the following script to evaluate the model performance on our corpus:</p>
+<pre><code class="language-python">loss, accuracy = model.evaluate(padded_sentences, sentiments, verbose=0)
+print('Accuracy: %f' % (accuracy*100))
+</code></pre>
+<p>In the output, you will see that model accuracy is 1.00 i.e. 100 percent.</p>
+<p><strong>Note</strong>: In real world applications, train and test sets should be different. We will see an example of that when we perform text classification on some real world data in an upcoming article.</p>
+<h5 id="loadingpretrainedwordembeddings">Loading Pretrained Word Embeddings</h5>
+<p>In the previous section we trained custom word embeddings. However, we can also use pretrained word embeddings.</p>
+<p>Several types of pretrained word embeddings exist, however we will be using the GloVe word embeddings from Stanford NLP since it is the most famous one and commonly used. The word embeddings can be downloaded from <a rel="nofollow" target="_blank" href="https://nlp.stanford.edu/projects/glove/">this link</a>.</p>
+<p>The smallest file is named &quot;Glove.6B.zip&quot;. The size of the file is 822 MB. The file contains 50, 100, 200, and 300 dimensional word vectors for 400k words. We will be using the 100 dimensional vector.</p>
+<p>The process is quite similar. First we have to import the required libraries:</p>
+<pre><code class="language-python">from numpy import array
+from keras.preprocessing.text import one_hot
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Flatten
+from keras.layers.embeddings import Embedding
+</code></pre>
+<p>Next, we have to create our corpus followed by the labels.</p>
+<pre><code class="language-python">corpus = [
+    # Positive Reviews
+
+    'This is an excellent movie',
+    'The move was fantastic I like it',
+    'You should watch it is brilliant',
+    'Exceptionally good',
+    'Wonderfully directed and executed I like it',
+    'Its a fantastic series',
+    'Never watched such a brillent movie',
+    'It is a Wonderful movie',
+
+    # Negtive Reviews
+
+    &quot;horrible acting&quot;,
+    'waste of money',
+    'pathetic picture',
+    'It was very boring',
+    'I did not like the movie',
+    'The movie was horrible',
+    'I will not recommend',
+    'The acting is pathetic'
+]
+</code></pre>
+<pre><code class="language-python">sentiments = array([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0])
+</code></pre>
+<p>In the last section, we used <code>one_hot</code> function to convert text to vectors. Another approach is to use <code>Tokenizer</code> function from <code>keras.preprocessing.text</code> library.</p>
+<p>You simply have to pass your corpus to the <code>Tokenizer</code>'s <code>fit_on_text</code> method.</p>
+<pre><code class="language-python">word_tokenizer = Tokenizer()
+word_tokenizer.fit_on_texts(corpus)
+</code></pre>
+<p>To get the number of unique words in the text, you can simply count the length of <code>word_index</code> dictionary of the <code>word_tokenizer</code> object. Remember to add 1 with the vocabulary size. This is to store the dimensions for the words for which no pretrained word embeddings exist.</p>
+<pre><code class="language-python">vocab_length = len(word_tokenizer.word_index) + 1
+</code></pre>
+<p>Finally, to convert sentences to their numeric counterpart, call the <code>texts_to_sequences</code> function and pass it the whole corpus.</p>
+<pre><code class="language-python">embedded_sentences = word_tokenizer.texts_to_sequences(corpus)
+print(embedded_sentences)
+</code></pre>
+<p>In the output, you will see the sentences in their numeric form:</p>
+<pre><code>[[14, 3, 15, 16, 1], [4, 17, 6, 9, 5, 7, 2], [18, 19, 20, 2, 3, 21], [22, 23], [24, 25, 26, 27, 5, 7, 2], [28, 8, 9, 29], [30, 31, 32, 8, 33, 1], [2, 3, 8, 34, 1], [10, 11], [35, 36, 37], [12, 38], [2, 6, 39, 40], [5, 41, 13, 7, 4, 1], [4, 1, 6, 10], [5, 42, 13, 43], [4, 11, 3, 12]]
+</code></pre>
+<p>The next step is to find the number of words in the longest sentence and then to apply padding to the sentences having shorter lengths than the length of the longest sentence.</p>
+<pre><code class="language-python">from nltk.tokenize import word_tokenize
+
+word_count = lambda sentence: len(word_tokenize(sentence))
+longest_sentence = max(corpus, key=word_count)
+length_long_sentence = len(word_tokenize(longest_sentence))
+
+padded_sentences = pad_sequences(embedded_sentences, length_long_sentence, padding='post')
+
+print(padded_sentences)
+</code></pre>
+<p>The padded sentences look like this:</p>
+<pre><code>[[14  3 15 16  1  0  0]
+ [ 4 17  6  9  5  7  2]
+ [18 19 20  2  3 21  0]
+ [22 23  0  0  0  0  0]
+ [24 25 26 27  5  7  2]
+ [28  8  9 29  0  0  0]
+ [30 31 32  8 33  1  0]
+ [ 2  3  8 34  1  0  0]
+ [10 11  0  0  0  0  0]
+ [35 36 37  0  0  0  0]
+ [12 38  0  0  0  0  0]
+ [ 2  6 39 40  0  0  0]
+ [ 5 41 13  7  4  1  0]
+ [ 4  1  6 10  0  0  0]
+ [ 5 42 13 43  0  0  0]
+ [ 4 11  3 12  0  0  0]]
+</code></pre>
+<p>We have converted our sentences into padded sequence of numbers. The next step is to load the GloVe word embeddings and then create our embedding matrix that contains the words in our corpus and their corresponding values from GloVe embeddings. Run the following script:</p>
+<pre><code class="language-python">from numpy import array
+from numpy import asarray
+from numpy import zeros
+
+embeddings_dictionary = dict()
+glove_file = open('E:/Datasets/Word Embeddings/glove.6B.100d.txt', encoding=&quot;utf8&quot;)
+</code></pre>
+<p>In the script above, in addition to loading the GloVe embeddings, we also imported a few libraries. We will see the use of these libraries in the upcoming section. Here notice that we loaded <code>glove.6B.100d.txt</code> file. This file contains 100 dimensional word embeddings. We also created an empty dictionary that will store our word embeddings.</p>
+<p>If you open the file, you will see a word at the beginning of each line followed by set of 100 numbers. The numbers form the 100 dimensional vector for the word at the begining of each line.</p>
+<p>We will create a dictionary that will contain words as keys and the corresponding 100 dimensional vectors as values, in the form of an array. Execute the following script:</p>
+<pre><code class="language-python">for line in glove_file:
+    records = line.split()
+    word = records[0]
+    vector_dimensions = asarray(records[1:], dtype='float32')
+    embeddings_dictionary [word] = vector_dimensions
+
+glove_file.close()
+</code></pre>
+<p>The dictionary <code>embeddings_dictionary</code> now contains words and corresponding GloVe embeddings for all the words.</p>
+<p>We want the word embeddings for only those words that are present in our corpus. We will create a two dimensional numpy array of 44 (size of vocabulary) rows and 100 columns. The array will initially contain zeros. The array will be named as <code>embedding_matrix</code></p>
+<p>Next, we will iterate through each word in our corpus by traversing the <code>word_tokenizer.word_index</code> dictionary that contains our words and their corresponding index.</p>
+<p>Each word will be passed as key to the <code>embedding_dictionary</code> to retrieve the corresponding 100 dimensional vector for the word. The 100 dimensional vector will then be stored at the corresponding index of the word in the <code>embedding_matrix</code>. Look at the following script:</p>
+<pre><code class="language-python">embedding_matrix = zeros((vocab_length, 100))
+for word, index in word_tokenizer.word_index.items():
+    embedding_vector = embeddings_dictionary.get(word)
+    if embedding_vector is not None:
+        embedding_matrix[index] = embedding_vector
+</code></pre>
+<p>Our <code>embedding_matrix</code> now contains pretrained word embeddings for the words in our corpus.</p>
+<p>Now we are ready to create our sequential model. Look at the following script:</p>
+<pre><code class="language-python">model = Sequential()
+embedding_layer = Embedding(vocab_length, 100, weights=[embedding_matrix], input_length=length_long_sentence, trainable=False)
+model.add(embedding_layer)
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
+</code></pre>
+<p>The script remains the same, except for the embedding layer. Here in the embedding layer, the first parameter is the size of the vacabulary. The second parameter is the vector dimension of the output vector. Since we are using pretrained word embeddings that contain 100 dimensional vector, we set the vector dimension to 100.</p>
+<p>Another very important attribute of the <code>Embedding()</code> layer that we did not use in the last section is <code>weights</code>. You can pass your pretrained embedding matrix as default weights to the <code>weights</code> parameter. And since we are not training the embedding layer, the <code>trainable</code> attribute has been set to <code>False</code>.</p>
+<p>Let's compile our model and see the summary of our model:</p>
+<pre><code class="language-python">model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
+print(model.summary())
+</code></pre>
+<p>We are again using <code>adam</code> as the optizer to minimize the loss. The loss function being used is <code>binary_crossentropy</code>. And we want to see the results in the form of accuracy so <code>acc</code> has been passed as the value for the <code>metrics</code> attribute.</p>
+<p>The model summary is as follows:</p>
+<pre><code>Layer (type)                 Output Shape              Param #
+=================================================================
+embedding_1 (Embedding)      (None, 7, 100)            4400
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 700)               0
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 701
+=================================================================
+Total params: 5,101
+Trainable params: 701
+Non-trainable params: 4,400
+_________________________________________________________________
+</code></pre>
+<p>You can see that since we have 44 words in our vocabulary and each word will be represented as a 100 dimensional vector, the number of parameters for the embedding layer will be <code>44 x 100 = 4400</code>. The output from the embedding layer will be a 2D vector with 7 rows (1 for each word in the sentence) and 100 columns. The output from the embedding layer will be flattened so that it can be used with the dense layer. Finally the dense layer is used to make predictions.</p>
+<p>Execute the following script to train the algorithms:</p>
+<pre><code class="language-python">model.fit(padded_sentences, sentiments, epochs=100, verbose=1)
+</code></pre>
+<p>Once the algorithm is trained, run the following script to evaluate the peformance of the algorithm.</p>
+<pre><code class="language-python">loss, accuracy = model.evaluate(padded_sentences, sentiments, verbose=0)
+print('Accuracy: %f' % (accuracy*100))
+</code></pre>
+<p>In the output, you should see that accuracy is 1.000 i.e. 100%.</p>
+<h4 id="wordembeddingswithkerasfunctionalapi">Word Embeddings with Keras Functional API</h4>
+<p>In the last section, we saw how word embeddings can be used with the Keras sequential API. While the sequential API is a good starting point for beginners, as it allows you to quickly create deep learning models, it is extremely important to know how Keras Functional API works. Most of the advanced deep learning models involving multiple inputs and outputs use the Functional API.</p>
+<p>In this section, we will see how we can implement embedding layer with Keras Functional API.</p>
+<p>The rest of the script remains similar as it was in the last section. The only change will be in the development of a deep learning model. Let's implement the same deep learning model as we implemented in the last section with Keras Functional API.</p>
+<pre><code class="language-python">from keras.models import Model
+from keras.layers import Input
+
+deep_inputs = Input(shape=(length_long_sentence,))
+embedding = Embedding(vocab_length, 100, weights=[embedding_matrix], input_length=length_long_sentence, trainable=False)(deep_inputs) # line A
+flatten = Flatten()(embedding)
+hidden = Dense(1, activation='sigmoid')(flatten)
+model = Model(inputs=deep_inputs, outputs=hidden)
+</code></pre>
+<p>In the Keras Functional API, you have to define the input layer separately before the embedding layer. In the input, layer you have to simply pass the length of input vector. To specify that previous layer as input to the next layer, the previous layer is passed as a parameter inside the parenthesis, at the end of the next layer.</p>
+<p>For instance, in the above script, you can see that <code>deep_inputs</code> is passed as parameter at the end of the embedding layer. Similarly, <code>embedding</code> is passed as input at the end of the <code>Flatten()</code> layer and so on.</p>
+<p>Finally, in the <code>Model()</code>, you have to pass the input layer, and the final output layer.</p>
+<p>Let's now compile the model and take a look at the summary of the model.</p>
+<pre><code class="language-python">model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
+print(model.summary())
+</code></pre>
+<p>The output looks like this:</p>
+<pre><code>Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         (None, 7)                 0
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 7, 100)            4400
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 700)               0
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 701
+=================================================================
+Total params: 5,101
+Trainable params: 701
+Non-trainable params: 4,400
+</code></pre>
+<p>In the model summary, you can see the input layer as a separate layer before the embedding layer. The rest of the model remains the same.</p>
+<p>Finally, the process to fit and evaluate the model is same as the one used in Sequential API:</p>
+<pre><code class="language-python">model.fit(padded_sentences, sentiments, epochs=100, verbose=1)
+loss, accuracy = model.evaluate(padded_sentences, sentiments, verbose=0)
+
+print('Accuracy: %f' % (accuracy*100))
+</code></pre>
+<p>In the ouput, you will see an accuracy of 1.000 i.e. 100 percent.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>To use text data as input to the deep learning model, we need to convert text to numbers. However unlike machine learning models, passing sparse vector of huge sizes can greately affect deep learning models. Therefore, we need to convert our text to small dense vectors. Word embeddings help us convert text to dense vectors.</p>
+<p>In this article we saw how word embeddings can be implemented with Keras deep learning library. We implemented the custom word embeddings as well as used pretrained word embedddings to solve simple classification task. Finally, we also saw how to implement word embeddings with Keras Functional API.</p>
+<!--kg-card-end: markdown--><p></p>
+					</div>
+					<footer class="post-footer clearfix">
+						<div class="pull-left tag-list">
+							<i class="fa fa-folder-open-o"></i>
+							<a href="/tag/python/">python</a>,<a href="/tag/nlp/">nlp</a>,<a href="/tag/keras/">keras</a>
+						</div>
+						<div class="pull-right share">
+							<div>
+	<ul class="share-icons">
+		<!-- twitter -->
+		<li>
+			<a aria-label="Share on Twitter" href="https://twitter.com/share?text=Python%20for%20NLP%3A%20Word%20Embeddings%20for%20Deep%20Learning%20in%20Keras&amp;url=https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter" style="color:#55acee;"></i></a>
+		</li>
+		<!-- facebook -->
+		<li>
+			<a aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook" style="color:#3b5998;"></i></a>
+		</li>
+		<!-- linkedin -->
+		<li>
+			<a aria-label="Share on Linkedin" href="https://www.linkedin.com/shareArticle?mini=true%26url=https://stackabuse.com/python-for-nlp-word-embeddings-for-deep-learning-in-keras/%26source=https://stackabuse.com" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=530');return false;"><i class="fa fa-linkedin" style="color:#0077b5;"></i></a>
+		</li>
+	</ul>
+</div>
+						</div>
+					</footer>
+                    <!-- start about the author -->
+<div class="about-author clearfix">
+		<a href="/author/usman/"><img src="https://stackabuse.com/content/images/2018/04/pic3.jpg" alt="Author image" class="avatar pull-left"></a>
+	<div class="details">
+		<div class="author">
+			About <a href="/author/usman/">Usman Malik</a>
+		</div>
+		<div class="meta-info" style="font-style: normal;">
+			<span class="location"><i class="fa fa-home"></i>Paris (France)</span>
+			<span>
+                <i class="fa fa-twitter" style="color:#55acee;"></i>
+                <a rel="noopener nofollow" href="https://twitter.com/usman_malikk" target="_BLANK">Twitter</a>
+            </span>
+		</div>
+		<div class="bio">
+            Programmer  | Blogger | Data Science Enthusiast | PhD To Be | Arsenal FC for Life
+        </div>
+	</div>
+</div>
+<!-- end about the author -->
+				</article>
+                <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Newsletter"
+                            ga-event-action="Signup"
+                            ga-event-label="General-Newsletter-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+				<div class="comment-wrap">
+					<!-- start disqus comment -->
+<div class="disqus-container">
+	<div id="disqus_thread"></div>
+	    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<!-- end disqus comment -->
+				</div>
+				<!-- start prev next wrap -->
+<div class="prev-next-wrap clearfix">
+		<a class="btn btn-default pull-left" href="/introduction-to-genetic-algorithms-in-java/" title="Introduction to Genetic Algorithms in Java"><i class="fa fa-angle-left fa-fw"></i> Previous Post</a>
+		&nbsp;
+        <a class="btn btn-default pull-right" href="/traveling-salesman-problem-with-genetic-algorithms-in-java/" title="Traveling Salesman Problem with Genetic Algorithms in Java">Next Post <i class="fa fa-angle-right fa-fw"></i></a>
+</div>				<!-- end post -->
+			</div>
+			<!-- end main post area -->
+			<!-- start sidebar -->
+<div class="col-md-4 sidebar">
+    <!-- start widget -->
+<div class="widget">
+	<h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-3874"></div>    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start newsletter widget -->
+<div class="widget">
+    <h4 class="title">Newsletter</h4>
+    <div class="content newsletter">
+        <p style="font-size: 16px;">Subscribe to our newsletter! Get occassional tutorials, guides, and reviews in your inbox.</p>
+        <form action="#" method="post" class="validate" novalidate>
+            <div class="input-group">
+                <label class="control-label sr-only" for="widget-newsletter">Newsletter Signup</label>
+                <input id="widget-newsletter" type="email" value="" name="email" class="required email input-lg" placeholder="Enter your email...">
+            </div>
+            <div class="input-group">
+                <button type="submit" name="subscribe" class="btn btn-lg btn-default"
+                    ga-on="click"
+                    ga-event-category="Newsletter"
+                    ga-event-action="Signup"
+                    ga-event-label="General-Newsletter-Signup"
+                >
+                    <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                    Subscribe
+                </button>
+            </div>
+            <span style="color: #7f7f7f;">No spam ever. Unsubscribe at any time.</span>
+        </form>
+        <div class="message"></div>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-7184"></div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Want a remote job?</h4>
+    <div class="content jobs hr">
+        <ul style="margin-bottom: 0px;">
+        </ul>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>
+                    <a rel="noopener nofollow" target="_blank"
+                       class="btn btn-default"
+                       href="https://hireremote.io"
+                       style="margin-top: 10px;"
+                       ga-on="click"
+                       ga-event-category="Jobs"
+                       ga-event-action="Click"
+                       ga-event-label="HR-More-Link"
+                    >
+                        <i class="fa fa-arrow-circle-right"></i>&nbsp; More jobs
+                    </a>
+                </strong>
+            </div>
+            <div class="col-md-8 text-right" style="margin-top: 18px;">
+                Jobs via
+                <a rel="noopener nofollow" target="_blank" href="https://hireremote.io"
+                   class="hr-link"
+                   style="color: #f16334;"
+                >
+                    HireRemote.io
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <a rel="noopener nofollow" target="_blank"
+       class="dcp-link"
+       href="https://stackabu.se/daily-coding-problem"
+       style="text-decoration: none;"
+    >
+        <h4 class="title">Prepping for an interview?</h4>
+    </a>
+    <div class="content product">
+        <style type="text/css">
+            #product-features li {
+                margin: 5px 0;
+            }
+        </style>
+        <div id="product-features" style="font-size: 16px;line-height: 1.7em;">
+            <ul style="list-style: initial;">
+                <li>
+                    Improve your skills by solving one coding problem every day
+                </li>
+                <li>
+                    Get the solutions the next morning via email
+                </li>
+                <li>
+                    Practice on <strong>actual problems</strong> asked by top companies, like:
+                    <div style="margin: 15px 0px;">
+                        <img src="/assets/images/logo-google.svg?v=ee992ffd4b" style="height: 16px;">
+                        &nbsp;
+                        <img src="/assets/images/logo-facebook.svg?v=ee992ffd4b" style="height: 13px;margin-bottom: 3px;">
+                        &nbsp;
+                        <img src="/assets/images/logo-amazon.svg?v=ee992ffd4b" style="height: 19px;">
+                        &nbsp;
+                        <img src="/assets/images/logo-microsoft.svg?v=ee992ffd4b" style="height: 18px;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <a rel="noopener nofollow" target="_blank"
+                   class="btn btn-default dcp-link"
+                   href="https://stackabu.se/daily-coding-problem"
+                >
+                    <i class="fa fa-code"></i>
+                    &nbsp;
+                    Daily Coding Problem
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <div class="widget-sticky">
+        <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-7611"></div>
+    </div>
+</div>
+<!-- end widget -->
+    </div>
+</div>
+<!-- end sidebar -->
+		</div>
+	</div>
+</section>
+<!-- end site's main content area -->
+
+
+	<!-- start main-footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<!-- start first footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Recent Posts</h4>
+    <div class="content recent-post">
+        <div class="recent-single-post">
+            <a href="/how-to-use-the-grep-command-on-gnu-linux/" class="post-title">How to Use the grep Command on GNU/Linux</a>
+            <!--<div class="date">June 01, 2020</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="/a-guide-to-jpa-with-hibernate-relationship-mapping/" class="post-title">A Guide to JPA with Hibernate - Relationship Mapping</a>
+            <!--<div class="date">May 29, 2020</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="/insertion-sort-in-javascript/" class="post-title">Insertion Sort in JavaScript</a>
+            <!--<div class="date">May 27, 2020</div>-->
+        </div>
+    </div>
+</div>
+<!-- end widget -->				</div>
+				<!-- end first footer widget area -->
+				<!-- start second footer widget area -->
+				<div class="col-sm-4">
+					<!-- start tag cloud widget -->
+<div class="widget">
+    <h4 class="title">Tags</h4>
+    <div class="content tag-cloud">
+        <a href="/tag/algorithms/">algorithms</a><a href="/tag/amqp/">amqp</a><a href="/tag/angular/">angular</a><a href="/tag/announcements/">announcements</a><a href="/tag/apache/">apache</a><a href="/tag/api/">api</a><a href="/tag/arduino/">arduino</a><a href="/tag/artificial-intelligence/">artificial intelligence</a><a href="/tag/asynchronous/">asynchronous</a><a href="/tag/aws/">aws</a>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+				</div>
+				<!-- end second footer widget area -->
+				<!-- start third footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+				</div>
+				<!-- end third footer widget area -->
+			</div>
+		</div>
+	</footer>
+	<!-- end main-footer -->
+	<!-- start copyright section -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				Copyright &copy; 2020, <a href="https://stackabuse.com">Stack Abuse</a>.  All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end copyright section -->	<div class="footer-links">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="/disclosure">Disclosure</a>
+					•
+					<a href="/privacy-policy">Privacy Policy</a>
+					•
+					<a href="/terms-of-service">Terms of Service</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a aria-label="Back to Top" href="#" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+	<!--
+<script src="//my.hellobar.com/4dd9990be00532b0fc7961824b7d7a0930e9e2b7.js" type="text/javascript" charset="utf-8" async="async"></script>
+-->
+	<!-- scripts -->
+    <script id="dsq-count-scr" src="//stackabuse.disqus.com/count.js" async></script>
+    <script>
+      var disqus_config = function() {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.href;
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://stackabuse.disqus.com/embed.js';
+    </script>
+
+    <!-- HTML templates for use in JS code -->
+    <script id="newsletter-template" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Newsletter"
+                            ga-event-action="Signup"
+                            ga-event-label="General-Newsletter-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/dockerfile.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+    <script src="/assets/js/bootstrap-custom.min.js?v=ee992ffd4b" async></script>
+	<script src="/assets/js/main.min.js?v=ee992ffd4b" async></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript" async></script>
+	<!-- Add your analytic code below -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  if (window.location.hostname !== 'localhost') {
+    ga('create', 'UA-43140675-1', 'auto');
+    ga('require', 'eventTracker');
+
+    ga('set', 'dimension1', 'Usman Malik');
+    
+    ga('send', 'pageview');
+  }
+
+</script>
+<script async=true src="//cdnjs.cloudflare.com/ajax/libs/autotrack/1.0.1/autotrack.js"></script>
+</body>
+</html>

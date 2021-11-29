@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//cdn.thisiswaldo.com" rel="dns-prefetch">
+    <link href="//fonts.googleapis.com" rel="dns-prefetch">
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Python for NLP: Multi-label Text Classification with Keras</title>
+    <meta name="HandheldFriendly" content="True" />
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- fav icons -->
+	<link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=ee992ffd4b">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png?v=ee992ffd4b">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png?v=ee992ffd4b">
+    <!-- header scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                var e = document.createElement("script");
+                e.type="text/javascript",
+                e.src="//cdn.thisiswaldo.com/static/js/3873.js",
+                document.getElementsByTagName("head")[0].appendChild(e);
+            }, 1000);
+        }, false);
+    </script>
+	<!-- stylesheets -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,400i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=ee992ffd4b">
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css?v=ee992ffd4b">
+	<link rel="stylesheet" type="text/css" href="/assets/css/screen.css?v=ee992ffd4b">
+	<link rel="stylesheet" type="text/css" href="/assets/css/hl-styles/atom_one_dark.css?v=ee992ffd4b">
+	<script>
+/*====================================================
+  THEME SETTINGS & GLOBAL VARIABLES
+====================================================*/
+//  1. Disqus comment settings
+var disqus_shortname = 'stackabuse'; // required: replace example with your forum shortname
+
+//	2. Sidebar Position
+var sidebar_left = false; // Set true or flase for positioning sidebar on left
+
+//  3. Recent Post count
+var recent_post_count = 3;
+
+//	4. Google+ badge settings
+var badge_type = 'page'; // person / page / community ----- three type of google badge
+var google_plus_url = 'https://plus.google.com/111813546240107028721';
+
+//	5. Facebook Page Setting
+var facebook_page_url = 'https://www.facebook.com/stackabuse';
+
+//	6. Twitter Setting
+var twitter_url = 'https://twitter.com/ScottWRobinson';
+var twitter_widget_id = '722928793669607425';
+var number_of_tweet = 3;
+
+//	7. Mailchimp signup form Setting
+var mailchimp_form_url = '//stackabuse.us10.list-manage.com/subscribe/post?u=90b216fdbe02b25619ec94fc3&amp;id=bc2bb312cd';
+var success_message = "Please check your inbox and confirm your email address. Thank you!";
+
+//	8. Flickr Setting
+//var flickr_id = '52617155@N08';
+var flickr_id = '';
+</script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Stack Abuse" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Python for NLP: Multi-label Text Classification with Keras" />
+    <meta property="og:description" content="
+
+Introduction
+This is the 19th article in my series of articles on Python for NLP. From the
+last few articles, we have been exploring fairly advanced NLP concepts based on
+deep learning techniques. In the last article
+[/python-for-nlp-creating-multi-data-type-classification-models-with-keras/], we
+saw how to create a text classification model trained using multiple inputs of
+varying data types. We developed a text sentiment predictor using textual inputs
+plus meta information.
+
+In this article," />
+    <meta property="og:url" content="https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/" />
+    <meta property="article:tag" content="python" />
+    <meta property="article:tag" content="keras" />
+    <meta property="article:tag" content="nlp" />
+    <meta property="article:tag" content="machine learning" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Python for NLP: Multi-label Text Classification with Keras" />
+    <meta name="twitter:description" content="
+
+Introduction
+This is the 19th article in my series of articles on Python for NLP. From the
+last few articles, we have been exploring fairly advanced NLP concepts based on
+deep learning techniques. In the last article
+[/python-for-nlp-creating-multi-data-type-classification-models-with-keras/], we
+saw how to create a text classification model trained using multiple inputs of
+varying data types. We developed a text sentiment predictor using textual inputs
+plus meta information.
+
+In this article," />
+    <meta name="twitter:url" content="https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Usman Malik" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="python, keras, nlp, machine learning" />
+    <meta name="twitter:site" content="@ScottWRobinson" />
+    <meta name="twitter:creator" content="@usman_malikk" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Stack Abuse",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Usman Malik",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/content/images/2018/04/pic3.jpg",
+            "width": 413,
+            "height": 433
+        },
+        "url": "https://stackabuse.com/author/usman/",
+        "sameAs": [
+            "https://twitter.com/usman_malikk"
+        ]
+    },
+    "headline": "Python for NLP: Multi-label Text Classification with Keras",
+    "url": "https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/",
+    "keywords": "python, keras, nlp, machine learning",
+    "description": "\n\nIntroduction\nThis is the 19th article in my series of articles on Python for NLP. From the\nlast few articles, we have been exploring fairly advanced NLP concepts based on\ndeep learning techniques. In the last article\n[/python-for-nlp-creating-multi-data-type-classification-models-with-keras/], we\nsaw how to create a text classification model trained using multiple inputs of\nvarying data types. We developed a text sentiment predictor using textual inputs\nplus meta information.\n\nIn this article,",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://stackabuse.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 2.23" />
+    <link rel="alternate" type="application/rss+xml" title="Stack Abuse" href="https://stackabuse.com/rss/" />
+    <!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '525232124909042');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=525232124909042&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- Repixel Code -->
+<script>
+  (function(w, d, s, id, src){
+  w.Repixel = r = {
+    init: function(id) {
+      w.repixelId = id;
+    }
+  };
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)){ return; }
+  js = d.createElement(s); 
+  js.id = id;
+  js.async = true;
+  js.onload = function(){
+      Repixel.init(w.repixelId);
+  };
+  js.src = src;
+  fjs.parentNode.insertBefore(js, fjs);
+  }(window, document, 'script', 'repixel', 
+  'https://sdk.repixel.co/r.js'));
+  Repixel.init('5cefff7fce3aad00089e44e5');
+</script>
+<!-- Repixel Code -->
+</head>
+<body class="post-template tag-python tag-keras tag-nlp tag-machine-learning">
+	<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="/">Stack <span style="color:#f16334;">Abuse</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" role="navigation" aria-label="Site navigation">
+	<li class="nav-javascript"><a href="https://stackabuse.com/tag/javascript/">JavaScript</a></li>
+	<li class="nav-python"><a href="https://stackabuse.com/tag/python">Python</a></li>
+	<li class="nav-java"><a href="https://stackabuse.com/tag/java/">Java</a></li>
+    <li class="nav-hireremote">
+        <a rel="noopener nofollow" target="_blank" href="https://hireremote.io/"
+           ga-on="click"
+           ga-event-category="Jobs"
+           ga-event-action="Click"
+           ga-event-label="HR-Nav-Link"
+        >
+            Jobs
+        </a>
+    </li>
+</ul>
+
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+	<!-- start site's main content area -->
+<section class="content-wrap">
+	<div class="container">
+		<div class="row">
+			<!-- start main post area -->
+			<div class="col-md-8 main-content">
+				<!-- start post -->
+				<article id="5d5fef6805f16e6a7271f8ba" class="post tag-python tag-keras tag-nlp tag-machine-learning">
+					<div class="post-head">
+						<h2 class="post-title">Python for NLP: Multi-label Text Classification with Keras</h2>
+						<div class="post-meta">
+							<span class="author">
+                                By
+                                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/usman_malikk">
+                                    <i class="fa fa-twitter" style="color:#55acee;"></i>
+                                    Usman Malik
+                                </a>
+                            </span> &bull;
+							<span class="comment-count"><a href="/python-for-nlp-multi-label-text-classification-with-keras/#disqus_thread">0 Comments</a></span>
+						</div>
+					</div>
+                    <div class="post-ad">
+                        <!-- 728x90/320x50 -->
+<div id="waldo-tag-3878"></div>                    </div>
+					<div class="post-content">
+						<p></p><!--kg-card-begin: markdown--><h3 id="introduction">Introduction</h3>
+<p>This is the 19th article in my series of articles on Python for NLP. From the last few articles, we have been exploring fairly advanced NLP concepts based on deep learning techniques. In the <a target="_blank" href="/python-for-nlp-creating-multi-data-type-classification-models-with-keras/">last article</a>, we saw how to create a text classification model trained using multiple inputs of varying data types. We developed a text sentiment predictor using textual inputs plus meta information.</p>
+<p>In this article, we will see how to develop a text classification model with multiple outputs. We will be developing a text classification model that analyzes a textual comment and predicts multiple labels associated with the comment. The multi-label classification problem is actually a subset of multiple output model. At the end of this article you will be able to perform multi-label text classification on your data.</p>
+<p>The approach explained in this article can be extended to perform general multi-label classification. For instance you can solve a classification problem where you have an image as input and you want to predict the image category and image description.</p>
+<p>At this point, it is important to explain the difference between a multi-class classification problem and a multi-label classification. In multi-class classification problem, an instance or a record can belong to one and only one of the multiple output classes. For instance, in the sentiment analysis problem that we studied in the last article, a text review could be either &quot;good&quot;, &quot;bad&quot;, or &quot;average&quot;. It could not be both &quot;good&quot; and &quot;average&quot; at the same time. On the other hand in multi-label classification problems, an instance can have multiple outputs at the same time. For instance, in the text classification problem that we are going to solve in this article, a comment can have multiple tags. These tags include &quot;toxic&quot;, &quot;obscene&quot;, &quot;insulting&quot;, etc., at the same time.</p>
+<h3 id="thedataset">The Dataset</h3>
+<p>The dataset contains comments from <a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Help:Talk_pages">Wikipedia's talk page</a> edits. There are six output labels for each comment: toxic, severe_toxic, obscene, threat, insult and identity_hate. A comment can belong to all of these categories or a subset of these categories, which makes it a multi-label classification problem.</p>
+<p>The dataset for this article can be downloaded from this <a rel="nofollow" target="_blank" href="https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview">Kaggle link</a>. We will only use the &quot;train.csv&quot; file that contains 160,000 records.</p>
+<p>Download the CSV file into your local directory. I have renamed the file as &quot;toxic_comments.csv&quot;. You can give it any name, but just be sure to use that name in your code.</p>
+<p>Let's now import the required libraries and load the dataset into our application. The following script imports the required libraries:</p>
+<pre><code class="language-python">from numpy import array
+from keras.preprocessing.text import one_hot
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers.core import Activation, Dropout, Dense
+from keras.layers import Flatten, LSTM
+from keras.layers import GlobalMaxPooling1D
+from keras.models import Model
+from keras.layers.embeddings import Embedding
+from sklearn.model_selection import train_test_split
+from keras.preprocessing.text import Tokenizer
+from keras.layers import Input
+from keras.layers.merge import Concatenate
+
+import pandas as pd
+import numpy as np
+import re
+
+import matplotlib.pyplot as plt
+</code></pre>
+<p>Let's now load the dataset into the memory:</p>
+<pre><code class="language-python">toxic_comments = pd.read_csv(&quot;/content/drive/My Drive/Colab Datasets/toxic_comments.csv&quot;)
+</code></pre>
+<p>The following script displays the shape of the dataset and it also prints the header of the dataset:</p>
+<pre><code class="language-python">print(toxic_comments.shape)
+
+toxic_comments.head()
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>(159571,8)
+</code></pre>
+<p>The dataset contains 159571 records and 8 columns. The header of the dataset looks like this:</p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-1.PNG" alt="img1"></p>
+<p>Let's remove all the records where any row contain a null value or empty string.</p>
+<pre><code class="language-python">filter = toxic_comments[&quot;comment_text&quot;] != &quot;&quot;
+toxic_comments = toxic_comments[filter]
+toxic_comments = toxic_comments.dropna()
+</code></pre>
+<p>The <code>comment_text</code> column contains text comments. Let's print a random comment and then see the labels for the comments.</p>
+<pre><code class="language-python">print(toxic_comments[&quot;comment_text&quot;][168])
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>You should be fired, you're a moronic wimp who is too lazy to do research. It makes me sick that people like you exist in this world.
+</code></pre>
+<p>This is clearly a toxic comment. Let's see the associated labels with this comment:</p>
+<pre><code class="language-python">print(&quot;Toxic:&quot; + str(toxic_comments[&quot;toxic&quot;][168]))
+print(&quot;Severe_toxic:&quot; + str(toxic_comments[&quot;severe_toxic&quot;][168]))
+print(&quot;Obscene:&quot; + str(toxic_comments[&quot;obscene&quot;][168]))
+print(&quot;Threat:&quot; + str(toxic_comments[&quot;threat&quot;][168]))
+print(&quot;Insult:&quot; + str(toxic_comments[&quot;insult&quot;][168]))
+print(&quot;Identity_hate:&quot; + str(toxic_comments[&quot;identity_hate&quot;][168]))
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>Toxic:1
+Severe_toxic:0
+Obscene:0
+Threat:0
+Insult:1
+Identity_hate:0
+</code></pre>
+<p>Let's now plot the comment count for each label. To do so, we will first filter all the label or output columns.</p>
+<pre><code class="language-python">toxic_comments_labels = toxic_comments[[&quot;toxic&quot;, &quot;severe_toxic&quot;, &quot;obscene&quot;, &quot;threat&quot;, &quot;insult&quot;, &quot;identity_hate&quot;]]
+toxic_comments_labels.head()
+</code></pre>
+<p><strong>Output:</strong></p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-2.PNG" alt="img2"></p>
+<p>Using the <code>toxic_comments_labels</code> dataframe we will plot bar plots that show the total comment counts for different labels.</p>
+<pre><code class="language-python">fig_size = plt.rcParams[&quot;figure.figsize&quot;]
+fig_size[0] = 10
+fig_size[1] = 8
+plt.rcParams[&quot;figure.figsize&quot;] = fig_size
+
+toxic_comments_labels.sum(axis=0).plot.bar()
+</code></pre>
+<p><strong>Output:</strong></p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-3.PNG" alt="img3"></p>
+<p>You can see that the &quot;toxic&quot; comment has the highest frequency of occurrence followed by &quot;obscene&quot; and &quot;insult&quot;, respectively.</p>
+<p>We have successfully analyzed our dataset, in the next section we will create multi-label classification models using this dataset.</p>
+<h3 id="creatingmultilabeltextclassificationmodels">Creating Multi-label Text Classification Models</h3>
+<p>There are two ways to create multi-label classification models: Using single dense output layer and using multiple dense output layers.</p>
+<p>In the first approach, we can use a single dense layer with six outputs with a sigmoid activation functions and binary cross entropy loss functions. Each neuron in the output dense layer will represent one of the six output labels. The sigmoid activation function will return a value between 0 and 1 for each neuron. If any neuron's output value is greater than 0.5, it is assumed that the comment belongs to the class represented by that particular neuron.</p>
+<p>In the second approach we will create one dense output layer for each label. We will have a total of 6 dense layers in the output. Each layer will have its own sigmoid function.</p>
+<h4 id="multilabletextclassificationmodelwithsingleoutputlayer">Multi-lable Text Classification Model with Single Output Layer</h4>
+<p>In this section, we will create multi-label text classification model with single output layer. As always, the first step in the text classification model is to create a function responsible for cleaning the text.</p>
+<pre><code class="language-python">def preprocess_text(sen):
+    # Remove punctuations and numbers
+    sentence = re.sub('[^a-zA-Z]', ' ', sen)
+
+    # Single character removal
+    sentence = re.sub(r&quot;\s+[a-zA-Z]\s+&quot;, ' ', sentence)
+
+    # Removing multiple spaces
+    sentence = re.sub(r'\s+', ' ', sentence)
+
+    return sentence
+</code></pre>
+<p>In the next step we will create our input and output set. The input is the comment from the <code>comment_text</code> column. We will clean all the comments and will store them in the <code>X</code> variable. The labels or outputs have already been stored in the <code>toxic_comments_labels</code> dataframe. We will use that dataframe values to store output in the <code>y</code> variable. Look at the following script:</p>
+<pre><code class="language-python">X = []
+sentences = list(toxic_comments[&quot;comment_text&quot;])
+for sen in sentences:
+    X.append(preprocess_text(sen))
+
+y = toxic_comments_labels.values
+</code></pre>
+<p>Here we do not need to perform any one-hot encoding because our output labels are already in the form of one-hot encoded vectors.</p>
+<p>In the next step, we will divide our data into training and test sets:</p>
+<pre><code class="language-python">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+</code></pre>
+<p>We need to convert text inputs into embedded vectors. To understand word embeddings in detail, please refer to <a target="_blank" href="/python-for-nlp-word-embeddings-for-deep-learning-in-keras/">my article on word embeddings</a>.</p>
+<pre><code class="language-python">tokenizer = Tokenizer(num_words=5000)
+tokenizer.fit_on_texts(X_train)
+
+X_train = tokenizer.texts_to_sequences(X_train)
+X_test = tokenizer.texts_to_sequences(X_test)
+
+vocab_size = len(tokenizer.word_index) + 1
+
+maxlen = 200
+
+X_train = pad_sequences(X_train, padding='post', maxlen=maxlen)
+X_test = pad_sequences(X_test, padding='post', maxlen=maxlen)
+</code></pre>
+<p>We will be using GloVe word embeddings to convert text inputs to their numeric counterparts.</p>
+<pre><code class="language-python">from numpy import array
+from numpy import asarray
+from numpy import zeros
+
+embeddings_dictionary = dict()
+
+glove_file = open('/content/drive/My Drive/Colab Datasets/glove.6B.100d.txt', encoding=&quot;utf8&quot;)
+
+for line in glove_file:
+    records = line.split()
+    word = records[0]
+    vector_dimensions = asarray(records[1:], dtype='float32')
+    embeddings_dictionary[word] = vector_dimensions
+glove_file.close()
+
+embedding_matrix = zeros((vocab_size, 100))
+for word, index in tokenizer.word_index.items():
+    embedding_vector = embeddings_dictionary.get(word)
+    if embedding_vector is not None:
+        embedding_matrix[index] = embedding_vector
+</code></pre>
+<p>The following script creates the model. Our model will have one input layer, one embedding layer, one LSTM layer with 128 neurons and one output layer with 6 neurons since we have 6 labels in the output.</p>
+<pre><code class="language-python">deep_inputs = Input(shape=(maxlen,))
+embedding_layer = Embedding(vocab_size, 100, weights=[embedding_matrix], trainable=False)(deep_inputs)
+LSTM_Layer_1 = LSTM(128)(embedding_layer)
+dense_layer_1 = Dense(6, activation='sigmoid')(LSTM_Layer_1)
+model = Model(inputs=deep_inputs, outputs=dense_layer_1)
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
+</code></pre>
+<p>Let's print the model summary:</p>
+<pre><code class="language-python">print(model.summary())
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         (None, 200)               0
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 200, 100)          14824300
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 128)               117248
+_________________________________________________________________
+dense_1 (Dense)              (None, 6)                 774
+=================================================================
+Total params: 14,942,322
+Trainable params: 118,022
+Non-trainable params: 14,824,300
+</code></pre>
+<p>The following script prints the architecture of our neural network:</p>
+<pre><code class="language-python">from keras.utils import plot_model
+plot_model(model, to_file='model_plot4a.png', show_shapes=True, show_layer_names=True)
+</code></pre>
+<p><strong>Output:</strong></p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-4.png" alt="img4"></p>
+<p>From the figure above, you can see that the output layer only contains 1 dense layer with 6 neurons. Let's now train our model:</p>
+<pre><code class="language-python">history = model.fit(X_train, y_train, batch_size=128, epochs=5, verbose=1, validation_split=0.2)
+</code></pre>
+<p>We will train our model for 5 epochs. You can train the model with more epochs and see if you get better or worse results.</p>
+<p>The result for all the 5 epochs is as follows:</p>
+<pre><code>rain on 102124 samples, validate on 25532 samples
+Epoch 1/5
+102124/102124 [==============================] - 245s 2ms/step - loss: 0.1437 - acc: 0.9634 - val_loss: 0.1361 - val_acc: 0.9631
+Epoch 2/5
+102124/102124 [==============================] - 245s 2ms/step - loss: 0.0763 - acc: 0.9753 - val_loss: 0.0621 - val_acc: 0.9788
+Epoch 3/5
+102124/102124 [==============================] - 243s 2ms/step - loss: 0.0588 - acc: 0.9800 - val_loss: 0.0578 - val_acc: 0.9802
+Epoch 4/5
+102124/102124 [==============================] - 246s 2ms/step - loss: 0.0559 - acc: 0.9807 - val_loss: 0.0571 - val_acc: 0.9801
+Epoch 5/5
+102124/102124 [==============================] - 245s 2ms/step - loss: 0.0528 - acc: 0.9813 - val_loss: 0.0554 - val_acc: 0.9807
+</code></pre>
+<p>Let's now evaluate our model on the test set:</p>
+<pre><code class="language-python">score = model.evaluate(X_test, y_test, verbose=1)
+
+print(&quot;Test Score:&quot;, score[0])
+print(&quot;Test Accuracy:&quot;, score[1])
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>31915/31915 [==============================] - 108s 3ms/step
+Test Score: 0.054090796736467786
+Test Accuracy: 0.9810642735274182
+</code></pre>
+<p>Our model achieves an accuracy of around 98% which is pretty impressive.</p>
+<p>Finally, we will plot the loss and accuracy values for training and test sets to see if our model is overfitting.</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
+</code></pre>
+<p><strong>Output:</strong></p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-5.PNG" alt="5"></p>
+<p>You can see the model is not overfitting on the validation set.</p>
+<h4 id="multilabletextclassificationmodelwithmultipleoutputlayers">Multi-lable Text Classification Model with Multiple Output Layers</h4>
+<p>In this section we will create a multi-label text classification model where each output label will have a dedicated output dense layer. Let's first define our preprocessing function:</p>
+<pre><code class="language-python">def preprocess_text(sen):
+    # Remove punctuations and numbers
+    sentence = re.sub('[^a-zA-Z]', ' ', sen)
+
+    # Single character removal
+    sentence = re.sub(r&quot;\s+[a-zA-Z]\s+&quot;, ' ', sentence)
+
+    # Removing multiple spaces
+    sentence = re.sub(r'\s+', ' ', sentence)
+
+    return sentence
+</code></pre>
+<p>The second step is to create inputs and output for the model. The input to the model will be the text comments, whereas the output will be six labels. The following script creates the input layer and the combined output layer:</p>
+<pre><code class="language-python">X = []
+sentences = list(toxic_comments[&quot;comment_text&quot;])
+for sen in sentences:
+    X.append(preprocess_text(sen))
+
+y = toxic_comments[[&quot;toxic&quot;, &quot;severe_toxic&quot;, &quot;obscene&quot;, &quot;threat&quot;, &quot;insult&quot;, &quot;identity_hate&quot;]]
+</code></pre>
+<p>Let's divide the data into training and testing sets:</p>
+<pre><code class="language-python">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+</code></pre>
+<p>The <code>y</code> variable contains the combined output from 6 labels. However, we want to create individual output layer for each label. We will create 6 variables that store individual labels from the training data and 6 variables that store individual label values for the test data.</p>
+<p>Look at the following script:</p>
+<pre><code class="language-python"># First output
+y1_train = y_train[[&quot;toxic&quot;]].values
+y1_test =  y_test[[&quot;toxic&quot;]].values
+
+# Second output
+y2_train = y_train[[&quot;severe_toxic&quot;]].values
+y2_test =  y_test[[&quot;severe_toxic&quot;]].values
+
+# Third output
+y3_train = y_train[[&quot;obscene&quot;]].values
+y3_test =  y_test[[&quot;obscene&quot;]].values
+
+# Fourth output
+y4_train = y_train[[&quot;threat&quot;]].values
+y4_test =  y_test[[&quot;threat&quot;]].values
+
+# Fifth output
+y5_train = y_train[[&quot;insult&quot;]].values
+y5_test =  y_test[[&quot;insult&quot;]].values
+
+# Sixth output
+y6_train = y_train[[&quot;identity_hate&quot;]].values
+y6_test =  y_test[[&quot;identity_hate&quot;]].values
+</code></pre>
+<p>The next step is to convert textual inputs to embedded vectors. The following script does that:</p>
+<pre><code class="language-python">tokenizer = Tokenizer(num_words=5000)
+tokenizer.fit_on_texts(X_train)
+
+X_train = tokenizer.texts_to_sequences(X_train)
+X_test = tokenizer.texts_to_sequences(X_test)
+
+vocab_size = len(tokenizer.word_index) + 1
+
+maxlen = 200
+
+X_train = pad_sequences(X_train, padding='post', maxlen=maxlen)
+X_test = pad_sequences(X_test, padding='post', maxlen=maxlen)
+</code></pre>
+<p>Here again we will use the GloVe word embeddings:</p>
+<pre><code class="language-python">glove_file = open('/content/drive/My Drive/Colab Datasets/glove.6B.100d.txt', encoding=&quot;utf8&quot;)
+
+for line in glove_file:
+    records = line.split()
+    word = records[0]
+    vector_dimensions = asarray(records[1:], dtype='float32')
+    embeddings_dictionary[word] = vector_dimensions
+glove_file.close()
+
+embedding_matrix = zeros((vocab_size, 100))
+for word, index in tokenizer.word_index.items():
+    embedding_vector = embeddings_dictionary.get(word)
+    if embedding_vector is not None:
+        embedding_matrix[index] = embedding_vector
+</code></pre>
+<p>Now is the time to create our model. Our model will have one input layer, one embedding layer followed by one LSTM layer with 128 neurons. The output from the LSTM layer will be used as the input to the 6 dense output layers. Each output layer will have 1 neuron with sigmoid activation function. Each output will predict integer value between 1 and 0 for the corresponding label.</p>
+<p>The following script creates our model:</p>
+<pre><code class="language-python">input_1 = Input(shape=(maxlen,))
+embedding_layer = Embedding(vocab_size, 100, weights=[embedding_matrix], trainable=False)(input_1)
+LSTM_Layer1 = LSTM(128)(embedding_layer)
+
+output1 = Dense(1, activation='sigmoid')(LSTM_Layer1)
+output2 = Dense(1, activation='sigmoid')(LSTM_Layer1)
+output3 = Dense(1, activation='sigmoid')(LSTM_Layer1)
+output4 = Dense(1, activation='sigmoid')(LSTM_Layer1)
+output5 = Dense(1, activation='sigmoid')(LSTM_Layer1)
+output6 = Dense(1, activation='sigmoid')(LSTM_Layer1)
+
+model = Model(inputs=input_1, outputs=[output1, output2, output3, output4, output5, output6])
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
+</code></pre>
+<p>The following script prints the summary of the model:</p>
+<pre><code class="language-python">print(model.summary())
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+input_1 (InputLayer)            (None, 200)          0
+__________________________________________________________________________________________________
+embedding_1 (Embedding)         (None, 200, 100)     14824300    input_1[0][0]
+__________________________________________________________________________________________________
+lstm_1 (LSTM)                   (None, 128)          117248      embedding_1[0][0]
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1)            129         lstm_1[0][0]
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 1)            129         lstm_1[0][0]
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 1)            129         lstm_1[0][0]
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 1)            129         lstm_1[0][0]
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 1)            129         lstm_1[0][0]
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            129         lstm_1[0][0]
+==================================================================================================
+Total params: 14,942,322
+Trainable params: 118,022
+Non-trainable params: 14,824,300
+</code></pre>
+<p>And the following script prints the architecture of our model:</p>
+<pre><code class="language-python">from keras.utils import plot_model
+plot_model(model, to_file='model_plot4b.png', show_shapes=True, show_layer_names=True)
+</code></pre>
+<p><strong>Output:</strong></p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-6.png" alt="img6"></p>
+<p>You can see that we have 6 different output layers. The above figure clearly explains the difference between the model with single input layer that we created in the last section and the model with multiple output layers.</p>
+<p>Let's now train our model:</p>
+<pre><code class="language-python">history = model.fit(x=X_train, y=[y1_train, y2_train, y3_train, y4_train, y5_train, y6_train], batch_size=8192, epochs=5, verbose=1, validation_split=0.2)
+</code></pre>
+<p>I tried to run model for five epochs but it was terribly overfitting on the validation set. I increased the batch size but still the test accuracy was not so good. One of the possible reasons of overfitting is that here in this case we have individual output layer for each label which increases the complexity of our model. The increase in model complexity often leads to overfitting.</p>
+<p>The result for each epoch is shown below:</p>
+<p><strong>Output:</strong></p>
+<pre><code>Train on 102124 samples, validate on 25532 samples
+Epoch 1/5
+102124/102124 [==============================] - 24s 239us/step - loss: 3.5116 - dense_1_loss: 0.6017 - dense_2_loss: 0.5806 - dense_3_loss: 0.6150 - dense_4_loss: 0.5585 - dense_5_loss: 0.5828 - dense_6_loss: 0.5730 - dense_1_acc: 0.9029 - dense_2_acc: 0.9842 - dense_3_acc: 0.9444 - dense_4_acc: 0.9934 - dense_5_acc: 0.9508 - dense_6_acc: 0.9870 - val_loss: 1.0369 - val_dense_1_loss: 0.3290 - val_dense_2_loss: 0.0983 - val_dense_3_loss: 0.2571 - val_dense_4_loss: 0.0595 - val_dense_5_loss: 0.1972 - val_dense_6_loss: 0.0959 - val_dense_1_acc: 0.9037 - val_dense_2_acc: 0.9901 - val_dense_3_acc: 0.9469 - val_dense_4_acc: 0.9966 - val_dense_5_acc: 0.9509 - val_dense_6_acc: 0.9901
+Epoch 2/5
+102124/102124 [==============================] - 20s 197us/step - loss: 0.9084 - dense_1_loss: 0.3324 - dense_2_loss: 0.0679 - dense_3_loss: 0.2172 - dense_4_loss: 0.0338 - dense_5_loss: 0.1983 - dense_6_loss: 0.0589 - dense_1_acc: 0.9043 - dense_2_acc: 0.9899 - dense_3_acc: 0.9474 - dense_4_acc: 0.9968 - dense_5_acc: 0.9510 - dense_6_acc: 0.9915 - val_loss: 0.8616 - val_dense_1_loss: 0.3164 - val_dense_2_loss: 0.0555 - val_dense_3_loss: 0.2127 - val_dense_4_loss: 0.0235 - val_dense_5_loss: 0.1981 - val_dense_6_loss: 0.0554 - val_dense_1_acc: 0.9038 - val_dense_2_acc: 0.9900 - val_dense_3_acc: 0.9469 - val_dense_4_acc: 0.9965 - val_dense_5_acc: 0.9509 - val_dense_6_acc: 0.9900
+Epoch 3/5
+102124/102124 [==============================] - 20s 199us/step - loss: 0.8513 - dense_1_loss: 0.3179 - dense_2_loss: 0.0566 - dense_3_loss: 0.2103 - dense_4_loss: 0.0216 - dense_5_loss: 0.1960 - dense_6_loss: 0.0490 - dense_1_acc: 0.9043 - dense_2_acc: 0.9899 - dense_3_acc: 0.9474 - dense_4_acc: 0.9968 - dense_5_acc: 0.9510 - dense_6_acc: 0.9915 - val_loss: 0.8552 - val_dense_1_loss: 0.3158 - val_dense_2_loss: 0.0566 - val_dense_3_loss: 0.2074 - val_dense_4_loss: 0.0225 - val_dense_5_loss: 0.1960 - val_dense_6_loss: 0.0568 - val_dense_1_acc: 0.9038 - val_dense_2_acc: 0.9900 - val_dense_3_acc: 0.9469 - val_dense_4_acc: 0.9965 - val_dense_5_acc: 0.9509 - val_dense_6_acc: 0.9900
+Epoch 4/5
+102124/102124 [==============================] - 20s 198us/step - loss: 0.8442 - dense_1_loss: 0.3153 - dense_2_loss: 0.0570 - dense_3_loss: 0.2061 - dense_4_loss: 0.0213 - dense_5_loss: 0.1952 - dense_6_loss: 0.0493 - dense_1_acc: 0.9043 - dense_2_acc: 0.9899 - dense_3_acc: 0.9474 - dense_4_acc: 0.9968 - dense_5_acc: 0.9510 - dense_6_acc: 0.9915 - val_loss: 0.8527 - val_dense_1_loss: 0.3156 - val_dense_2_loss: 0.0558 - val_dense_3_loss: 0.2074 - val_dense_4_loss: 0.0226 - val_dense_5_loss: 0.1951 - val_dense_6_loss: 0.0561 - val_dense_1_acc: 0.9038 - val_dense_2_acc: 0.9900 - val_dense_3_acc: 0.9469 - val_dense_4_acc: 0.9965 - val_dense_5_acc: 0.9509 - val_dense_6_acc: 0.9900
+Epoch 5/5
+102124/102124 [==============================] - 20s 197us/step - loss: 0.8410 - dense_1_loss: 0.3146 - dense_2_loss: 0.0561 - dense_3_loss: 0.2055 - dense_4_loss: 0.0213 - dense_5_loss: 0.1948 - dense_6_loss: 0.0486 - dense_1_acc: 0.9043 - dense_2_acc: 0.9899 - dense_3_acc: 0.9474 - dense_4_acc: 0.9968 - dense_5_acc: 0.9510 - dense_6_acc: 0.9915 - val_loss: 0.8501 - val_dense_1_loss: 0.3153 - val_dense_2_loss: 0.0553 - val_dense_3_loss: 0.2069 - val_dense_4_loss: 0.0226 - val_dense_5_loss: 0.1948 - val_dense_6_loss: 0.0553 - val_dense_1_acc: 0.9038 - val_dense_2_acc: 0.9900 - val_dense_3_acc: 0.9469 - val_dense_4_acc: 0.9965 - val_dense_5_acc: 0.9509 - val_dense_6_acc: 0.9900
+</code></pre>
+<p>You can see that for each epoch, we have values for loss, value loss, accuracy, and value accuracy for all the 6 dense layers in the output.</p>
+<p>Let's now evaluate the performance of our model on the test set:</p>
+<pre><code class="language-python">score = model.evaluate(x=X_test, y=[y1_test, y2_test, y3_test, y4_test, y5_test, y6_test], verbose=1)
+
+print(&quot;Test Score:&quot;, score[0])
+print(&quot;Test Accuracy:&quot;, score[1])
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>31915/31915 [==============================] - 111s 3ms/step
+Test Score: 0.8471985269747015
+Test Accuracy: 0.31425264998511726
+</code></pre>
+<p>An accuracy of only 31% is achieved on the test set via multiple output layers.</p>
+<p>The following script plots the loss and accuracy values for training and validation sets for the first dense layer.</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+plt.plot(history.history['dense_1_acc'])
+plt.plot(history.history['val_dense_1_acc'])
+
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
+
+plt.plot(history.history['dense_1_loss'])
+plt.plot(history.history['val_dense_1_loss'])
+
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
+</code></pre>
+<p><strong>Output:</strong></p>
+<p><img src="https://stackabuse.s3.amazonaws.com/media/multi-label-text-classification-with-keras-7.PNG" alt="img7"></p>
+<p>From the output you can see that the accuracy for test (validation) set doesn't converge after the first epochs. Also, the difference between training and validation accuracy is very minimal. Therefore, the model starts to overfit after the first epochs and hence we get a poor performance on unseen test set.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Multi-label text classification is one of the most common text classification problems. In this article, we studied two deep learning approaches for multi-label text classification. In the first approach we used a single dense output layer with multiple neurons where each neuron represented one label.</p>
+<p>In the second approach, we created separate dense layers for each label with one neuron. Results show that in our case, single output layer with multiple neurons works better than multiple output layers.</p>
+<p>As a next step, I would advise you to change the activation function and the train test split to see if you can get better results than the one presented in this article.</p>
+<!--kg-card-end: markdown-->
+					</div>
+					<footer class="post-footer clearfix">
+						<div class="pull-left tag-list">
+							<i class="fa fa-folder-open-o"></i>
+							<a href="/tag/python/">python</a>,<a href="/tag/keras/">keras</a>,<a href="/tag/nlp/">nlp</a>,<a href="/tag/machine-learning/">machine learning</a>
+						</div>
+						<div class="pull-right share">
+							<div>
+	<ul class="share-icons">
+		<!-- twitter -->
+		<li>
+			<a aria-label="Share on Twitter" href="https://twitter.com/share?text=Python%20for%20NLP%3A%20Multi-label%20Text%20Classification%20with%20Keras&amp;url=https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter" style="color:#55acee;"></i></a>
+		</li>
+		<!-- facebook -->
+		<li>
+			<a aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook" style="color:#3b5998;"></i></a>
+		</li>
+		<!-- linkedin -->
+		<li>
+			<a aria-label="Share on Linkedin" href="https://www.linkedin.com/shareArticle?mini=true%26url=https://stackabuse.com/python-for-nlp-multi-label-text-classification-with-keras/%26source=https://stackabuse.com" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=530');return false;"><i class="fa fa-linkedin" style="color:#0077b5;"></i></a>
+		</li>
+	</ul>
+</div>
+						</div>
+					</footer>
+                    <!-- start about the author -->
+<div class="about-author clearfix">
+		<a href="/author/usman/"><img src="https://stackabuse.com/content/images/2018/04/pic3.jpg" alt="Author image" class="avatar pull-left"></a>
+	<div class="details">
+		<div class="author">
+			About <a href="/author/usman/">Usman Malik</a>
+		</div>
+		<div class="meta-info" style="font-style: normal;">
+			<span class="location"><i class="fa fa-home"></i>Paris (France)</span>
+			<span>
+                <i class="fa fa-twitter" style="color:#55acee;"></i>
+                <a rel="noopener nofollow" href="https://twitter.com/usman_malikk" target="_BLANK">Twitter</a>
+            </span>
+		</div>
+		<div class="bio">
+            Programmer  | Blogger | Data Science Enthusiast | PhD To Be | Arsenal FC for Life
+        </div>
+	</div>
+</div>
+<!-- end about the author -->
+				</article>
+                <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Newsletter"
+                            ga-event-action="Signup"
+                            ga-event-label="General-Newsletter-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+				<div class="comment-wrap">
+					<!-- start disqus comment -->
+<div class="disqus-container">
+	<div id="disqus_thread"></div>
+	    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<!-- end disqus comment -->
+				</div>
+				<!-- start prev next wrap -->
+<div class="prev-next-wrap clearfix">
+		<a class="btn btn-default pull-left" href="/minimax-and-alpha-beta-pruning-in-python/" title="Minimax with Alpha-Beta Pruning in Python"><i class="fa fa-angle-left fa-fw"></i> Previous Post</a>
+		&nbsp;
+        <a class="btn btn-default pull-right" href="/introduction-to-the-python-pyramid-framework/" title="Introduction to the Python Pyramid Framework">Next Post <i class="fa fa-angle-right fa-fw"></i></a>
+</div>				<!-- end post -->
+			</div>
+			<!-- end main post area -->
+			<!-- start sidebar -->
+<div class="col-md-4 sidebar">
+    <!-- start widget -->
+<div class="widget">
+	<h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-3874"></div>    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start newsletter widget -->
+<div class="widget">
+    <h4 class="title">Newsletter</h4>
+    <div class="content newsletter">
+        <p style="font-size: 16px;">Subscribe to our newsletter! Get occassional tutorials, guides, and reviews in your inbox.</p>
+        <form action="#" method="post" class="validate" novalidate>
+            <div class="input-group">
+                <label class="control-label sr-only" for="widget-newsletter">Newsletter Signup</label>
+                <input id="widget-newsletter" type="email" value="" name="email" class="required email input-lg" placeholder="Enter your email...">
+            </div>
+            <div class="input-group">
+                <button type="submit" name="subscribe" class="btn btn-lg btn-default"
+                    ga-on="click"
+                    ga-event-category="Newsletter"
+                    ga-event-action="Signup"
+                    ga-event-label="General-Newsletter-Signup"
+                >
+                    <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                    Subscribe
+                </button>
+            </div>
+            <span style="color: #7f7f7f;">No spam ever. Unsubscribe at any time.</span>
+        </form>
+        <div class="message"></div>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-7184"></div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Want a remote job?</h4>
+    <div class="content jobs hr">
+        <ul style="margin-bottom: 0px;">
+        </ul>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>
+                    <a rel="noopener nofollow" target="_blank"
+                       class="btn btn-default"
+                       href="https://hireremote.io"
+                       style="margin-top: 10px;"
+                       ga-on="click"
+                       ga-event-category="Jobs"
+                       ga-event-action="Click"
+                       ga-event-label="HR-More-Link"
+                    >
+                        <i class="fa fa-arrow-circle-right"></i>&nbsp; More jobs
+                    </a>
+                </strong>
+            </div>
+            <div class="col-md-8 text-right" style="margin-top: 18px;">
+                Jobs via
+                <a rel="noopener nofollow" target="_blank" href="https://hireremote.io"
+                   class="hr-link"
+                   style="color: #f16334;"
+                >
+                    HireRemote.io
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <a rel="noopener nofollow" target="_blank"
+       class="dcp-link"
+       href="https://stackabu.se/daily-coding-problem"
+       style="text-decoration: none;"
+    >
+        <h4 class="title">Prepping for an interview?</h4>
+    </a>
+    <div class="content product">
+        <style type="text/css">
+            #product-features li {
+                margin: 5px 0;
+            }
+        </style>
+        <div id="product-features" style="font-size: 16px;line-height: 1.7em;">
+            <ul style="list-style: initial;">
+                <li>
+                    Improve your skills by solving one coding problem every day
+                </li>
+                <li>
+                    Get the solutions the next morning via email
+                </li>
+                <li>
+                    Practice on <strong>actual problems</strong> asked by top companies, like:
+                    <div style="margin: 15px 0px;">
+                        <img src="/assets/images/logo-google.svg?v=ee992ffd4b" style="height: 16px;">
+                        &nbsp;
+                        <img src="/assets/images/logo-facebook.svg?v=ee992ffd4b" style="height: 13px;margin-bottom: 3px;">
+                        &nbsp;
+                        <img src="/assets/images/logo-amazon.svg?v=ee992ffd4b" style="height: 19px;">
+                        &nbsp;
+                        <img src="/assets/images/logo-microsoft.svg?v=ee992ffd4b" style="height: 18px;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <a rel="noopener nofollow" target="_blank"
+                   class="btn btn-default dcp-link"
+                   href="https://stackabu.se/daily-coding-problem"
+                >
+                    <i class="fa fa-code"></i>
+                    &nbsp;
+                    Daily Coding Problem
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <div class="widget-sticky">
+        <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-7611"></div>
+    </div>
+</div>
+<!-- end widget -->
+    </div>
+</div>
+<!-- end sidebar -->
+		</div>
+	</div>
+</section>
+<!-- end site's main content area -->
+
+
+	<!-- start main-footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<!-- start first footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Recent Posts</h4>
+    <div class="content recent-post">
+        <div class="recent-single-post">
+            <a href="/how-to-use-the-grep-command-on-gnu-linux/" class="post-title">How to Use the grep Command on GNU/Linux</a>
+            <!--<div class="date">June 01, 2020</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="/a-guide-to-jpa-with-hibernate-relationship-mapping/" class="post-title">A Guide to JPA with Hibernate - Relationship Mapping</a>
+            <!--<div class="date">May 29, 2020</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="/insertion-sort-in-javascript/" class="post-title">Insertion Sort in JavaScript</a>
+            <!--<div class="date">May 27, 2020</div>-->
+        </div>
+    </div>
+</div>
+<!-- end widget -->				</div>
+				<!-- end first footer widget area -->
+				<!-- start second footer widget area -->
+				<div class="col-sm-4">
+					<!-- start tag cloud widget -->
+<div class="widget">
+    <h4 class="title">Tags</h4>
+    <div class="content tag-cloud">
+        <a href="/tag/algorithms/">algorithms</a><a href="/tag/amqp/">amqp</a><a href="/tag/angular/">angular</a><a href="/tag/announcements/">announcements</a><a href="/tag/apache/">apache</a><a href="/tag/api/">api</a><a href="/tag/arduino/">arduino</a><a href="/tag/artificial-intelligence/">artificial intelligence</a><a href="/tag/asynchronous/">asynchronous</a><a href="/tag/aws/">aws</a>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+				</div>
+				<!-- end second footer widget area -->
+				<!-- start third footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+				</div>
+				<!-- end third footer widget area -->
+			</div>
+		</div>
+	</footer>
+	<!-- end main-footer -->
+	<!-- start copyright section -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				Copyright &copy; 2020, <a href="https://stackabuse.com">Stack Abuse</a>.  All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end copyright section -->	<div class="footer-links">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="/disclosure">Disclosure</a>
+					•
+					<a href="/privacy-policy">Privacy Policy</a>
+					•
+					<a href="/terms-of-service">Terms of Service</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a aria-label="Back to Top" href="#" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+	<!--
+<script src="//my.hellobar.com/4dd9990be00532b0fc7961824b7d7a0930e9e2b7.js" type="text/javascript" charset="utf-8" async="async"></script>
+-->
+	<!-- scripts -->
+    <script id="dsq-count-scr" src="//stackabuse.disqus.com/count.js" async></script>
+    <script>
+      var disqus_config = function() {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.href;
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://stackabuse.disqus.com/embed.js';
+    </script>
+
+    <!-- HTML templates for use in JS code -->
+    <script id="newsletter-template" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Newsletter"
+                            ga-event-action="Signup"
+                            ga-event-label="General-Newsletter-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/dockerfile.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+    <script src="/assets/js/bootstrap-custom.min.js?v=ee992ffd4b" async></script>
+	<script src="/assets/js/main.min.js?v=ee992ffd4b" async></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript" async></script>
+	<!-- Add your analytic code below -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  if (window.location.hostname !== 'localhost') {
+    ga('create', 'UA-43140675-1', 'auto');
+    ga('require', 'eventTracker');
+
+    ga('set', 'dimension1', 'Usman Malik');
+    
+    ga('send', 'pageview');
+  }
+
+</script>
+<script async=true src="//cdnjs.cloudflare.com/ajax/libs/autotrack/1.0.1/autotrack.js"></script>
+</body>
+</html>

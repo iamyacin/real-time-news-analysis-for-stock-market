@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="pingback" href="https://algotrading101.com/learn/xmlrpc.php">
+<title>Sentiment Analysis with Python (Finance) - A Beginner&#039;s Guide - AlgoTrading101 Blog</title>
+<meta name="description" content="Sentiment analysis in finance has become commonplace. In many cases, it has become ineffective as many market players understand it and have one-upped this technique. That said, just like machine learning or basic statistical analysis, sentiment analysis is just a tool. It is how we use it that determines its effectiveness. Here are the general [&hellip;]" />
+
+<meta name="description" content="Financial sentiment analysis is used to extract insights from news, social media, financial reports and alternative data for investment, trading, risk management, operations in financial institutions, and basically anything finance related." />
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://algotrading101.com/learn/sentiment-analysis-with-python-finance/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sentiment Analysis with Python (Finance) - A Beginner&#039;s Guide - AlgoTrading101 Blog" />
+<meta property="og:description" content="Financial sentiment analysis is used to extract insights from news, social media, financial reports and alternative data for investment, trading, risk management, operations in financial institutions, and basically anything finance related." />
+<meta property="og:url" content="https://algotrading101.com/learn/sentiment-analysis-with-python-finance/" />
+<meta property="og:site_name" content="AlgoTrading101 Blog - From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life" />
+<meta property="article:section" content="Trading" />
+<meta property="article:published_time" content="2019-12-13T11:21:59+00:00" />
+<meta property="article:modified_time" content="2020-04-07T17:34:19+00:00" />
+<meta property="og:updated_time" content="2020-04-07T17:34:19+00:00" />
+<meta property="og:image" content="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3.png" />
+<meta property="og:image:secure_url" content="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3.png" />
+<meta property="og:image:width" content="1575" />
+<meta property="og:image:height" content="1432" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Financial sentiment analysis is used to extract insights from news, social media, financial reports and alternative data for investment, trading, risk management, operations in financial institutions, and basically anything finance related." />
+<meta name="twitter:title" content="Sentiment Analysis with Python (Finance) - A Beginner&#039;s Guide - AlgoTrading101 Blog" />
+<meta name="twitter:image" content="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3.png" />
+
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="AlgoTrading101 Blog - From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life &raquo; Feed" href="https://algotrading101.com/learn/feed/" />
+<link rel="alternate" type="application/rss+xml" title="AlgoTrading101 Blog - From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life &raquo; Comments Feed" href="https://algotrading101.com/learn/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="AlgoTrading101 Blog - From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life &raquo; Sentiment Analysis with Python (Finance) &#8211; A Beginner&#8217;s Guide Comments Feed" href="https://algotrading101.com/learn/sentiment-analysis-with-python-finance/feed/" />
+
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.10.3';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-145856776-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-145856776-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('require', 'displayfeatures');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/algotrading101.com\/learn\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<style type="text/css">
+			.epvc-eye {
+				margin-right: 3px;
+				width: 13px;
+				display: inline-block;
+				height: 13px;
+				border: solid 1px #000;
+				border-radius:  75% 15%;
+				position: relative;
+				transform: rotate(45deg);
+			}
+			.epvc-eye:before {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 5px;
+				height: 5px;
+				border: solid 1px #000;
+				border-radius: 50%;
+				left: 3px;
+				top: 3px;
+			}
+		</style>
+<link rel='stylesheet' id='pt-cv-public-style-css' href='https://algotrading101.com/learn/wp-content/plugins/content-views-query-and-display-post-page/public/assets/css/cv.css?ver=2.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://algotrading101.com/learn/wp-includes/css/dist/block-library/style.min.css?ver=5.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-theme-css' href='https://algotrading101.com/learn/wp-includes/css/dist/block-library/theme.min.css?ver=5.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='https://algotrading101.com/learn/wp-includes/css/dashicons.min.css?ver=5.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='post-views-counter-frontend-css' href='https://algotrading101.com/learn/wp-content/plugins/post-views-counter/css/frontend.css?ver=1.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap4-css' href='https://algotrading101.com/learn/wp-content/themes/mediumish/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mediumish-style-css' href='https://algotrading101.com/learn/wp-content/themes/mediumish/style.css?ver=5.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_fonticons_ii-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-fonticons-ii.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_fonticons_fa-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-fonticons-fa.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='select2-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/select2/select2.min.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_crop-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-crop.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_modal-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-modal.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_styles-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-styles.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_ui-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/jquery-ui.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_members-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-members.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_profile-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-profile.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_account-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-account.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_misc-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-misc.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_fileupload-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-fileupload.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_datetime-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/pickadate/default.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_datetime_date-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/pickadate/default.date.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_datetime_time-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/pickadate/default.time.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_raty-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-raty.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_scrollbar-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/simplebar.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_tipsy-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-tipsy.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_responsive-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-responsive.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='um_default_css-css' href='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/css/um-old-default.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-add-custom-css-css' href='https://algotrading101.com/learn?display_custom_css=css&#038;ver=5.3.3' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/algotrading101.com\/learn","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.10.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-gdpr.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js?ver=5.3.3'></script>
+<link rel='https://api.w.org/' href='https://algotrading101.com/learn/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://algotrading101.com/learn/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://algotrading101.com/learn/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 5.3.3" />
+<link rel='shortlink' href='https://algotrading101.com/learn/?p=570' />
+<link rel="alternate" type="application/json+oembed" href="https://algotrading101.com/learn/wp-json/oembed/1.0/embed?url=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://algotrading101.com/learn/wp-json/oembed/1.0/embed?url=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F&#038;format=xml" />
+
+<style type="text/css">
+.epvc-post-count {
+  display: none;
+}</style>
+
+
+<style type="text/css">
+.navarea {
+ 	display: none; 
+}</style>
+
+
+<style type="text/css">
+/* Add your CSS code here.
+
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */ 
+
+.jumbotron {
+ 
+  display: none;
+  
+}</style>
+
+
+<style type="text/css">
+/* Add your CSS code here.
+
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */ 
+
+.no-comments{
+  display: none;
+}
+
+.comment-body{
+  display: none;
+}
+
+#comments{
+  display: none;
+}</style>
+
+
+<style type="text/css">
+/* Add your CSS code here.
+
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */ 
+
+#followbutton {
+	display: none;
+}
+</style>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is sentiment analysis?","acceptedAnswer":{"@type":"Answer","text":"We use computers to extract meanings and connotations behind texts, images and other data."}},{"@type":"Question","name":"What is sentiment analysis for finance?","acceptedAnswer":{"@type":"Answer","text":"Financial sentiment analysis is used to extract insights from news, social media, financial reports, alternative data for investment, trading, risk management, operations in financial institutions, and basically anything finance related."}},{"@type":"Question","name":"What is sentiment analysis in stock market?","acceptedAnswer":{"@type":"Answer","text":"Sentiment analysis is used to extract insights from news, social media, financial reports, alternative data for stock investment purposes."}},{"@type":"Question","name":"How is sentiment analysis used for trading?","acceptedAnswer":{"@type":"Answer","text":"1) Read a news article or tweet fast and fire a trade instantly. 2) Read large amount of financial reports and output insights. 3) Gather insights from the crowds by analysing social media, web forums, news and analysts' reports"}},{"@type":"Question","name":"How to predict stock prices with news headlines?","acceptedAnswer":{"@type":"Answer","text":"1) Collate article headlines and dates\n2) Import and clean the data (text processing)\n3) Run sentiment analysis and create a score index\n4) Correlate lagged score index against prices"}}]}</script>
+<style id="hcb_style">.hcb_wrap pre::-webkit-scrollbar{height:6px}.hcb_wrap pre::-webkit-scrollbar-track{background:#f7f7f7;border:none}.hcb_wrap pre::-webkit-scrollbar-thumb{background:rgba(0,0,0,.1);border-radius:3px}.hcb_wrap{position:relative;z-index:0;display:block;margin-top:2em;margin-bottom:2em;padding:0}.hcb_wrap code,.hcb_wrap pre{white-space:pre;text-align:left;word-wrap:normal;word-break:normal;word-spacing:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;border:none}.hcb_wrap pre{position:static;display:block;box-sizing:border-box;margin:0;padding:1.75em 1.5em;overflow:auto;font-family:Menlo,Consolas,"メイリオ",sans-serif;line-height:1;letter-spacing:.1px;border-radius:0;-webkit-overflow-scrolling:touch}.hcb_wrap code,.hcb_wrap span{box-sizing:border-box;font-size:inherit;font-family:inherit;line-height:1.5}:not(pre)>code.prism{padding:.1em;white-space:normal;border-radius:.3em}.hcb_wrap .line-highlight{position:absolute;right:0;left:0;margin-top:1.75em;padding:0;font-size:inherit;line-height:inherit;white-space:pre;pointer-events:none}.hcb_wrap .line-highlight::before,.hcb_wrap .line-highlight[data-end]::after{position:absolute;top:0;left:0;box-sizing:border-box;min-width:1.5em;padding:1px 2px;font-weight:700;font-size:12px;line-height:inherit;text-align:center;text-shadow:none;vertical-align:middle;border-radius:0;content:attr(data-start)}.hcb_wrap .line-highlight[data-end]::after{top:auto;bottom:0;content:attr(data-end)}.hcb_wrap .line-numbers .line-highlight::after,.hcb_wrap .line-numbers .line-highlight::before{content:none}.hcb_wrap pre.line-numbers{position:static;padding-left:3.75em;counter-reset:linenumber}.hcb_wrap pre.line-numbers>code{position:relative;white-space:inherit}.hcb_wrap .line-numbers .line-numbers-rows{position:absolute;top:-2px;left:-3.75em;width:3em;font-size:inherit;letter-spacing:-1px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none}.hcb_wrap .line-numbers-rows>span{display:block;counter-increment:linenumber;pointer-events:none}.hcb_wrap .line-numbers-rows>span::before{display:block;padding-right:.8em;text-align:right;content:counter(linenumber)}.hcb_wrap pre::before{position:absolute;top:0;right:0;z-index:1;box-sizing:border-box;min-width:4em;padding:0 10px;font-size:12px;font-family:Arial,Helvetica,sans-serif;line-height:20px;text-align:center;content:attr(data-lang)}.hcb_wrap pre[data-file]::before{padding:0 8px 0 20px;background-repeat:no-repeat;background-position:center left 8px;background-size:auto 10px;content:attr(data-file)}.hcb_wrap pre.prism,.hcb_wrap pre.prism code{color:#1f1e1e;text-shadow:0 1px #fff;background:#f7f6f6}.hcb_wrap pre::before{background-color:#dedede}.hcb_wrap pre[data-file]::before{background-image:url(https://algotrading101.com/learn/wp-content/plugins/highlighting-code-block/assets/img/file-icon-light.svg)}.line-highlight{background:rgba(153,122,102,.1)}.line-highlight:before,.line-highlight[data-end]:after{background-color:rgba(0,0,0,.2);color:#f5f2f0}.line-numbers .line-numbers-rows{border-right:1px solid #999}.line-numbers-rows>span:before{color:#999}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#5f5f5f}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.class-name,.token.inserted,.token.selector,.token.string{color:#407b08}.language-css .token.string,.style .token.string,.token.entity,.token.url{color:#9a6e3a}.token.atrule,.token.attr-value,.token.function{color:#07a}.token.keyword,.token.operator{color:#c72c4c}.token.important,.token.keyword.this,.token.regex,.token.variable{color:#f18106}.token.bold{font-weight:700}.token.builtin,.token.italic,.token.keyword.def{font-style:italic}.token.entity{cursor:help}.token.delimiter.important{font-weight:400;color:#183d86}.hcb_wrap pre.prism{font-size: 14px}@media screen and (max-width: 599px){.hcb_wrap pre.prism{font-size: 13px}}.hcb_wrap pre{font-family:Menlo, Consolas, "メイリオ", sans-serif;}</style>
+<style type="text/css">
+			.request_name {
+				display: none !important;
+			}
+		</style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style> <meta name="onesignal" content="wordpress-plugin" />
+<script>
+
+      window.OneSignal = window.OneSignal || [];
+
+      OneSignal.push( function() {
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = "OneSignalSDKUpdaterWorker.js.php";
+        OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";
+        OneSignal.SERVICE_WORKER_PARAM = { scope: '/' };
+
+        OneSignal.setDefaultNotificationUrl("https://algotrading101.com/learn");
+        var oneSignal_options = {};
+        window._oneSignalInitOptions = oneSignal_options;
+
+        oneSignal_options['wordpress'] = true;
+oneSignal_options['appId'] = 'cef3f326-81eb-40c3-a101-84452c6d3b85';
+oneSignal_options['welcomeNotification'] = { };
+oneSignal_options['welcomeNotification']['title'] = "From Lucas Liew (creator of this blog)";
+oneSignal_options['welcomeNotification']['message'] = "Thanks for clicking Yay! Hope you don\\\&#039;t regret it hah.";
+oneSignal_options['welcomeNotification']['url'] = "Have a great day ahead!";
+oneSignal_options['path'] = "https://algotrading101.com/learn/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/";
+oneSignal_options['persistNotification'] = true;
+oneSignal_options['promptOptions'] = { };
+oneSignal_options['promptOptions']['actionMessage'] = 'YASSSS you clicked the button! Be notified about (possibly annoying) new posts?';
+oneSignal_options['promptOptions']['acceptButtonText'] = 'YAY';
+oneSignal_options['promptOptions']['cancelButtonText'] = 'NAY';
+oneSignal_options['notifyButton'] = { };
+oneSignal_options['notifyButton']['enable'] = true;
+oneSignal_options['notifyButton']['position'] = 'bottom-right';
+oneSignal_options['notifyButton']['theme'] = 'inverse';
+oneSignal_options['notifyButton']['size'] = 'medium';
+oneSignal_options['notifyButton']['displayPredicate'] = function() {
+              return OneSignal.isPushNotificationsEnabled()
+                      .then(function(isPushEnabled) {
+                          return !isPushEnabled;
+                      });
+            };
+oneSignal_options['notifyButton']['showCredit'] = true;
+oneSignal_options['notifyButton']['text'] = {};
+oneSignal_options['notifyButton']['colors'] = {};
+oneSignal_options['notifyButton']['colors']['circle.background'] = '#16A085';
+                OneSignal.init(window._oneSignalInitOptions);
+                      });
+
+      function documentInitOneSignal() {
+        var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");
+
+        var oneSignalLinkClickHandler = function(event) { OneSignal.push(['registerForPushNotifications']); event.preventDefault(); };        for(var i = 0; i < oneSignal_elements.length; i++)
+          oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);
+      }
+
+      if (document.readyState === 'complete') {
+           documentInitOneSignal();
+      }
+      else {
+           window.addEventListener("load", function(event){
+               documentInitOneSignal();
+          });
+      }
+    </script>
+
+<script type="application/ld+json" class="saswp-schema-markup-output">
+[{"@context":"https:\/\/schema.org","@type":"WebSite","@id":"https:\/\/algotrading101.com\/learn#website","headline":"AlgoTrading101 Blog - From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life","name":"AlgoTrading101 Blog - From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life","description":"From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life","url":"https:\/\/algotrading101.com\/learn","potentialAction":{"@type":"SearchAction","target":"https:\/\/algotrading101.com\/learn\/?s={search_term_string}","query-input":"required name=search_term_string"}}]
+</script>
+<style id="kirki-inline-styles">.btn-simple{background-color:#1C9963;border-color:#1C9963;}.prevnextlinks a, .article-post a, .post .btn.follow, .post .post-top-meta .author-description a, article.page a, .alertbar a{color:#1C9963;}.post .btn.follow, .alertbar input[type="submit"]{border-color:#1C9963;}blockquote{border-color:#1C9963;}.entry-content input[type=submit], .alertbar input[type="submit"]{background-color:#1C9963;border-color:#1C9963;}p.sharecolour{color:#999999;}.shareitnow ul li a svg, .shareitnow a{fill:#b3b3b3;}.shareitnow li a{color:#b3b3b3;border-color:#d2d2d2;}#comments a{color:#1C9963;}.comment-form input.submit{background-color:#1C9963;border-color:#1C9963;}footer.footer a{color:#1C9963;}.carousel-excerpt .fontlight,body{font-family:PT Sans;font-size:15px;font-weight:400;line-height:1.5;color:#666666;}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:PT Sans;font-weight:700;color:#111111;}.carousel-excerpt .title{font-family:PT Sans;font-size:30px;font-weight:700;text-transform:none;color:#ffffff;}.carousel-excerpt .fontlight{font-size:18px;font-weight:400;color:#ffffff;}.mediumnavigation .navbar-brand{font-family:Merriweather;font-size:26px;font-weight:700;}.navbar-toggleable-md .navbar-collapse{font-family:PT Sans;font-weight:400;}.article-post{font-family:Merriweather;font-weight:400;line-height:1.8;color:#222222;}.mediumnavigation, .dropdown-menu, .dropdown-item{background-color:rgba(10,10,10,0.84);}.mediumnavigation, .mediumnavigation a, .navbar-light .navbar-nav .nav-link{color:#999999;}.navbar-light .navbar-brand{color:#ffffff;}.navbar-light .navbar-brand:hover{color:#02b875;}.customarea .btn.follow{border-color:#02B875;color:#02B875;}@media (max-width: 767px){.navbar-collapse{background-color:rgba(10,10,10,0.84);}}@font-face{font-display:swap;font-family:'PT Sans';font-style:normal;font-weight:400;src:local('PT Sans'), local('PTSans-Regular'), url(//algotrading101.com/learn/wp-content/uploads/2019/07/jizaRExUiTo99u79P0Y.woff) format('woff');}@font-face{font-display:swap;font-family:'PT Sans';font-style:normal;font-weight:700;src:local('PT Sans Bold'), local('PTSans-Bold'), url(//algotrading101.com/learn/wp-content/uploads/2019/07/jizfRExUiTo99u79B_mh4Oo.woff) format('woff');}@font-face{font-display:swap;font-family:'Merriweather';font-style:normal;font-weight:400;src:local('Merriweather Regular'), local('Merriweather-Regular'), url(//algotrading101.com/learn/wp-content/uploads/2019/07/u-440qyriQwlOrhSvowK_l5OeA.woff) format('woff');}@font-face{font-display:swap;font-family:'Merriweather';font-style:normal;font-weight:700;src:local('Merriweather Bold'), local('Merriweather-Bold'), url(//algotrading101.com/learn/wp-content/uploads/2019/07/u-4n0qyriQwlOrhSvowK_l52xwNpXA.woff) format('woff');}</style></head>
+<body class="post-template-default single single-post postid-570 single-format-standard elementor-default">
+<style>
+     span.post-date {display:none;} </style>
+<header class="navbar-light bg-white fixed-top mediumnavigation">
+<div class="container">
+
+<div class="row justify-content-center align-items-center brandrow">
+<div class="col-lg-4 col-md-4 col-xs-12 hidden-xs-down customarea">
+</div>
+<div class="col-lg-4 col-md-4  col-xs-12 text-center logoarea">
+<a class="blog-logo" href="https://algotrading101.com/learn/" rel="home" data-wpel-link="internal"><img src='http://algotrading101.com/learn/wp-content/uploads/2019/07/AlgoTrading101_Logo.png' alt='AlgoTrading101 Blog &#8211; From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life'></a>
+</div>
+<div class="col-lg-4 col-md-4 mr-auto col-xs-12 text-right searcharea">
+</div>
+</div>
+
+<div id="mainTagLine" class="taglinebelowtitle text-center" style="color: white; font-size:1.3em;">
+<p>From $0 to $1,000,000. Authentic Stories about Trading, Coding and Life</p>
+</div>
+<div class="taglinebelowtitle text-right col-lg-2 offset-lg-10 col-md-2 offset-md-10" style="color: white; font-size:1em;">
+<a href="http://b.link/algotrading101" data-wpel-link="external" rel="external noopener noreferrer"><p class="text-right lead">&#8618; Learn</p></a>
+</div><div class="navarea">
+<nav class="navbar navbar-toggleable-sm">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="bs4navbar" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+</nav>
+</div>
+</div>
+</header>
+
+<div class="site-content">
+<div class="container">
+<div class="row">
+<div class=" col-md-2 ">
+<div class="share">
+<div class="sidebarapplause">
+</div>
+<p class="sharecolour">
+Share </p>
+<ul class="shareitnow"><li>
+<a target="_blank" href="https://twitter.com/intent/tweet?text=Sentiment%20Analysis%20with%20Python%20(Finance)%20&#8211;%20A%20Beginner&#8217;s%20Guide&amp;url=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F" data-wpel-link="external" rel="external noopener noreferrer">
+<i class="fa fa-twitter"></i>
+</a>
+</li><li>
+<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F" data-wpel-link="external" rel="external noopener noreferrer">
+<i class="fa fa-facebook"></i>
+</a>
+</li><li>
+<a target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F" data-wpel-link="external" rel="external noopener noreferrer">
+<i class="fa fa-google"></i>
+</a>
+</li><li>
+<a target="_blank" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F&amp;media=https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3.png&amp;description=Sentiment%20Analysis%20with%20Python%20(Finance)%20&#8211;%20A%20Beginner&#8217;s%20Guide" data-wpel-link="external" rel="external noopener noreferrer">
+<i class="fa fa-pinterest"></i>
+</a>
+</li><li>
+<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Falgotrading101.com%2Flearn%2Fsentiment-analysis-with-python-finance%2F&amp;title=Sentiment%20Analysis%20with%20Python%20(Finance)%20&#8211;%20A%20Beginner&#8217;s%20Guide" data-wpel-link="external" rel="external noopener noreferrer">
+<i class="fa fa-linkedin"></i>
+</a>
+</li></ul>
+</div>
+</div>
+<div class="col-md-8 flex-first flex-md-unordered post-570 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-trading" id="post-570">
+<div class="mainheading">
+
+<div class="row post-top-meta hidden-md-down">
+<div class="col-md-2 col-xs-12">
+<a href="https://algotrading101.com/learn/author/learnadmin/" data-wpel-link="internal">
+<img src="https://algotrading101.com/learn/wp-content/uploads/ultimatemember/1/profile_photo-80x80.jpg?1589420488" class="gravatar avatar avatar-72 um-avatar um-avatar-uploaded" width="72" height="72" alt="Lucas Liew" data-default="https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" /> </a>
+</div>
+<div class="col-md-10 col-xs-12">
+<a class="text-capitalize link-dark" href="https://algotrading101.com/learn/author/learnadmin/" data-wpel-link="internal">
+Lucas Liew <span class="btn follow" id="followbutton">Follow</span></a>
+<span class="author-description d-block">Founder at AlgoTrading101</span>
+</div>
+</div>
+<h1 class="posttitle">Sentiment Analysis with Python (Finance) &#8211; A Beginner&#8217;s Guide</h1>
+<p>
+<span class="dot"></span>
+<span class="readingtime">20 min read</span>
+</p>
+</div>
+<article class="article-post">
+<p>Sentiment analysis in finance has become commonplace. In many cases, it has become ineffective as many market players understand it and have one-upped this technique. </p>
+<p>That said, just like machine learning or basic statistical analysis, sentiment analysis is just a tool. It is how we use it that determines its effectiveness.</p>
+<p>Here are the general steps to learn sentiment analysis for finance:</p>
+<ul><li><strong>Understand what Sentiment Analysis is</strong></li><li><strong>Understand how it can be effectively used in finance</strong></li><li><strong>Learn data collection and text processing</strong></li><li><strong>Learn to run sentiment analysis</strong></li><li><strong>Learn how to use the analysis output for finance</strong></li></ul>
+<p><strong>Table of contents</strong></p>
+<ol><li><a rel="noreferrer noopener" aria-label="What is Sentiment Analysis? (opens in a new tab)" href="#what-is-sentiment-analysis" target="_blank">What is Sentiment Analysis?</a></li><li><a href="http://why-do-we-need-sentiment-analysis" data-wpel-link="external" rel="external noopener noreferrer">Why do we need Sentiment Analysis?</a></li><li><a href="#sentiment-analysis-for-finance">What is sentiment analysis for finance?</a></li><li><a href="#sentiment-analysis-for-trading">How is sentiment analysis used for trading?</a></li><li><a href="#predict-stock-prices-sentiment-analysis">How to predict stock prices with news and article headlines?</a></li><li><a href="#predict-tesla-stock-prices-sentiment-analysis"><strong>Mega Project: Predicting Tesla stock prices with Seeking Alpha&#8217;s article headlines with Python</strong></a><ul><li><a href="#collate-article-headlines">Collate article headlines</a></li><li><a href="#text-processing">Import and clean the data (text processing)</a></li><li><a href="#sentiment-analysis-create-score-index">Run sentiment analysis and create a score index</a></li><li><a href="#correlation-score-index-against-prices">Correlate lagged score index against prices</a></li></ul></li><li><a href="#sentiment-analysis-real-world-trading">Trading in the Real World &#8211; Improving our Analysis</a></li><li><a href="#ending-note-understand-the-trade">Ending Note &#8211; Truly understand the trade</a></li></ol>
+<p>Let&#8217;s first understand why we need sentiment analysis for finance, or more specifically, trading.</p>
+<p>Next, we will demonstrate a project that uses Python to extract and analyse article headlines to predict Tesla&#8217;s stock prices.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3-1024x931.png" alt="" class="wp-image-791" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3-1024x931.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3-300x273.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3-768x698.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-3.png 1575w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>Let&#8217;s go!</p>
+<h3>What is Sentiment Analysis?</h3>
+<a name="what-is-sentiment-analysis"></a>
+<p>Official Definition (from Wikipedia): </p>
+<p><em>Sentiment analysis (also known as opinion mining or emotion AI) refers to the use of natural language processing, text analysis, computational linguistics, and biometrics to systematically identify, extract, quantify, and study affective states and subjective information.</em></p>
+<p>In simple English:</p>
+<p><em>We use computers to extract meanings behind texts, images and other data.</em></p>
+<h3>Why do we need Sentiment Analysis?</h3>
+<a name="why-do-we-need-sentiment-analysis"></a>
+<p>Why can&#8217;t humans just read the texts? Why do we need a machine to do it for us?</p>
+<p>Reasons for using sentiment analysis:</p>
+<ul><li>Machines can read much faster (maybe a million times faster) than humans</li><li>Machines can read in many languages</li><li>Machines can derive meaning from text in a standardised manner (humans are subjective)</li><li>Machines can store insights from texts in a convenient way for further processing</li></ul>
+<p>There are of course downsides to sentiment analysis. Machines are not able to accurately derive meaning from texts (but they are getting better). Slangs, typos, contextual meaning, sarcasm still poses difficulties.</p>
+<h3>What is sentiment analysis for finance?</h3>
+<a name="sentiment-analysis-for-finance"></a>
+<p>Financial sentiment analysis is used to extract insights from news, social media, financial reports and alternative data for investment, trading, risk management, operations in financial institutions, and basically anything finance related.</p>
+<p>We will focus on trading and investments in this article.</p>
+<h3>How is sentiment analysis used for trading?</h3>
+<a name="sentiment-analysis-for-trading"></a>
+<p>Here are a few ways:</p>
+<ul><li>Read a news article or tweet fast and fire a trade instantly</li><li>Read large amount of financial reports and output insights</li><li>Gather insights from the crowds by analysing social media, web forums, news and analysts&#8217; reports</li></ul>
+<p><strong>Read a news article or tweet fast and fire a trade instantly</strong></p>
+<p>Let&#8217;s say that Country A&#8217;s leader decided to make a trade deal with another out of the blue. </p>
+<p>In the best case scenario, a human might take 2 seconds to read that piece of news (if he or his team is awake) and another 3 seconds to fire an appropriate trade (if he is fast and is already on his trading desk). </p>
+<p>A machine would take less than 0.1 seconds to read the new and fire the trade. Plus, the machine doesn&#8217;t sleep and can monitor the news from not only Country A, but all countries around the way.</p>
+<p><strong>Read large amount of financial reports and output insights</strong></p>
+<p>A machine can read 1000 annual 10-K financial reports (in any language) in the time you take to read the first 10 pages of one report.</p>
+<p>That said, machines aren&#8217;t that great in deriving insights from such large unstructured text data. </p>
+<p>There is a large variance in output. The machine might get it right on average when you combine insights from 1000 stocks, but for an individual stock, it will get it wrong most of the time.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/Randomness-chart-1-1024x762.png" alt="" class="wp-image-619" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/Randomness-chart-1-1024x762.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/Randomness-chart-1-300x223.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/Randomness-chart-1-768x571.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/Randomness-chart-1.png 1839w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Each insight can have a big variance (i.e. they might miss the mark some of the time)</figcaption></figure>
+<p><em>Thus, the value here might not be to derive insights for one stock. It is to derive insights from thousands of stocks, traded in the same portfolio in a statistical manner.</em></p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/brownian-motion-normal-distribution-2.png" alt="" class="wp-image-622" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/brownian-motion-normal-distribution-2.png 696w, https://algotrading101.com/learn/wp-content/uploads/2019/12/brownian-motion-normal-distribution-2-300x235.png 300w" sizes="(max-width: 696px) 100vw, 696px" /><figcaption>We will get an average prediction when combining many stock insights.</figcaption></figure>
+<p>The variance in each stock insight will balance out when we combine it with thousands of other stocks. Hence, we will get an average prediction for our portfolio of hundreds or thousands of stocks.</p>
+<p> This is similar to the idea in <a href="https://en.wikipedia.org/wiki/Central_limit_theorem" target="_blank" rel="noreferrer noopener external" aria-label="central limit theorem (opens in a new tab)" data-wpel-link="external">central limit theorem</a>.</p>
+<p>Once we get our average prediction and standard deviation figures, we can then input that into a sizing algorithm to determine how much we should trade for each stock and how to allocate capital for the portfolio to maximise long term reward-to-risk ratio. But this is a story for another day.</p>
+<p>But, do note that if your sentiment analysis of the financial reports is so bad that the mean of your insights is inaccurate, then you will not be profitable anyways.</p>
+<p><strong>Gather insights from the crowds by analysing social media, web forums, news and analysts&#8217; reports</strong></p>
+<p>This is touchy. Sentiment analysis of social media posts were hyped up a few years ago. The effectiveness of these analysis remains debatable.</p>
+<p>That said, we can increase the effectiveness of these insights by complementing them with other analysis, or to sandbox them by hedging away the variables we can&#8217;t control.</p>
+<p class="has-small-font-size">To read more on sandboxing: <a href="https://algotrading101.com/learn/how-to-use-hedging-as-a-trading-strategy/" target="_blank" rel="noreferrer noopener" aria-label="How to use Hedging as a Trading Strategy (opens in a new tab)" data-wpel-link="internal">How to use Hedging as a Trading Strategy</a></p>
+<p>For instance, if we are thinking of investing in Slack but are worried that Microsoft Teams will make Slack obsolete.</p>
+<p>We can go to tech forums and check the amount and sentiment of the comments there about Slack vs that of Microsoft Teams.</p>
+<p>When we do a pairing using the same information source, the results are generally more accurate as most unwanted variables will be hedged away.</p>
+<p>On the other hand, if we have just taken forum comments on Slack and try to assign a score of how positive or negative it is, the results will be subjective. </p>
+<p>It will contain variables like, the accuracy of the sentiment analysis library, the methodology in text processing, noise and low quality data etc.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/google-trends_slack-vs-teams-1024x877.png" alt="" class="wp-image-587" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/google-trends_slack-vs-teams-1024x877.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/google-trends_slack-vs-teams-300x257.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/google-trends_slack-vs-teams-768x658.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/google-trends_slack-vs-teams.png 1813w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Teams is catching up to Slack! &#8211; Credits: Google Trends</figcaption></figure>
+<p>The lazy way is to check the search traffic for Slack vs Teams on Google Trends.</p>
+<p>Now that we&#8217;ve covered the theory, let&#8217;s get our hands dirty! </p>
+<h3>How to predict stock prices with news and article headlines?</h3>
+<a name="predict-stock-prices-sentiment-analysis"></a>
+<p>Here are the steps to run our sentiment analysis project: </p>
+<ol><li><strong>Collate article headlines and dates</strong></li><li><strong>Import and clean the data (text processing)</strong></li><li><strong>Run sentiment analysis and create a score index</strong></li><li><strong>Correlate lagged score index against prices</strong></li></ol>
+<p>This is the basic overview. Of course, the effectiveness of our analysis lies in the subtle details of the process.</p>
+<h3>Mega Project: Predicting Tesla stock prices with Seeking Alpha&#8217;s article headlines with Python</h3>
+<a name="predict-tesla-stock-prices-sentiment-analysis"></a>
+<p>We will be checking if Seeking Alpha&#8217;s headlines have any predictive power for Tesla&#8217;s stock price movements.</p>
+<p>This will be done using the above 4-Step process with Python. </p>
+<p>We will conduct a very basic level of analysis to keep things simple.</p>
+<h4>1. Collate article headlines</h4>
+<a name="collate-article-headlines"></a>
+<p>Let&#8217;s download a web scrapping package called BeautifulSo&#8230; Just kidding!</p>
+<p>This is not a web scrapping article and I don&#8217;t want to bloat it. We will scrape the headline by hand!</p>
+<p>Here are the steps for collating headlines:</p>
+<ol><li>Go to SeekingAlpha.com, search for TSLA and scroll for more headlines</li><li>Copy and paste the page onto Excel</li><li>Remove unwanted data</li></ol>
+<p><strong>Step 1: Go to SeekingAlpha.com, search for TSLA and scroll for more headlines</strong></p>
+<p>Go to <a rel="noreferrer noopener external" aria-label=" (opens in a new tab)" href="https://seekingalpha.com/symbol/TSLA?s=tsla" target="_blank" data-wpel-link="external">SeekingAlpha.com</a> and search for TSLA (Tesla&#8217;s ticker symbol in the search bar at the top of the page.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-2-886x1024.png" alt="" class="wp-image-593" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-2-886x1024.png 886w, https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-2-260x300.png 260w, https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-2-768x887.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/sa-tesla-page-2.png 1556w" sizes="(max-width: 886px) 100vw, 886px" /></figure>
+<p>You will see a page like this. What we want is the headline under the Analysis section.</p>
+<p>Before we copy that, keep scrolling down to load more headlines.</p>
+<p>In my analysis, I scrolled down till the early 2018 articles appeared.</p>
+<p><strong>Step 2: Copy and paste the page onto Excel</strong></p>
+<p>Next, ctrl-A the page. Yes, you read that right. We are going old school.</p>
+<p>Open your Excel, then ctrl-C. You should see something like this</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-pasted-906x1024.png" alt="" class="wp-image-594" width="453" height="512" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-pasted-906x1024.png 906w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-pasted-265x300.png 265w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-pasted-768x868.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-pasted.png 1347w" sizes="(max-width: 453px) 100vw, 453px" /></figure></div>
+<p><strong>Step 3: Remove unwanted data</strong></p>
+<p>Delete all the unwanted rows. We want to keep the &#8220;Analysis&#8221; headlines (not the &#8220;News&#8221; headlines) and the corresponding dates.</p>
+<p>Delete all rows above the first headline. </p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-top-1024x1014.png" alt="" class="wp-image-600" width="512" height="507" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-top-1024x1014.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-top-150x150.png 150w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-top-300x297.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-top-768x760.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-top.png 1123w" sizes="(max-width: 512px) 100vw, 512px" /><figcaption>Your first row should be the first &#8220;Analysis&#8221; headline. Ignore the thumbnail pictures, they will be gone later when we save the file as a CSV.</figcaption></figure></div>
+<p>Delete all rows below the date of the last headline. In other words, delete all rows starting with the text &#8220;News&#8221; in bold. </p>
+<p>You can search for &#8220;News&#8221; and check &#8220;Match entire cell contents&#8221; to find that row. </p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-bottom-2-1024x904.png" alt="" class="wp-image-605" width="512" height="452" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-bottom-2-1024x904.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-bottom-2-300x265.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-bottom-2-768x678.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/excel-data-delete-bottom-2.png 1321w" sizes="(max-width: 512px) 100vw, 512px" /></figure></div>
+<p>Now, save that file as a CSV. This will remove all the thumbnail graphics.</p>
+<h4>2. <strong>Import and clean the data</strong> (text processing)</h4>
+<a name="text-processing"></a>
+<p>We will use Python and Jupyter Notebook for this. Python is a programming language and Jupyter Notebook is the &#8220;software&#8221; that we code in. The technical term is IDE (<a rel="noreferrer noopener external" aria-label="Integrated development environment (opens in a new tab)" href="https://en.wikipedia.org/wiki/Integrated_development_environment" target="_blank" data-wpel-link="external">Integrated development environment</a>).</p>
+<p>You can use other IDEs, but I suggest using Jupyter Notebook if you are new to this. </p>
+<p class="has-small-font-size">For those who are new, you can check out these guides on how to install Python and Jupyter Notebook on your computer using Anaconda: <a rel="noreferrer noopener external" href="https://hackernoon.com/installing-python-and-anaconda-on-windows-f9059ba8b136" target="_blank" data-wpel-link="external">Hackernoon Guide</a>, <a rel="noreferrer noopener external" href="https://docs.anaconda.com/anaconda/install/" target="_blank" data-wpel-link="external">Anaconda Docs Guide</a> </p>
+<p>Here are the steps for this section:</p>
+<ol><li>Import your CSV to your Jupyter Notebook</li><li>Clean our data</li></ol>
+<p><strong>Step 1: Import your CSV to your Jupyter Notebook</strong></p>
+<p>We&#8217;ll use the pd.read_csv() method in Pandas to pull our CSV in.</p>
+<p class="has-small-font-size">Pandas is a Python library for the purpose of data science. You can install it by following: <a href="https://pypi.org/project/pandas/" data-wpel-link="external" rel="external noopener noreferrer">https://pypi.org/project/pandas/</a> or <a href="https://anaconda.org/anaconda/pandas" data-wpel-link="external" rel="external noopener noreferrer">https://anaconda.org/anaconda/pandas</a> </p>
+<pre class="wp-block-code"><code>import pandas as pd # import the Pandas Library
+
+df1 = pd.read_csv("tesla-headlines-sa.csv", encoding='windows-1250', header=None)
+df1.columns = ['Title', 'Date']
+df1</code></pre>
+<p>If you are too lazy to copy and paste headlines from the SeekingAlpha website, you can use our dataset. </p>
+<p>Download the our entire code + data folder from our Github repository: <a rel="noreferrer noopener external" aria-label="Sentiment-Analysis-1-TSLA-Headlines (opens in a new tab)" href="https://github.com/Lucas170/Sentiment-Analysis-1-TSLA-Headlines" target="_blank" data-wpel-link="external">Sentiment-Analysis-1-TSLA-Headlines</a>. The CSV file is called &#8220;tsla-headlines-sa.csv&#8221;.</p>
+<p>Make sure that your CSV file is in the same folder as where your code is saved if you are running my code.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/code-download-csv-1024x419.png" alt="" class="wp-image-635" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/code-download-csv-1024x419.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/code-download-csv-300x123.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/code-download-csv-768x314.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Importing our CSV</figcaption></figure>
+<p>Running pd.read_csv() will give us a <a rel="noreferrer noopener external" aria-label="dataframe (opens in a new tab)" href="https://www.geeksforgeeks.org/python-pandas-dataframe/" target="_blank" data-wpel-link="external">dataframe</a> with 2 columns. We&#8217;ve titled them &#8220;Title&#8221; and &#8220;Date&#8221;. We&#8217;ve added an <a rel="noreferrer noopener external" aria-label="encoding (opens in a new tab)" href="http://pandaproject.net/docs/determining-the-encoding-of-a-csv-file.html" target="_blank" data-wpel-link="external">encoding</a> input to fix the character formatting issue.</p>
+<p><strong>Step 2: Clean our data</strong></p>
+<p>The next step is to clean our data. </p>
+<p>Our &#8220;Title&#8221; data is already clean enough to be used for our sentiment analysis library, so we shall leave it as it is.</p>
+<p>Our &#8220;Date&#8221; Data needs work though. Here are the steps to clean the date data</p>
+<ol><li>Determine our end goal</li><li>Clean the dates</li><li>Convert cleaned date to datetime format</li><li>Clean and convert the entire dataframe</li></ol>
+<p><span style="text-decoration: underline;">1. Determine our end goal</span></p>
+<p>Our Date data is in text (i.e. string) format. We want to change it to a <a href="https://www.w3schools.com/python/python_datetime.asp" target="_blank" rel="noreferrer noopener external" aria-label="datetime (opens in a new tab)" data-wpel-link="external">datetime</a> format so that it is easier to run our analysis along with our stock price data later.</p>
+<p><span style="text-decoration: underline;">2. Clean the date</span></p>
+<p>Before we can modify the date using code, we need to briefly look through the dataset to have a sense of the format of the data. </p>
+<p>I&#8217;ve briefly scanned through the data, and spotted 4 variations.</p>
+<p><em>Variation 1:</em></p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1.png" alt="" class="wp-image-640" width="406" height="26" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1.png 812w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-300x19.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-768x49.png 768w" sizes="(max-width: 406px) 100vw, 406px" /><figcaption>Variation 1</figcaption></figure></div>
+<p>Variation 1 doesn&#8217;t contain a day or date. It says &#8220;Yesterday&#8221;. Only the first row has this format. </p>
+<p>Thus, I change this date via hard coding since it is inefficient to create a systematic code when it will only be used once.</p>
+<pre class="wp-block-code"><code>df1['Date'][0] = 'Dec. 9'
+df1.head() # display the first 5 rows</code></pre>
+<p>I change the format to a text similar to the other rows. Hence, when I modify the other rows using code, the first row will be modified too.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-2-1024x264.png" alt="" class="wp-image-643" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-2-1024x264.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-2-300x77.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-2-768x198.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-1-2.png 1589w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption> The first row is changed.</figcaption></figure>
+<p><em>Variation 2</em></p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2.png" alt="" class="wp-image-650" width="357" height="101" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2.png 714w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2-300x84.png 300w" sizes="(max-width: 357px) 100vw, 357px" /><figcaption>Variation 2</figcaption></figure></div>
+<p>Variation 2 consists of the day, date but it doesn&#8217;t have a year. </p>
+<p>SeekingAlpha doesn&#8217;t include the year if the article is published in the same year as the current year.</p>
+<p>We are not interested in the day. We just want the date and year.</p>
+<p>Here, we need to extract the date and add in the current year.</p>
+<pre class="wp-block-code"><code>import re # import Regular expression library
+
+print(df1['Date'][1]) # display original
+
+match = re.search(r'\w{3}\.\s\d{1,2}', df1['Date'][1])
+
+modifiedDate = match[0] + ", 2019"
+
+print(modifiedDate) # display modified</code></pre>
+<p>To do this, we first import the Regular Expressions library (AKA re AKA Regex library) to help us with string manipulation.</p>
+<p>We look for dates with the format &#8220;\w{3}.\s\d{1,2}&#8221;. </p>
+<ul><li>\w{3} looks for 3 letters</li><li>\. looks for a period symbol</li><li>\s looks for a space</li><li>\d{1,2} looks for 1 or 2 digits</li></ul>
+<p>This format fits our variation 2 data, which looks like &#8220;Dec. 6&#8221;. All other texts are ignored.</p>
+<p>Here is a <a href="https://www.debuggex.com/cheatsheet/regex/python" target="_blank" rel="noreferrer noopener external" aria-label="character cheat sheet (opens in a new tab)" data-wpel-link="external">character cheat sheet</a> for reference.</p>
+<p>After we found our date, we add the year to it. </p>
+<p>If you are wondering, &#8220;I&#8217;m new to Python, how do I know what code to type?&#8221;</p>
+<p>The answer is&#8230; you Google it. </p>
+<p>The beauty about coding is that you are building on top of other people&#8217;s knowledge and work.</p>
+<p>You might want to learn some bare minimum basics. Then whatever problem you want to solve, Google it, copy other people&#8217;s code, modify it, make mistakes, learn and repeat.</p>
+<p>After a while, you will be faster at this and can solve problems more effectively (still with the help of Google).</p>
+<p>A good programmer is not someone who can spin up effective code out of thin air (though those people do exist). A good programmer knows what he doesn&#8217;t know, what his tools can achieve (even though he might not know how to do it) and how to find answers.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2-2-1-1024x540.png" alt="" class="wp-image-654" width="512" height="270" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2-2-1-1024x540.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2-2-1-300x158.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2-2-1-768x405.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-2-2-1.png 1194w" sizes="(max-width: 512px) 100vw, 512px" /></figure></div>
+<p>We add &#8220;, 2019&#8221; instead of &#8220;2019&#8221; to match variation 3.</p>
+<p><em>Variation 3</em></p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3.png" alt="" class="wp-image-657" width="345" height="100" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3.png 690w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3-300x87.png 300w" sizes="(max-width: 345px) 100vw, 345px" /><figcaption>Variation 3</figcaption></figure></div>
+<p>Variation 3 is simply variation 2 plus the year.</p>
+<pre class="wp-block-code"><code>import re # import Regular expression library
+
+print(df1['Date'][1000]) # display original
+
+match = re.search(r'\w{3}\.\s\d{1,2}\,\s\d{4}', df1['Date'][1000])
+
+print(match[0]) # display modified</code></pre>
+<p>The code is similar to variation 2. We added &#8220;\d{4}&#8221; in the re.search to grab the year.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3-2-1024x336.png" alt="" class="wp-image-661" width="768" height="252" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3-2-1024x336.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3-2-300x98.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3-2-768x252.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-3-2.png 1481w" sizes="(max-width: 768px) 100vw, 768px" /></figure></div>
+<p><em>Variation 4</em></p>
+<p>Variation 4 is specific to the month of May.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4.png" alt="" class="wp-image-665" width="355" height="107" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4.png 710w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4-300x90.png 300w" sizes="(max-width: 355px) 100vw, 355px" /><figcaption>Variation 4</figcaption></figure></div>
+<p>All months except May have a period symbol after it. &#8220;Jan.&#8221;, &#8220;Feb.&#8221; etc. The period exists to indicate the spelling of the month is truncated.</p>
+<p>The month of May doesn&#8217;t need this. </p>
+<p>Thus, in our Regex code, we do not need to include a period symbol.</p>
+<p>Note that to see all the data in your dataframe, you can use the following code:</p>
+<pre class="wp-block-code"><code>pd.set_option('display.max_rows', df1.shape[0]+1)
+df1</code></pre>
+<p>We have 2 code for variation 4. One for the dates with year, one for dates without.</p>
+<pre class="wp-block-code"><code>import re # import Regular expression library
+
+print(df1['Date'][200]) # display original (without year)
+match = re.search(r'\w{3}\s\d{1,2}', df1['Date'][200])
+modifiedDate = match[0] + ", 2019"
+print(modifiedDate) # display modified
+
+print(df1['Date'][850]) # display original (with year)
+match = re.search(r'\w{3}\s\d{1,2}\,\s\d{4}', df1['Date'][850])
+print(match[0]) # display modified</code></pre>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4-2-1-1024x527.png" alt="" class="wp-image-669" width="768" height="395" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4-2-1-1024x527.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4-2-1-300x154.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4-2-1-768x395.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/date-4-2-1.png 1404w" sizes="(max-width: 768px) 100vw, 768px" /></figure></div>
+<p><span style="text-decoration: underline;">3. Convert cleaned date to datetime format</span></p>
+<p>Now that we have all the dates in either &#8220;MMM. DD, YYYY&#8221; or &#8220;May DD, YYYY&#8221; format, it is time to convert these to datetime format.</p>
+<pre class="wp-block-code"><code>from datetime import datetime
+
+newDate1 = datetime.strptime('Dec. 6, 2019', '%b. %d, %Y').date()
+print(newDate1)
+
+newDate2 = datetime.strptime('May 17, 2018', '%b %d, %Y').date()
+print(newDate2)</code></pre>
+<p>Import the datetime library. This library helps us with datetime formatting.</p>
+<p>Use the datetime.strptime() method to convert date to time. The first input is our date, the second input is the format of our date.</p>
+<p>The symbols &#8221; %b. %d, %Y&#8221; represent the date formats.</p>
+<ul><li>%b looks for the months&#8217; 3 character shortname</li><li>. looks for a period symbol</li><li>%d looks for the day of the month as a number</li><li>%Y looks for the year as a 4 digit number</li></ul>
+<p>You can learn more about <a rel="noreferrer noopener external" aria-label="datetime.strptime() (opens in a new tab)" href="https://www.journaldev.com/23365/python-string-to-datetime-strptime" target="_blank" data-wpel-link="external">datetime.strptime()</a> here.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-1-1-1024x359.png" alt="" class="wp-image-677" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-1-1-1024x359.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-1-1-300x105.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-1-1-768x270.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-1-1.png 1436w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p><span style="text-decoration: underline;">4. Clean and convert the entire dataframe</span></p>
+<p>Now that we&#8217;ve covered how to clean the 4 variations and convert the date to the datetime format, lets&#8217; run a loop to clean the entire &#8220;Date&#8221; column.</p>
+<pre class="wp-block-code"><code>from datetime import datetime
+import re
+
+newDateList = [] # create a list to store the cleaned dates
+
+for dateOfArticles in df1['Date']: # loop every row in the "Date" column
+    match = re.search(r'\w{3}\.\s\d{1,2}\,\s\d{4}|May\s\d{1,2}\,\s\d{4}|\w{3}\.\s\d{1,2}|May\s\d{1,2}', 
+                      dateOfArticles)
+
+    if re.search(r'\w{3}\.\s\d{1,2}\,\s\d{4}|\w{3}\s\d{1,2}\,\s\d{4}',match[0]):
+        fulldate = match[0] # don't append year to string
+    else:
+        fulldate = match[0] + ", 2019" # append year to string
+    
+    for fmt in ('%b. %d, %Y', '%b %d, %Y'):
+        try:
+            newDate = datetime.strptime(fulldate, fmt).date()
+            break # if format is correct, don't test any other formats
+        except ValueError:
+            pass
+        
+    newDateList.append(newDate) # add new date to the list
+
+if(len(newDateList) != df1.shape[0]):
+    print("Error: Rows don't match")
+else:
+    df1['New Date'] = newDateList # add the list to our original dataframe
+
+df1</code></pre>
+<p>Wow that&#8217;s a handful of code. Don&#8217;t worry we will break it down:</p>
+<pre class="wp-block-code"><code>for dateOfArticles in df1['Date']: # loop every row in the "Date" column
+    match = re.search(r'\w{3}\.\s\d{1,2}\,\s\d{4}|May\s\d{1,2}\,\s\d{4}|\w{3}\.\s\d{1,2}|May\s\d{1,2}', 
+                      dateOfArticles)
+</code></pre>
+<p>Here we loop through every row and look for any of the 4 date string variations.</p>
+<p>Note that the &#8220;|&#8221; symbol represents &#8220;or&#8221;. It allows us to look for one variation or another.</p>
+<pre class="wp-block-code"><code>if re.search(r'\w{3}\.\s\d{1,2}\,\s\d{4}|\w{3}\s\d{1,2}\,\s\d{4}',match[0]):
+        fulldate = match[0] # don't append year to string
+    else:
+        fulldate = match[0] + ", 2019" # append year to string</code></pre>
+<p>Once we found the variation, we check if it contains the year. </p>
+<p>If yes, don&#8217;t add a year to the string. If no, add the appropriate year to the end of the string. </p>
+<pre class="wp-block-code"><code>for fmt in ('%b. %d, %Y', '%b %d, %Y'):
+        try:
+            newDate = datetime.strptime(fulldate, fmt).date()
+            break # if format is correct, don't test any other formats
+        except ValueError:
+            pass
+        
+newDateList.append(newDate) # add new date to the list</code></pre>
+<p>Next, we convert the &#8220;Date&#8221; data from string to datetime format. </p>
+<p>Our dates have 2 possible formats now, one with a period symbol and one without. We will check for both.</p>
+<p>Once done, add the new date data to a list.</p>
+<pre class="wp-block-code"><code>if(len(newDateList) != df1.shape[0]):
+    print("Error: Rows don't match")
+else:
+    df1['New Date'] = newDateList # add the list to our original dataframe</code></pre>
+<p>Check if the number of rows of the list match with original dataframe.</p>
+<p>If yes, add the list as new column to our original dataframe.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-2-2-1024x914.png" alt="" class="wp-image-685" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-2-2-1024x914.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-2-2-300x268.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-2-2-768x686.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/datetime-2-2.png 1632w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>We have finally gotten our &#8220;Date&#8221; data fixed!</p>
+<h4>3. <strong>Run sentiment analysis and create a score index</strong></h4>
+<a name="sentiment-analysis-create-score-index"></a>
+<p>The next part is to send our headlines into a sentiment analyser to churn out a score.</p>
+<p>We can build our own sentiment analyser model. A simple one can be something that is trained using supervised machine learning. </p>
+<p>The training data can be historical financial headlines. The individual words, phrases, or entire headlines in this data set will be labelled with a sentiment score. E.g. 1 could be extremely positive, 0 is neutral and -1 is extremely negative. This is known as lexicon-based sentiment analysis.</p>
+<p>You can think of a lexicon as a list of words, punctuation, phases, emojis etc.</p>
+<p>We can then use this trained model to evaluate the sentient score for future headlines. </p>
+<p>All of this model building stuff sounds fun but&#8230; we won&#8217;t be doing that in this article. I will write another article dedicated to sentiment analysis model building. </p>
+<p>In this article, we will use pre-trained models that are built by others.</p>
+<p>Introducing&#8230; Vader</p>
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/vader.jpeg" alt="" class="wp-image-692" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/vader.jpeg 960w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-300x168.jpeg 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-768x430.jpeg 768w" sizes="(max-width: 960px) 100vw, 960px" /><figcaption>No, not this Vader!</figcaption></figure></div>
+<p><strong>What is VADER Sentiment Analyzer</strong></p>
+<p>VADER is a sentiment analyser that is trained using social media and news data using a lexicon-based approach. This means that it looks at words, punctuation, phases, emojis etc and rates them as positive or negative.</p>
+<p>VADER stands for &#8220;Valence Aware Dictionary and sEntiment Reasoner&#8221;. You can learn more about it <a rel="noreferrer noopener external" aria-label="here (opens in a new tab)" href="https://medium.com/analytics-vidhya/simplifying-social-media-sentiment-analysis-using-vader-in-python-f9e6ec6fc52f" target="_blank" data-wpel-link="external">here</a> and <a rel="noreferrer noopener external" aria-label="here (opens in a new tab)" href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf" target="_blank" data-wpel-link="external">here</a>.</p>
+<p><strong>Using VADER to analyse TSLA Headlines</strong></p>
+<p>Here are the steps:</p>
+<ol><li>Install the NLTK library</li><li>Run the sentiment analysis</li></ol>
+<p><span style="text-decoration: underline;">Step 1: Install the NLTK library</span></p>
+<p><a rel="noreferrer noopener external" aria-label="NLTK (opens in a new tab)" href="https://www.nltk.org/" target="_blank" data-wpel-link="external">NLTK</a> stands for Natural Language ToolKit. It is a library that helps us manage and analyse languages.</p>
+<p>We need this as the VADER analyser is part of the NLTK library.</p>
+<p>You can install it via <a rel="noreferrer noopener external" aria-label="Anaconda (opens in a new tab)" href="https://anaconda.org/conda-forge/nltk" target="_blank" data-wpel-link="external">Anaconda</a> or <a href="https://pypi.org/project/nltk/" target="_blank" rel="noreferrer noopener external" aria-label="Pip (opens in a new tab)" data-wpel-link="external">Pip</a>.</p>
+<p>Next we need to download the VADER Lexicon. Think of this as additional data required to run our VADER analyser.</p>
+<p>Run the code below in your Jupyter Notebook to download the vader_lexicon:</p>
+<pre class="wp-block-code"><code>import nltk
+nltk.download('vader_lexicon')</code></pre>
+<p><span style="text-decoration: underline;">Step 2: Run the sentiment analysis</span></p>
+<p>It is finally time to run the actual sentiment analysis!</p>
+<p>This is the code (it is shorter than you think eh):</p>
+<pre class="wp-block-code"><code>from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
+
+results = []
+
+for headline in df1['Title']:
+    pol_score = SIA().polarity_scores(headline) # run analysis
+    pol_score['headline'] = headline # add headlines for viewing
+    results.append(pol_score)
+
+results</code></pre>
+<p>We use a loop to pass every headline into our analyser. A sentiment score is assigned to each headline.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-1-1-1024x701.png" alt="" class="wp-image-700" width="768" height="526" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-1-1-1024x701.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-1-1-300x205.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-1-1-768x526.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-1-1.png 1492w" sizes="(max-width: 768px) 100vw, 768px" /></figure></div>
+<p> Next, we concatenate this list to our original dataframe. However, we are only interested in the values of the &#8216;compound&#8217; variable.</p>
+<pre class="wp-block-code"><code>df1['Score'] = pd.DataFrame(results)['compound']</code></pre>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-3-1024x331.png" alt="" class="wp-image-707" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-3-1024x331.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-3-300x97.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/vader-sentiment-analysis-3-768x248.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>We did it!</p>
+<h4>4. <strong>Correlate lagged score index against prices</strong></h4>
+<a name="correlation-score-index-against-prices"></a>
+<p>In this section, we want to compare the relationship between the TSLA stock returns and our sentiment score. If there is a significant relationship, then our sentiment scores might have some predictive value.</p>
+<p>Here are the next steps:</p>
+<ol><li>Aggregate daily sentiment scores</li><li>Import TSLA prices and calculate returns</li><li>Check relationship between lagged score against returns (daily)</li></ol>
+<p><strong>Step 1: Aggregate daily sentiment scores</strong></p>
+<p>We need only one score per day to compare as TSLA daily prices.</p>
+<p>However, there might be more than one article per day. In those cases, we combine the scores for all articles to get a daily score.</p>
+<pre class="wp-block-code"><code>df2 = df1.groupby(['New Date']).sum() # creates a daily score by summing the scores of the individual articles in each day</code></pre>
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1.png" alt="" class="wp-image-714" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1.png 334w, https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1-300x266.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></figure></div>
+<p>The df.groupby() method will remove columns that it deems unnecessary. The output will be the date (as your index) and the daily scores.</p>
+<p><strong>Step 2: Import TSLA prices and calculate returns</strong></p>
+<p>The goal in this step is to get the daily returns (not stock prices) of TSLA.</p>
+<p>Now we need to get the stock prices for TSLA. We will get it from Yahoo Finance manually.</p>
+<p>Go to Yahoo finance and <a href="https://finance.yahoo.com/quote/TSLA" target="_blank" rel="noreferrer noopener external" aria-label="search for the TSLA (opens in a new tab)" data-wpel-link="external">search for the TSLA</a> stock ticker.</p>
+<p>Click on historical data, choose the dates you want and download the data.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/download-tsla-2-1024x551.png" alt="" class="wp-image-716" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/download-tsla-2-1024x551.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/download-tsla-2-300x162.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/download-tsla-2-768x413.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>The data will be downloaded as a CSV.</p>
+<p>Alternative, if you are lazy, grab it from our <a rel="noreferrer noopener external" aria-label="repo (opens in a new tab)" href="https://github.com/Lucas170/Sentiment-Analysis-1-TSLA-Headlines" target="_blank" data-wpel-link="external">repo</a>.</p>
+<p>Pandas has a convenient method to import CSV files:</p>
+<pre class="wp-block-code"><code>import pandas as pd
+
+# Make sure csv file is in the same folder as this notebook
+dfEodPrice = pd.read_csv("tsla-eod-prices.csv")</code></pre>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-1-1024x568.png" alt="" class="wp-image-717" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-1-1024x568.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-1-300x166.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-1-768x426.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-1.png 1579w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>Some of you won&#8217;t know this but the &#8220;Date&#8221; data is in a string format. You can check with the following code:</p>
+<pre class="wp-block-code"><code>type(dfEodPrice['Date'][1])</code></pre>
+<p>Thus, we need to convert the &#8220;Date&#8221; column to datetime format.</p>
+<p>We shall use another method called <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html" target="_blank" rel="noreferrer noopener external" aria-label="pd.astype() (opens in a new tab)" data-wpel-link="external">pd.astype()</a> to do this.</p>
+<pre class="wp-block-code"><code>dfEodPrice['Date'] = dfEodPrice['Date'].astype('datetime64[ns]') </code></pre>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/astype-1-1024x169.png" alt="" class="wp-image-746" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/astype-1-1024x169.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/astype-1-300x50.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/astype-1-768x127.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/astype-1.png 1417w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>This code will change the entire &#8220;Date&#8221; column to a datetime format.</p>
+<p>Next, since we are only interested in the &#8220;Adj Close&#8221; column in this article so let&#8217;s drop all unwanted rows. Next, we set our &#8220;Date&#8221; column as our index so that it is easier to manage.</p>
+<pre class="wp-block-code"><code>dfEodPrice2 = dfEodPrice.drop(['Open', 'High','Low','Close','Volume'], axis=1) # drop unwanted rows
+dfEodPrice2.set_index('Date', inplace=True) # set Date coloumn as index</code></pre>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-2-1-1024x448.png" alt="" class="wp-image-722" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-2-1-1024x448.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-2-1-300x131.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-2-1-768x336.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-prices-2-1.png 1693w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>Now that we have our prices, we need to calculate our returns.</p>
+<pre class="wp-block-code"><code>dfEodPrice2['Returns'] = dfEodPrice2['Adj Close']/dfEodPrice2['Adj Close'].shift(1) - 1 # calculate daily returns</code></pre>
+<p>To calculate daily returns, we divide today&#8217;s prices by yesterday&#8217;s.</p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-returns-1-1024x377.png" alt="" class="wp-image-726" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-returns-1-1024x377.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-returns-1-300x111.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-returns-1-768x283.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-returns-1.png 1892w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p><strong>Step 3: Check relationship between lagged score against returns (daily)</strong></p>
+<p>The goal in this step is to check if the sentiment score predicts future stocks returns.</p>
+<p>To do that, we check the relationship between the <em>one-day lagged</em> sentiment score and TSLA returns using simple regression.</p>
+<p>A one-day lagged sentiment score allows us to compare today&#8217;s article headlines to tomorrow&#8217;s stock returns.</p>
+<p>This is an important point as we need our score index to predict the future, not to tell us what is happening in the present.</p>
+<p>Of course, we can argue that the headline might have an immediate impact on stock prices. To test that, we need accurate price data on a minute or even second timeframe.</p>
+<p>We won&#8217;t do that in this article because it is more difficult to set up that test, minute and second price data is expensive and sometimes inaccurate, there are a lot of variables in live trading (liquidity, spread etc) that may not allow us to enter our trades at the prices stated etc.</p>
+<p>Alright, let&#8217;s start the analysis. Here are the steps:</p>
+<ol><li>Lagged the sentiment score</li><li>Match the daily returns with the lagged sentiment score</li><li>Clean the data (again)</li><li>Design the test</li><li>Test for predictive value</li></ol>
+<p><em>Step 1: Lagged the sentiment score</em></p>
+<pre class="wp-block-code"><code>df2['Score(1)'] = df2.shift(1)</code></pre>
+<p>This code shifts all the data down by one row.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1-1.png" alt="" class="wp-image-756" width="349" height="348" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1-1.png 698w, https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1-1-150x150.png 150w, https://algotrading101.com/learn/wp-content/uploads/2019/12/daily-score-1-1-300x300.png 300w" sizes="(max-width: 349px) 100vw, 349px" /></figure></div>
+<p>Wait are we shifting it down? Shouldn&#8217;t it be up? It&#8217;s actually down.</p>
+<p>Here is how to think about it. E.g. on 2018-01-16, the lagged score is 0.5719. When we run a regression of 0.5719 against the TSLA&#8217;s 2018-01-16 returns, we are in fact checking the 2018-01-15&#8217;s score against 2018-01-16&#8217;s returns.</p>
+<p>This is what we want. Older date&#8217;s score vs future returns.</p>
+<p><em>Step 2: Match the daily returns with the lagged sentiment score</em></p>
+<p>The number of rows of our score index is not the same as the number of rows of our returns.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/number-of-rows-dataframes.png" alt="" class="wp-image-739" width="241" height="190" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/number-of-rows-dataframes.png 481w, https://algotrading101.com/learn/wp-content/uploads/2019/12/number-of-rows-dataframes-300x237.png 300w" sizes="(max-width: 241px) 100vw, 241px" /><figcaption>shape[0] returns the number of rows</figcaption></figure></div>
+<p class="has-text-align-left">This happens as there are some trading days where there isn&#8217;t any news.</p>
+<p>Thus, we need to match the daily returns against the corresponding sentiment scores before we can run the regression.</p>
+<pre class="wp-block-code"><code>dfEodPrice3 = pd.merge(dfEodPrice2[['Returns']], df2[['Score(1)']], left_index=True, right_index=True, how='left')</code></pre>
+<p>We use the <a rel="noreferrer noopener external" aria-label="pd.merge() (opens in a new tab)" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html" target="_blank" data-wpel-link="external">pd.merge()</a> for this purpose. The above code will create a new dateframe that uses TSLA returns as reference and pull the appropriate lagged sentiment score for it. </p>
+<p>Think of this as a more complicated version of &#8220;vlookup&#8221; in Excel, but it does the same thing.</p>
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/merged-1-1024x597.png" alt="" class="wp-image-749" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/merged-1-1024x597.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/merged-1-300x175.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/merged-1-768x448.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/merged-1.png 1509w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+<p>You can learn more about the pd.merge() method <a rel="noreferrer noopener external" aria-label="here (opens in a new tab)" href="https://towardsdatascience.com/why-and-how-to-use-merge-with-pandas-in-python-548600f7e738" target="_blank" data-wpel-link="external">here</a> and <a href="https://thispointer.com/pandas-how-to-merge-dataframes-using-dataframe-merge-in-python-part-1/" target="_blank" rel="noreferrer noopener external" aria-label="here (opens in a new tab)" data-wpel-link="external">here</a>.</p>
+<p><em>Step 3: Clean the data</em> (again)</p>
+<p>On days where there is no news, there are no sentiment scores. The score column will show a NaN (not-a-number) when there are no scores.</p>
+<p>Having a NaN is the equivalent of having a score of 0. Thus, we replace all NaNs with 0.</p>
+<p>We do it using this code:</p>
+<pre class="wp-block-code"><code>dfReturnsScore.fillna(0, inplace=True) 
+# replace NaN with 0 permanently</code></pre>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/returns-score-1.png" alt="" class="wp-image-759" width="432" height="358" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/returns-score-1.png 863w, https://algotrading101.com/learn/wp-content/uploads/2019/12/returns-score-1-300x249.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/returns-score-1-768x637.png 768w" sizes="(max-width: 432px) 100vw, 432px" /></figure></div>
+<p><em>Step 4: Design the test</em></p>
+<p>The lazy way to run the test is to check the relationship between the daily sentiment scores against TSLA&#8217;s daily returns.</p>
+<p>However, in addition to article headlines, there are many factors affecting TSLA&#8217;s stock price.</p>
+<p>We will not go in-depth on how to isolate the effect of headlines. For now, let&#8217;s do the bare minimum.</p>
+<p>The bare minimum is to exclude the data where the score is 0 or insignificant. </p>
+<p>We shall assume that a score of between -0.5 and 0.5 is insignificant for the sake of simplicity. This is an arbitrary figure. You can optimise it in a <a rel="noreferrer noopener" aria-label="walk-forward optimisation (opens in a new tab)" href="https://algotrading101.com/learn/what-is-walk-forward-optimization/" target="_blank" data-wpel-link="internal">walk-forward optimisation</a> if you want.</p>
+<p>By doing this, we have defined our hypothesis as such:</p>
+<p><em>A sentiment score of &gt; 0.5 or &lt; -0.5 has a predictive value on <strong>only</strong> tomorrow&#8217;s TSLA daily returns.</em></p>
+<p>This test doesn&#8217;t test if the score has any longer term effects as we are only comparing today&#8217;s score against tomorrow&#8217;s stock returns.</p>
+<p>The code below removes all data where the sentiment score is between -0.5 and 0.5.</p>
+<pre class="wp-block-code"><code>dfReturnsScore2 = dfReturnsScore[(dfReturnsScore['Score(1)'] > 0.5) | (dfReturnsScore['Score(1)'] &lt; -0.5)]</code></pre>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/drop-rows-1-1024x575.png" alt="" class="wp-image-806" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/drop-rows-1-1024x575.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/drop-rows-1-300x169.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/drop-rows-1-768x431.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/drop-rows-1.png 1262w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p><em>Step 5: Test for predictive value </em></p>
+<p>Finally, our data is cleaned and ready for us. Now we need to test if there is a positive relationship between the lagged sentiment score and the daily returns.</p>
+<p>There are a few ways to do this:</p>
+<ol><li>Check for correlation </li><li>Run a regression</li><li>Run a cointegration test like the <a rel="noreferrer noopener external" aria-label="Augmented Dickey–Fuller test (opens in a new tab)" href="https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test" target="_blank" data-wpel-link="external">Augmented Dickey–Fuller test</a></li><li>Run a <a rel="noreferrer noopener external" aria-label="hypothesis of means test (opens in a new tab)" href="https://www.quantopian.com/lectures/hypothesis-testing" target="_blank" data-wpel-link="external">hypothesis of means test</a> (you need to log in to Quantopian to see this tutorial)</li></ol>
+<p>Any of the above 4 tests will suffice. The reason being, if we are satisfied with the test results, we still need to test the strategy using a production environment with proper backtesting &#8211; simulating firing of trades, using in and out-of-sample data, accounting for costs and commission, avoiding <a rel="noreferrer noopener" aria-label="overfitting  (opens in a new tab)" href="https://algotrading101.com/learn/what-is-overfitting-in-trading/" target="_blank" data-wpel-link="internal">overfitting </a>etc.</p>
+<p>Thus, you can think of these statistical tests as an early filter to see if we have any potential. </p>
+<p>In this article, we shall keep it simple and run a correlation. </p>
+<p>Before that, let&#8217;s plot our data and visualise it.</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-1-1024x753.png" alt="" class="wp-image-809" width="512" height="377" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-1-1024x753.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-1-300x221.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-1-768x565.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-1.png 1056w" sizes="(max-width: 512px) 100vw, 512px" /></figure></div>
+<p>On the x-axis, we have our 1-day lagged sentiment score. On the y-axis we have our daily TSLA returns.</p>
+<p>That doesn&#8217;t look so good. We want an upward sloping shape. An upward sloping shape indicates that when Score(1) goes up, the daily returns go up, and vice versa.</p>
+<p> Ideally, we want something like this:</p>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-2-1024x758.png" alt="" class="wp-image-812" width="512" height="379" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-2-1024x758.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-2-300x222.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-2-768x569.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/scatterplot-2.png 1260w" sizes="(max-width: 512px) 100vw, 512px" /></figure></div>
+<p>Anyways, let&#8217;s run a correlation analysis before we talk about the results. The following code runs a simple correlation calculation.</p>
+<pre class="wp-block-code"><code>dfReturnsScore2['Returns'].corr(dfReturnsScore2['Score(1)'])</code></pre>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/corr-1-1024x145.png" alt="" class="wp-image-819" width="512" height="73" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/corr-1-1024x145.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/corr-1-300x43.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/corr-1-768x109.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/corr-1.png 1093w" sizes="(max-width: 512px) 100vw, 512px" /></figure></div>
+<h4>Evaluating our results</h4>
+<p>Our correlation coefficient is 0.044. That&#8217;s pretty close to 0. This means article headlines alone do not have any predictive value for tomorrow&#8217;s stock returns.</p>
+<p>To be honest, no surprise here. Markets are getting more sophisticated and we ran an overly simplistic analysis.</p>
+<p>But no worries, before we end the article, let&#8217;s look at some improvements we can make to our analysis for real-world trading.</p>
+<h3>Trading in the Real World &#8211; Improving our Analysis</h3>
+<a name="sentiment-analysis-real-world-trading"></a>
+<p><strong>2 second lag and long term relationship</strong></p>
+<p>We can split headlines into 2 types. 1) Sensational ones and 2) fundamentals-related ones.</p>
+<p><em>Sensational news</em></p>
+<p>This refers to news that causes an instant impact. If we are doing this, we should use news headlines instead of analysis headlines. </p>
+<p>Since the news have an instant impact, if we use a 1-day lag for this, it will be too slow.</p>
+<p>Thus, we are better off using a shorter time delay such as a 2 second lag. But note that data of such low timeframes are expensive and might not be accurate.</p>
+<p>The bad news is, even if you managed to run this analysis significantly accurately, you will be slaughtered by high frequency, or even regular quantitative hedge funds in the real world as you are competing on speed of execution.</p>
+<p> Don&#8217;t trade on lower timeframes unless you&#8217;re sure you have an edge. </p>
+<p><em>Fundamentals-related news</em></p>
+<p>This type of news has a longer term fundamental effect. Our SeekingAlpha Analysis headlines fall into this category.</p>
+<p>A 1-day lag might be too short for the effect to kick in. </p>
+<p>In this case, we can create a long term index score and add or subtract from it based on the individual article headlines. In addition, since newer headlines might have more impact, we can lower the weightage for older headlines.</p>
+<p>We can then compare the TSLA prices (not returns) against this index.</p>
+<p><strong>Sandbox your strategy</strong></p>
+<p>There is a lot of noise in the market. Many factors affect TSLA stock prices in addition to headlines (though the headlines are supposedly an approximate representative of these other factors).</p>
+<p>Trading an asset using only headlines when the asset is bombarded by many other factors is dangerous.</p>
+<p>As mentioned before in the earlier part of this article, we can alleviate this problem by hedging it with another asset. We then use relative value of sentiment scores as our predictor.</p>
+<p class="has-small-font-size">To read more on sandboxing: <a href="https://algotrading101.com/learn/how-to-use-hedging-as-a-trading-strategy/" target="_blank" rel="noreferrer noopener" aria-label="How to use Hedging as a Trading Strategy (opens in a new tab)" data-wpel-link="internal">How to use Hedging as a Trading Strategy</a></p>
+<p><strong>High Impact Dates</strong></p>
+<p>Don&#8217;t trade on days where other variables have huge impact. </p>
+<p>If you know that a President election result is being announced today, your SeekingAlpha&#8217;s Tesla headline is probably not going to have much impact. </p>
+<p>If Tesla is announcing their earnings, then non-earnings related articles will not have much impact.</p>
+<p>To account for these in your analysis, remove these exogenous high impact dates from your data set.</p>
+<p><strong>Accuracy of our sentiment analyser</strong></p>
+<p>The accuracy of the VADER sentiment analyser is nowhere near perfect. Just by eyeballing the output, you should be able to see this. </p>
+<figure class="wp-block-image"><img src="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-vader-scores-1-1024x296.png" alt="" class="wp-image-770" srcset="https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-vader-scores-1-1024x296.png 1024w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-vader-scores-1-300x87.png 300w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-vader-scores-1-768x222.png 768w, https://algotrading101.com/learn/wp-content/uploads/2019/12/tsla-vader-scores-1.png 1963w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>I would say the scores for these 3 headlines are quite off the mark</figcaption></figure>
+<p>As mentioned earlier, we already know that these sentiment output have huge variance and we rely on large numbers to squeeze out a slightly useful mean output value.</p>
+<p>That said, if you want to improve on this, the solution will be to build your own sentiment analyser by training it on the type of data you are testing on. </p>
+<p>Eg. if you are using SeekingAlpha&#8217;s headlines, train a lexicon-based analyser that is only based on SeekingAlpha&#8217;s headlines. But be aware that your analyser is overfitted to SeekingAlpha&#8217;s data and will not work well if applied to something different.</p>
+<p>The alternative is to wait 10 years for someone to develop a super accurate sentiment analyser (I&#8217;m sure quant funds have already done this) and open source it.</p>
+<p><strong>Use delta of the score instead of raw score</strong></p>
+<p>Think one step ahead. </p>
+<p>Compare the sentiment score with what the current expectations are.</p>
+<p>If you know that Tesla is viewed very negatively in the markets, a great score will be more impacted.</p>
+<p>If Tesla is already viewed optimistically, then a great score is not as impactful.</p>
+<p><strong>Look for headlines from more than one sources</strong></p>
+<p>Currently we have only looked at headline data from SeekingAlpha. It might be safer to procure our data from different sources for different purposes.</p>
+<p>For sensational news, you would want headlines from the bigger news channels.</p>
+<p>For longer term fundamental articles, you might want to procure them from more legitimate blogs or research firms.</p>
+<p>In both cases, you will want a mixture from different sources. This will increase objectivity of the data as some sources tend to be biased.</p>
+<p><strong>Complement headline data with other data</strong></p>
+<p>Headline data is just one aspect. </p>
+<p>Combine this data with other alternative data such as satellite/drone images of Tesla&#8217;s factories, scrape the amount of listings of 2nd hand Tesla cars, activity of their social media etc, to get a better prediction.</p>
+<h3>Ending Note &#8211; <strong>Truly understand the trade</strong></h3>
+<a name="ending-note-understand-the-trade"></a>
+<p>At the end of the day, you need to truly understand the reason for your trade. </p>
+<p>Come up with a hypothesis and test it appropriately. </p>
+<p>Isolate the variables you want to test, split your data into in and out-of-sample pieces, watch out for <a rel="noreferrer noopener" aria-label="overfitting  (opens in a new tab)" href="https://algotrading101.com/learn/what-is-overfitting-in-trading/" target="_blank" data-wpel-link="internal">overfitting</a> or <a rel="noreferrer noopener external" aria-label="p-hacking (opens in a new tab)" href="https://en.wikipedia.org/wiki/Data_dredging" target="_blank" data-wpel-link="external">p-hacking</a>.</p>
+<p>Here is an <a href="https://blog.quandl.com/interview-with-a-quant-part-one" data-wpel-link="external" rel="external noopener noreferrer">interview</a> on the framework to design trading strategies that I find useful.</p>
+<p>Trading is a competitive sport. This article covers some basics for sentiment analysis. Think of it as teaching you how each chess piece moves.</p>
+<p>To win in trading, you need to learn strategies to outsmart others, since everyone is trying to outwit one another all the time, you need to be creative and keep innovating to stay in the game.</p>
+<p>Trading is a hard way to make money. Good luck!</p>
+<p><em>You can download all the code used here:</em> <em><a href="https://github.com/Lucas170/Sentiment-Analysis-1-TSLA-Headlines" target="_blank" rel="noreferrer noopener external" aria-label=" (opens in a new tab)" data-wpel-link="external">Github repo</a></em></p>
+<div class='epvc-post-count'><span class='epvc-eye'></span> <span class="epvc-count"> 3,622</span><span class='epvc-label'> Views</span></div> <div class="clearfix"></div>
+<div class="clearfix"></div>
+</article>
+
+<div class="row post-top-meta hidden-lg-up">
+<div class="col-md-2 col-xs-4">
+<img src="https://algotrading101.com/learn/wp-content/uploads/ultimatemember/1/profile_photo-80x80.jpg?1589420488" class="gravatar avatar avatar-72 um-avatar um-avatar-uploaded" width="72" height="72" alt="Lucas Liew" data-default="https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" /> </div>
+<div class="col-md-10 col-xs-8">
+<a class="text-capitalize link-dark" href="https://algotrading101.com/learn/author/learnadmin/" data-wpel-link="internal">
+Lucas Liew <span class="btn follow">Follow</span></a>
+<span class="author-description d-block">Founder at AlgoTrading101</span>
+</div>
+</div>
+<div class="after-post-tags">
+<ul class="post-categories">
+<li><a href="https://algotrading101.com/learn/category/programming/" rel="category tag" data-wpel-link="internal">Programming</a></li>
+<li><a href="https://algotrading101.com/learn/category/trading/" rel="category tag" data-wpel-link="internal">Trading</a></li></ul> <ul class="post-categories aretags">
+</ul>
+</div>
+<div class="row mb-5 prevnextlinks justify-content-center align-items-center">
+<div class="col-md-6 col-xs-12 rightborder pl-0"><div class="thepostlink">&laquo; <a href="https://algotrading101.com/learn/how-to-use-hedging-as-a-trading-strategy/" rel="prev" data-wpel-link="internal">How to use Hedging as a Trading Strategy</a></div></div>
+<div class="col-md-6 col-xs-12 text-right pr-0"><div class="thepostlink"><a href="https://algotrading101.com/learn/interactive-brokers-python-api-native-guide/" rel="next" data-wpel-link="internal">Interactive Brokers Python API (Native) &#8211; A Step-by-step Guide</a> &raquo;</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="hideshare"></div>
+<div class="graybg">
+<div class="container">
+<div class="row justify-content-center listrecent listrelated">
+<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="card post height262">
+<a class="thumbimage" href="https://algotrading101.com/learn/what-is-quantamental-investing/" style="background-image:url(https://algotrading101.com/learn/wp-content/uploads/2020/04/quantamental-foursquare-chipotle-prediction.png);" data-wpel-link="internal"></a><div class="card-block">
+<h2 class="card-title">
+<a href="https://algotrading101.com/learn/what-is-quantamental-investing/" data-wpel-link="internal">What is Quantamental? 3 Techniques to Investing</a>
+</h2>
+<div class="metafooter">
+<div class="wrapfooter">
+<span class="meta-footer-thumb">
+<a href="https://algotrading101.com/learn/author/learnadmin/" data-wpel-link="internal">
+<img src="https://algotrading101.com/learn/wp-content/uploads/ultimatemember/1/profile_photo-40x40.jpg?1589420488" class="gravatar avatar avatar-40 um-avatar um-avatar-uploaded" width="40" height="40" alt="Lucas Liew" data-default="https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" /> </a>
+</span>
+<span class="author-meta">
+<span class="post-name">
+<a href="https://algotrading101.com/learn/author/learnadmin/" data-wpel-link="internal">Lucas Liew</a></span><br>
+<span class="post-date">Apr 29, 2020</span>
+<span class="dot"></span>
+<span class="readingtime">2 min read</span>
+</span>
+<span class="post-read-more">
+<a href="https://algotrading101.com/learn/what-is-quantamental-investing/" title="" data-wpel-link="internal">
+<svg class="svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
+<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</span> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="card post height262">
+<a class="thumbimage" href="https://algotrading101.com/learn/alpha-vantage-guide/" style="background-image:url(https://algotrading101.com/learn/wp-content/uploads/2020/04/Alpha-Vantage-Guide.png);" data-wpel-link="internal"></a><div class="card-block">
+<h2 class="card-title">
+<a href="https://algotrading101.com/learn/alpha-vantage-guide/" data-wpel-link="internal">Alpha Vantage Introduction Guide</a>
+</h2>
+<div class="metafooter">
+<div class="wrapfooter">
+<span class="meta-footer-thumb">
+<a href="https://algotrading101.com/learn/author/jdavda/" data-wpel-link="internal">
+<img src="https://algotrading101.com/learn/wp-content/uploads/ultimatemember/4/profile_photo-40x40.jpg?1589420488" class="gravatar avatar avatar-40 um-avatar um-avatar-uploaded" width="40" height="40" alt="Jignesh Davda" data-default="https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" /> </a>
+</span>
+<span class="author-meta">
+<span class="post-name">
+<a href="https://algotrading101.com/learn/author/jdavda/" data-wpel-link="internal">Jignesh Davda</a></span><br>
+<span class="post-date">Apr 8, 2020</span>
+<span class="dot"></span>
+<span class="readingtime">11 min read</span>
+</span>
+<span class="post-read-more">
+<a href="https://algotrading101.com/learn/alpha-vantage-guide/" title="" data-wpel-link="internal">
+<svg class="svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
+<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</span> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="card post height262">
+<a class="thumbimage" href="https://algotrading101.com/learn/web-scraping-tutorial/" style="background-image:url(https://algotrading101.com/learn/wp-content/uploads/2020/04/Web-Scraping-Wallstreetbets.png);" data-wpel-link="internal"></a><div class="card-block">
+<h2 class="card-title">
+<a href="https://algotrading101.com/learn/web-scraping-tutorial/" data-wpel-link="internal">Web Scraping Tutorial &#8211; Reddit Data for Finance</a>
+</h2>
+<div class="metafooter">
+<div class="wrapfooter">
+<span class="meta-footer-thumb">
+<a href="https://algotrading101.com/learn/author/aarons/" data-wpel-link="internal">
+<img src="https://algotrading101.com/learn/wp-content/uploads/ultimatemember/7/profile_photo-40x40.png?1589420488" class="gravatar avatar avatar-40 um-avatar um-avatar-uploaded" width="40" height="40" alt="Aaron Smith" data-default="https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" /> </a>
+</span>
+<span class="author-meta">
+<span class="post-name">
+<a href="https://algotrading101.com/learn/author/aarons/" data-wpel-link="internal">Aaron Smith</a></span><br>
+<span class="post-date">Apr 16, 2020</span>
+<span class="dot"></span>
+<span class="readingtime">16 min read</span>
+</span>
+<span class="post-read-more">
+<a href="https://algotrading101.com/learn/web-scraping-tutorial/" title="" data-wpel-link="internal">
+<svg class="svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
+<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</span> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="alertbar">
+<div class="container text-center">
+</div>
+</div>
+</div>
+<div class="container">
+<footer class="footer">
+<p style="font-size: 1.3em"> <a href="http://b.link/algotrading101_blog_to_course" data-wpel-link="external" rel="external noopener noreferrer">Our AlgoTrading101 Course is full - Join our Wait List here</a></p>
+<p class="pull-left"> <a href="https://algotrading101.com/learn/feed/" target="_blank" data-wpel-link="internal">RSS Feed Link</a></p><br><br>
+<p class="pull-left"> <a href="https://algotrading101.com/learn/login/" data-wpel-link="internal">Login for Writers</a></p><br><br>
+<p class="pull-left"> © Copyright AlgoTrading101 Blog </p>
+<p class="pull-right"> </p>
+<div class="clearfix"></div>
+<a href="" class="back-to-top hidden-md-down" data-wpel-link="internal">
+<i class="fa fa-angle-up"></i>
+</a>
+</footer>
+</div>
+<div id="um_upload_single" style="display:none"></div>
+<div id="um_view_photo" style="display:none">
+<a href="javascript:void(0);" data-action="um_remove_modal" class="um-modal-close" data-wpel-link="internal"><i class="um-faicon-times"></i></a>
+<div class="um-modal-body photo">
+<div class="um-modal-photo"></div>
+</div>
+</div><script type='text/javascript'>
+/* <![CDATA[ */
+var PT_CV_PUBLIC = {"_prefix":"pt-cv-","page_to_show":"5","_nonce":"ac2cd05df9","is_admin":"","is_mobile":"","ajaxurl":"https:\/\/algotrading101.com\/learn\/wp-admin\/admin-ajax.php","lang":"","loading_image_src":"data:image\/gif;base64,R0lGODlhDwAPALMPAMrKygwMDJOTkz09PZWVla+vr3p6euTk5M7OzuXl5TMzMwAAAJmZmWZmZszMzP\/\/\/yH\/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAPACwAAAAADwAPAAAEQvDJaZaZOIcV8iQK8VRX4iTYoAwZ4iCYoAjZ4RxejhVNoT+mRGP4cyF4Pp0N98sBGIBMEMOotl6YZ3S61Bmbkm4mAgAh+QQFCgAPACwAAAAADQANAAAENPDJSRSZeA418itN8QiK8BiLITVsFiyBBIoYqnoewAD4xPw9iY4XLGYSjkQR4UAUD45DLwIAIfkEBQoADwAsAAAAAA8ACQAABC\/wyVlamTi3nSdgwFNdhEJgTJoNyoB9ISYoQmdjiZPcj7EYCAeCF1gEDo4Dz2eIAAAh+QQFCgAPACwCAAAADQANAAAEM\/DJBxiYeLKdX3IJZT1FU0iIg2RNKx3OkZVnZ98ToRD4MyiDnkAh6BkNC0MvsAj0kMpHBAAh+QQFCgAPACwGAAAACQAPAAAEMDC59KpFDll73HkAA2wVY5KgiK5b0RRoI6MuzG6EQqCDMlSGheEhUAgqgUUAFRySIgAh+QQFCgAPACwCAAIADQANAAAEM\/DJKZNLND\/kkKaHc3xk+QAMYDKsiaqmZCxGVjSFFCxB1vwy2oOgIDxuucxAMTAJFAJNBAAh+QQFCgAPACwAAAYADwAJAAAEMNAs86q1yaWwwv2Ig0jUZx3OYa4XoRAfwADXoAwfo1+CIjyFRuEho60aSNYlOPxEAAAh+QQFCgAPACwAAAIADQANAAAENPA9s4y8+IUVcqaWJ4qEQozSoAzoIyhCK2NFU2SJk0hNnyEOhKR2AzAAj4Pj4GE4W0bkJQIAOw=="};
+var PT_CV_PAGINATION = {"links":{"page_1":"https:\/\/algotrading101.com\/learn\/sentiment-analysis-with-python-finance\/","page_n":"https:\/\/algotrading101.com\/learn\/sentiment-analysis-with-python-finance\/?_page=_CVNUMBER_"},"first":"\u00ab","prev":"\u2039","next":"\u203a","last":"\u00bb","goto_first":"Go to first page","goto_prev":"Go to previous page","goto_next":"Go to next page","goto_last":"Go to last page","current_page":"Current page is","goto_page":"Go to page"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/content-views-query-and-display-post-page/public/assets/js/cv.js?ver=2.3.1'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/themes/mediumish/assets/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/themes/mediumish/assets/js/ie10-viewport-bug-workaround.js'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/themes/mediumish/assets/js/masonry.pkgd.min.js'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/themes/mediumish/assets/js/mediumish.js'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/highlighting-code-block/assets/js/prism.js?ver=1.1.0'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/highlighting-code-block/assets/js/hcb_script.js?ver=1.1.0'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/select2/select2.full.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/learn\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/wp-util.min.js?ver=5.3.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-crop.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-modal.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-jquery-form.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-fileupload.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/pickadate/picker.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/pickadate/picker.date.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/pickadate/picker.time.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/pickadate/legacy.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.4.4'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://algotrading101.com/learn/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://algotrading101.com/learn/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://algotrading101.com/learn/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://algotrading101.com/learn/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/dist/i18n.min.js?ver=3.6.1'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-raty.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-tipsy.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/masonry.min.js?ver=3.3.2'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2b'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/simplebar.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-functions.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-responsive.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-conditional.min.js?ver=2.1.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var um_scripts = {"nonce":"2f1e7f53f5"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-scripts.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/jquery/ui/slider.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/dropdown.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/dist/hooks.min.js?ver=2.6.0'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-members.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-profile.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-content/plugins/ultimate-member/assets/js/um-account.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://algotrading101.com/learn/wp-includes/js/wp-embed.min.js?ver=5.3.3'></script>
+<script type='text/javascript' src='https://cdn.onesignal.com/sdks/OneSignalSDK.js?ver=5.3.3' async='async'></script>
+
+<script type="text/javascript">
+/* Default comment here */ 
+
+jQuery(document).ready(function( $ ){
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 0) {
+        $('.taglinebelowtitle').fadeOut();
+      } else {
+        $('.taglinebelowtitle').fadeIn();
+      }
+  });
+});</script>
+
+<script type="text/javascript">
+				jQuery.noConflict();
+				(function( $ ) {
+					$(function() {
+						// More code using $ as alias to jQuery
+						$("area[href*=\\#],a[href*=\\#]:not([href=\\#]):not([href^='\\#tab']):not([href^='\\#quicktab']):not([href^='\\#pane'])").click(function() {
+							if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+								var target = $(this.hash);
+								target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+								if (target.length) {
+								$('html,body').animate({
+								scrollTop: target.offset().top - 20  
+								},900 ,'easeInQuint');
+								return false;
+								}
+							}
+						});
+					});
+				})(jQuery);	
+			</script>
+<script type="text/javascript">
+			jQuery( '#request' ).val( '' );
+		</script>
+</body>
+</html>

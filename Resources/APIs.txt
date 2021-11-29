@@ -1,0 +1,12 @@
+
+NewsAPI : 
+Key = "25704fb78efb48f8a6da73711b8f039f"
+
+Twitter : 
+access_token = "zctpzZjqmeCMHubArCrsM45yU"
+access_token_secret = "aR2dNMO3f5J9pgYvKAt5MPqb4ucDYiVYxGKW8ltYxqzTLCmFoB"
+consumer_key = "1256257087694405633-BGfZWX31iFrUKXKgS4E5p7F4qwVwYX"
+consumer_secret = "05i056h63TGERayKn44KKGW5mWJpeaVqMqPY05Zo0aaxL"
+
+Yahoo Finance : 
+https://query1.finance.yahoo.com/v7/finance/options/{Ticker}
