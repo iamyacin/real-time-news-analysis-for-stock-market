@@ -1,7 +1,3 @@
-PythonObjects/*
-<<<<<<< HEAD
-PythonObjects/NewsClassifierObjects/*
-PythonObjects/PolarityClassifier/*
-=======
-
->>>>>>> 83ddd11a7966889eb68acbb4ecbc54d4d0c5de9f
+./PythonObjects/*
+./PythonObjects/NewsClassifierObjects/*
+./PythonObjects/PolarityClassifier/*
