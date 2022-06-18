@@ -1,4 +1,3 @@
 PythonObjects/*
-MachineLearning/venv
-NewsPredictionMicroservice/venv
-
+PythonObjects/NewsClassifierObjects/*
+PythonObjects/PolarityClassifier/*
