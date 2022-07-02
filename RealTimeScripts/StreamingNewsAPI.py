@@ -1,20 +1,13 @@
+from ast import Import
+from distutils.command.config import config
 from newsapi import NewsApiClient
 from pymongo import MongoClient
 from ktrain import load_predictor
 import datetime as dt
 import pandas as pd
 from time import sleep
-            
-api1 = NewsApiClient(api_key="25704fb78efb48f8a6da73711b8f039f")
-api2 = NewsApiClient(api_key="34931c1e7de3477ab3ed7eede23be27a")
-api3 = NewsApiClient(api_key="8bafac01575d4bf9849509503bd56766")
-api4 = NewsApiClient(api_key="65cdbdd16e6d4fd5a98794a942432d4b")
-api5 = NewsApiClient(api_key="1297735673f8474aa4b1b438b1596678")
-api6 = NewsApiClient(api_key="2dc7c51836e1475a8ef94bbf74684671")
-api7 = NewsApiClient(api_key="3ffe2d25c5f94296886d9c20c0011653")
-api8 = NewsApiClient(api_key="d8024cbb353849efbfce1c57dfc8b5cc")
-api9 = NewsApiClient(api_key="51936d9913634e5cafc87c24b8808aa5")
-api10 = NewsApiClient(api_key="fc9a5b8c1ac14dfa847a068c1a21b7f0")
+import config
+
 
 classifier = load_predictor('../PythonObjects/Bert_Classifier')
 
@@ -72,22 +65,22 @@ def newsInsertion(news = None):
         print('Error on Insertion : '+ str(e))
 
 while True:
-    news = getNews(firstApi=api1, secondApi=api2)
+    news = getNews(firstApi=NewsApiClient(api_key=config.API1), secondApi=NewsApiClient(api_key=config.API2))
     newsInsertion(news=news)
     sleep(9000)
     
-    news = getNews(firstApi=api3, secondApi=api4)
+    news = getNews(firstApi=NewsApiClient(api_key=config.API3), secondApi=NewsApiClient(api_key=config.API4))
     newsInsertion(news=news)
     sleep(9000)
     
-    news = getNews(firstApi=api5, secondApi=api6)
+    news = getNews(firstApi=NewsApiClient(api_key=config.API5), secondApi=NewsApiClient(api_key=config.API6))
     newsInsertion(news=news)
     sleep(9000)
     
-    news = getNews(firstApi=api7, secondApi=api8)
+    news = getNews(firstApi=NewsApiClient(api_key=config.API7), secondApi=NewsApiClient(api_key=config.API8))
     newsInsertion(news=news)
     sleep(9000)
     
-    news = getNews(firstApi=api9, secondApi=api10)
+    news = getNews(firstApi=NewsApiClient(api_key=config.API9), secondApi=NewsApiClient(api_key=config.API10))
     newsInsertion(news=news)
     sleep(9000)
