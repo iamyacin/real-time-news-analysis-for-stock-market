@@ -1,3 +1,7 @@
 PythonObjects/*
 PythonObjects/NewsClassifierObjects/*
 PythonObjects/PolarityClassifier/*
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
