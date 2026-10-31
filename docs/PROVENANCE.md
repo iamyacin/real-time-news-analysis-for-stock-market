@@ -39,6 +39,6 @@ Both remain available in the archived source repository and its mirror backup.
 
 ## Source repository status
 
-The source repositories are archived after the merged branch is verified. They
-are not deleted, so the original repository list and history remain recoverable
-independently.
+The four source repositories were archived after the merged branch was verified.
+They are not deleted, so the original repository history remains independently
+recoverable.
