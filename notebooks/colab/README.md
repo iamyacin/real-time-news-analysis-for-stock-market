@@ -9,8 +9,9 @@ Early Google Colab experiments imported from the separate
 - `labeled-data-exploration.ipynb` — loads `LabeledData.json` and converts the
   records into a dataframe for exploration.
 - `NewsPolarityClassifier_colab.ipynb` — cleaned 2026 Colab version of the
-  original ktrain BERT polarity experiment. See
-  `docs/TRAIN_POLARITY_MODEL.md`.
+  original ktrain BERT polarity experiment, added during the AI-assisted
+  restoration. See `docs/TRAIN_POLARITY_MODEL.md` and
+  `docs/AI_ASSISTANCE.md`.
 
 The notebooks were originally run with the datasets in the Colab working
 directory, so the relative paths (`OtherNews.csv`, `LabeledNews.csv`,

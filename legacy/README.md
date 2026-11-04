@@ -1,6 +1,6 @@
 # Legacy stack notes
 
-This directory documents the original 2020–2022 Python stack. It is optional and
+This directory documents the original 2020 Python stack. It is optional and
 not used by the default demo.
 
 ```bash

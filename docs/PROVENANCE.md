@@ -42,3 +42,9 @@ Both remain available in the archived source repository and its mirror backup.
 The four source repositories were archived after the merged branch was verified.
 They are not deleted, so the original repository history remains independently
 recoverable.
+
+## 2026 AI-assisted restoration
+
+This provenance file covers the imported Git repositories. The separate 2026
+restoration and enhancement work is documented in
+[`docs/AI_ASSISTANCE.md`](AI_ASSISTANCE.md).

@@ -1,5 +1,5 @@
 # Python 3.10 legacy environment.
-# The original 2020–2022 stack. Not used by the default Docker demo.
+# The original 2020 stack. Not used by the default Docker demo.
 tensorflow==2.10.1
 ktrain==0.38.2
 numpy==1.23.5

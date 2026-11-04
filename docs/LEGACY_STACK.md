@@ -1,4 +1,4 @@
-# Legacy 2020–2022 stack
+# Legacy 2020 stack
 
 The original PFE code targeted Python 3.10, TensorFlow/ktrain, pandas 1.x, and
 Tweepy 3.x. The 2026 restoration keeps the original notebooks and report intact
@@ -75,3 +75,12 @@ See `docs/TRAIN_POLARITY_MODEL.md` for training and installation.
 
 The legacy path remains fully documented so the report's method can be
 reproduced.
+
+## Authorship
+
+The original 2020 legacy stack, notebooks, report, and application were
+authored by **Yassine DAOUJI** as part of the PFE.
+
+The 2026 project was reviewed and enhanced by **Yassine DAOUJI in collaboration
+with the OpenCode AI coding agent, using the DeepSeek V4.1 Flash model**. See [`docs/AI_ASSISTANCE.md`](AI_ASSISTANCE.md) for the exact split
+between the original work and the AI-assisted restoration.

@@ -4,7 +4,7 @@ End-of-studies (PFE) project that collects financial news and tweets, filters
 business-related text, predicts sentiment, associates items with stock tickers,
 and stores the enriched records for analysis.
 
-The original project was built in 2020–2022. This repository preserves that work
+The original project was built in 2020. This repository preserves that work
 and adds a small 2026 restoration so it can be cloned, run, and demonstrated
 without private cloud credentials or expired API keys.
 
@@ -224,7 +224,7 @@ docs/                            # architecture, demo, training, migration, secu
 
 ## Original vs restored
 
-| Original 2020–2022 | 2026 restoration |
+| Original 2020 | 2026 restoration |
 |---|---|
 | Python 3.10, TensorFlow/ktrain, old pandas/Tweepy | Python 3.11 default; original stack documented in `legacy/` |
 | MongoDB Atlas + hardcoded credentials | Local Docker MongoDB default; Atlas via `.env` |
@@ -234,8 +234,24 @@ docs/                            # architecture, demo, training, migration, secu
 | React/Spring app removed from HEAD | Restored from git history and adapted to the restored data schema |
 | No demo data | 120 news fixtures + 40 tweets generated from the labeled dataset |
 
+## 2026 restoration and AI assistance
+
+The original 2020 PFE work — data collection, model-training notebooks,
+report, presentation, original application code, and datasets — was authored by
+**Yassine DAOUJI**.
+
+The 2026 project was reviewed and enhanced by **Yassine DAOUJI in collaboration
+with the OpenCode AI coding agent, using the DeepSeek V4.1 Flash model**. The author defined the goals and scope, reviewed the technical choices,
+and ran and validated the resulting stack. The agent implemented and documented
+the restoration work: the repaired prediction service, FinBERT/offline polarity
+backends, normalized data pipeline, fixtures, Streamlit dashboard, restored
+React/Spring UI, Docker setup, tests, and documentation.
+
+The full breakdown is in [`docs/AI_ASSISTANCE.md`](docs/AI_ASSISTANCE.md).
+
 ## Documentation
 
+- [`docs/AI_ASSISTANCE.md`](docs/AI_ASSISTANCE.md) — original work vs 2026 AI-assisted restoration
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - [`docs/DEMO.md`](docs/DEMO.md) — 5-minute defense walkthrough
 - [`docs/TRAIN_POLARITY_MODEL.md`](docs/TRAIN_POLARITY_MODEL.md) — notebook training and model installation

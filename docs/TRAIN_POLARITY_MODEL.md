@@ -11,6 +11,11 @@ The project supports three polarity paths:
 The default demo never requires training. This document explains how to
 reproduce and install the trained models.
 
+> The cleaned Colab notebook and this guide were added during the 2026
+> AI-assisted restoration. The original training notebook remains at
+> `MachineLearning/NewsPolarityClassifier.ipynb`. See
+> [`docs/AI_ASSISTANCE.md`](AI_ASSISTANCE.md) for the full attribution.
+
 ## Dataset
 
 `Data/GeneratedData/LabeledNews.csv` contains 3,795 balanced rows:
