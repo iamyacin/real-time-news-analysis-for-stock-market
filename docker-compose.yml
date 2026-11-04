@@ -1,0 +1,118 @@
+name: stock-news-analyzer
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  prediction-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MONGO_URI: ${MONGO_URI_DOCKER:-mongodb://mongo:27017}
+      MONGO_DB: ${MONGO_DB:-StockNewsDB}
+      MONGO_COLLECTION: ${MONGO_COLLECTION:-NewsCollection}
+      SERVICE_HOST: 0.0.0.0
+      SERVICE_PORT: 5000
+      POLARITY_BACKEND: ${POLARITY_BACKEND:-finbert}
+      POLARITY_MODEL: ${POLARITY_MODEL:-ProsusAI/finbert}
+      NEWS_CLASSIFIER_DIR: /app/PythonObjects/NewsClassifierObjects
+      POLARITY_SKLEARN_DIR: /app/PythonObjects/PolaritySklearn
+      POLARITY_MODEL_DIR: /app/PythonObjects/PolarityClassifier
+    ports:
+      - "5000:5000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+
+  seed:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    environment:
+      MONGO_URI: ${MONGO_URI_DOCKER:-mongodb://mongo:27017}
+      MONGO_DB: ${MONGO_DB:-StockNewsDB}
+      MONGO_COLLECTION: ${MONGO_COLLECTION:-NewsCollection}
+      SERVICE_URL: http://prediction-service:5000
+    command: ["python", "scripts/seed_demo.py", "--service-url", "http://prediction-service:5000", "--reset"]
+    depends_on:
+      prediction-service:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    restart: unless-stopped
+    environment:
+      MONGO_URI: ${MONGO_URI_DOCKER:-mongodb://mongo:27017}
+      MONGO_DB: ${MONGO_DB:-StockNewsDB}
+      MONGO_COLLECTION: ${MONGO_COLLECTION:-NewsCollection}
+      SERVICE_URL: http://prediction-service:5000
+    command:
+      - streamlit
+      - run
+      - dashboard/app.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+    ports:
+      - "8501:8501"
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+      prediction-service:
+        condition: service_healthy
+
+  legacy-backend:
+    build:
+      context: apps/legacy-ui/backend
+    restart: unless-stopped
+    environment:
+      MONGO_URI: ${MONGO_URI_DOCKER:-mongodb://mongo:27017}
+      MONGO_DB: ${MONGO_DB:-StockNewsDB}
+      JWT_SECRET: ${JWT_SECRET:-local-demo-secret-change-me}
+      DEMO_ADMIN_PASSWORD: ${DEMO_ADMIN_PASSWORD:-admin123}
+      SERVER_PORT: 8081
+    ports:
+      - "8081:8081"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -qO- http://localhost:8081/api/health >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  legacy-frontend:
+    build:
+      context: apps/legacy-ui/frontend
+      args:
+        REACT_APP_API_URL: http://localhost:8081
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      legacy-backend:
+        condition: service_healthy
+
+volumes:
+  mongo_data:
