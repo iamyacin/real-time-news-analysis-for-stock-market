@@ -283,3 +283,12 @@ This repository accompanies the PFE report:
 
 The original notebooks are kept for transparency; the restored code is a
 reproducibility layer around them, not a replacement for the academic work.
+
+## License
+
+This project is source-available under the
+[PolyForm Strict License 1.0.0](LICENSE). You may use it for noncommercial
+purposes, but you may not modify or redistribute it. Commercial use requires a
+separate license from the copyright holders.
+
+This is a source-available license, not an OSI-approved open-source license.
