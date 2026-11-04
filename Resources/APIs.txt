@@ -1,12 +1,13 @@
+# External APIs used by the original PFE
 
-NewsAPI : 
-Key = "25704fb78efb48f8a6da73711b8f039f"
+The 2020 project used:
 
-Twitter : 
-access_token = "zctpzZjqmeCMHubArCrsM45yU"
-access_token_secret = "aR2dNMO3f5J9pgYvKAt5MPqb4ucDYiVYxGKW8ltYxqzTLCmFoB"
-consumer_key = "1256257087694405633-BGfZWX31iFrUKXKgS4E5p7F4qwVwYX"
-consumer_secret = "05i056h63TGERayKn44KKGW5mWJpeaVqMqPY05Zo0aaxL"
+- NewsAPI — https://newsapi.org/
+- Twitter/X API — https://developer.x.com/
+- Yahoo Finance options endpoint — https://query1.finance.yahoo.com/
 
-Yahoo Finance : 
-https://query1.finance.yahoo.com/v7/finance/options/{Ticker}
+Credentials are no longer stored in this repository. Put your own keys in
+`.env`; see `.env.example` and `docs/SECURITY.md`.
+
+The old hardcoded values were removed during the 2026 restoration. Rotate any
+key that may still be active.
