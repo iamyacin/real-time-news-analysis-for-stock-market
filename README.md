@@ -23,7 +23,7 @@ without private cloud credentials or expired API keys.
 
 ## Screenshots
 
-| Streamlit dashboard | Restored React report UI |
+| Streamlit dashboard | Original React report UI |
 |---|---|
 | ![Streamlit dashboard](docs/screenshots/streamlit.png) | ![Legacy dashboard](docs/screenshots/legacy-dashboard.png) |
 
@@ -81,7 +81,7 @@ To start only the new dashboard:
 docker compose up --build mongo prediction-service seed streamlit
 ```
 
-To start only the restored report UI:
+To start only the original report UI:
 
 ```bash
 make legacy-ui
@@ -143,8 +143,8 @@ make collect      # live NewsAPI collection (needs NEWSAPI_KEY)
 ### Default: bundled fixtures
 
 `Data/fixtures/news_sample.json` contains 120 recent-dated articles generated
-from `Data/CollectedData/LabeledData.json`. `Data/fixtures/tweets_sample.json`
-contains sample tweets. Dates are shifted close to today so the restored Spring
+from `Data/CollectedData/LabeledData.json`. 
+`Data/fixtures/tweets_sample.json` contains sample tweets. Dates are shifted close to today so the restored Spring
 dashboard's 90-day charts are populated.
 
 ### Optional: live NewsAPI
@@ -236,16 +236,20 @@ docs/                            # architecture, demo, training, migration, secu
 
 ## 2026 restoration and AI assistance
 
-The original 2020 PFE work — data collection, model-training notebooks,
-report, presentation, original application code, and datasets — was authored by
-**Yassine DAOUJI**.
+The original 2020 PFE was a pair project by **Yassine DAOUJI** and
+**Mohammed AZZOUZ**. Yassine led the overall project and did the data
+collection, ML, backend, and report work; Mohammed built the original
+React/Spring report application.
 
-The 2026 project was reviewed and enhanced by **Yassine DAOUJI in collaboration
-with the OpenCode AI coding agent, using the DeepSeek V4.1 Flash model**. The author defined the goals and scope, reviewed the technical choices,
-and ran and validated the resulting stack. The agent implemented and documented
-the restoration work: the repaired prediction service, FinBERT/offline polarity
-backends, normalized data pipeline, fixtures, Streamlit dashboard, restored
-React/Spring UI, Docker setup, tests, and documentation.
+The 2026 project was reviewed and enhanced by **Yassine DAOUJI** in
+collaboration with the **OpenCode AI coding agent**, using the
+**DeepSeek V4.1 Flash model**. 
+
+Yassine DAOUJI defined the goals and scope,
+reviewed the technical choices, and ran and validated the resulting stack. The
+agent implemented and documented the restoration work: the repaired prediction
+service, FinBERT/offline polarity backends, normalized data pipeline, fixtures,
+Streamlit dashboard, restoration of the React/Spring UI, Docker setup, tests, and documentation.
 
 The full breakdown is in [`docs/AI_ASSISTANCE.md`](docs/AI_ASSISTANCE.md).
 

@@ -78,9 +78,12 @@ reproduced.
 
 ## Authorship
 
-The original 2020 legacy stack, notebooks, report, and application were
-authored by **Yassine DAOUJI** as part of the PFE.
+The original 2020 PFE was a pair project by **Yassine DAOUJI** and
+**Mohammed AZZOUZ**. Yassine led the overall project and did the data
+collection, ML, backend, and report work; Mohammed built the original
+React/Spring report application.
 
 The 2026 project was reviewed and enhanced by **Yassine DAOUJI in collaboration
-with the OpenCode AI coding agent, using the DeepSeek V4.1 Flash model**. See [`docs/AI_ASSISTANCE.md`](AI_ASSISTANCE.md) for the exact split
-between the original work and the AI-assisted restoration.
+with the OpenCode AI coding agent, using the DeepSeek V4.1 Flash model**. See
+[`docs/AI_ASSISTANCE.md`](AI_ASSISTANCE.md) for the exact split between the
+original work and the AI-assisted restoration.

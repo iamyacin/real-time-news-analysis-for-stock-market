@@ -3,10 +3,12 @@
 This directory contains the original CoreUI/React frontend and Spring Boot API
 from the 2020 PFE, restored from git history and adapted to the 2026 data schema.
 
-> **Authorship:** the original application is Yassine DAOUJI's 2020 PFE work.
-> Its 2026 restoration and adaptation were carried out by Yassine DAOUJI in
-> collaboration with the OpenCode AI coding agent (DeepSeek V4.1 Flash model).
-> See [`docs/AI_ASSISTANCE.md`](../../docs/AI_ASSISTANCE.md).
+> **Authorship:** the original 2020 PFE was a pair project by Yassine DAOUJI
+> and Mohammed AZZOUZ. Mohammed AZZOUZ built the original React/Spring report
+> application preserved here. Yassine DAOUJI led the overall project and carried
+> out the 2026 restoration and adaptation in collaboration with the OpenCode AI
+> coding agent (DeepSeek V4.1 Flash model). See
+> [`docs/AI_ASSISTANCE.md`](../../docs/AI_ASSISTANCE.md).
 
 ## Run with Docker Compose
 
