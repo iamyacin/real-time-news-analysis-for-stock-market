@@ -1,37 +1,21 @@
-from newsapi import NewsApiClient
-from pymongo import MongoClient
-from ktrain import load_predictor
-import pandas as pd
-import config
+"""Legacy entrypoint replaced by the restored collector.
 
-            
-api = NewsApiClient(api_key=config.API1)
+The original 2020 implementation used ktrain directly and hardcoded credentials.
+It remains available in git history; this wrapper keeps the filename working:
 
-api2 = NewsApiClient(api_key=config.API2)
+    python HistoricalNewsCollector.py --limit 5
+"""
 
-classifier = load_predictor("PythonObjects/PolarityClassifier")
+from __future__ import annotations
 
-mongo = MongoClient(config.MONGO)
-db = mongo[config.DB]
-newsCollection = db[config.COLLECTION]
+import sys
+from pathlib import Path
 
-tickers = pd.read_csv("Data/stocks_cleaned.csv")
-tickerSymbol = tickers.iloc[:,0].to_list()
-tickerName = tickers.iloc[:,1].to_list()
-tickerName = [item.replace(" ", "+") for item in tickerName]
+PROJECT_ROOT = Path(__file__).resolve().parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
-for i in range(101, len(tickerName)):
-    result = api2.get_everything(qintitle=tickerSymbol[i]+' OR '+tickerName[i], page_size=100,
-                                 sort_by='popularity', language='en')
-    result = result['articles']
-    [item.pop("content") for item in result]
-    [item.update({'prediction' : classifier.predict(item['title']+' '+item['description'])}) for item in result if item['description'] is not None and item['title'] is not None]
-    [item.update({'ticker' : '$'+tickerSymbol[i]}) for item in result]
-    posts = [item for item in result if len(item)> 8]
-    if len(posts) != 0:
-        for item in posts:
-            newsCollection.insert_one(item)
-        print(f'Okay, for {tickerSymbol[i]}')
-    else:
-        print(f'Nothing to insert for {tickerName[i]}')
-                  
+from scripts.collect_news import main
+
+if __name__ == "__main__":
+    main()
