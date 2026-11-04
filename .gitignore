@@ -1,7 +1,16 @@
-PythonObjects/*
-PythonObjects/NewsClassifierObjects/*
-PythonObjects/PolarityClassifier/*
+PythonObjects/
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .venv/
+.env
+.pytest_cache/
+.ruff_cache/
+reports/
+*.log
+.DS_Store
+
+# Legacy UI build outputs
+apps/legacy-ui/frontend/node_modules/
+apps/legacy-ui/frontend/build/
+apps/legacy-ui/backend/target/
