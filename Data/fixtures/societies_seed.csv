@@ -1,0 +1,28 @@
+ticker,name,sector,industry,logo_url,country,currency
+AAPL,Apple,Technology,Consumer Electronics,/imgs/logo.png,United States,USD
+MSFT,Microsoft,Technology,Software,/imgs/logo.png,United States,USD
+AMZN,Amazon,Consumer Discretionary,E-commerce,/imgs/logo.png,United States,USD
+GOOGL,Alphabet,Communication Services,Internet Content,/imgs/logo.png,United States,USD
+FB,Meta Platforms,Communication Services,Social Media,/imgs/logo.png,United States,USD
+TSLA,Tesla,Consumer Discretionary,Automobiles,/imgs/logo.png,United States,USD
+NFLX,Netflix,Communication Services,Entertainment,/imgs/logo.png,United States,USD
+JPM,JPMorgan Chase,Financials,Banks,/imgs/logo.png,United States,USD
+BAC,Bank of America,Financials,Banks,/imgs/logo.png,United States,USD
+V,Visa,Financials,Payment Services,/imgs/logo.png,United States,USD
+MA,Mastercard,Financials,Payment Services,/imgs/logo.png,United States,USD
+DIS,Walt Disney,Communication Services,Entertainment,/imgs/logo.png,United States,USD
+KO,Coca-Cola,Consumer Staples,Beverages,/imgs/logo.png,United States,USD
+MCD,McDonald's,Consumer Discretionary,Restaurants,/imgs/logo.png,United States,USD
+NKE,Nike,Consumer Discretionary,Apparel,/imgs/logo.png,United States,USD
+SBUX,Starbucks,Consumer Discretionary,Restaurants,/imgs/logo.png,United States,USD
+BA,Boeing,Industrials,Aerospace,/imgs/logo.png,United States,USD
+F,Ford,Consumer Discretionary,Automobiles,/imgs/logo.png,United States,USD
+GM,General Motors,Consumer Discretionary,Automobiles,/imgs/logo.png,United States,USD
+T,AT&T,Communication Services,Telecom,/imgs/logo.png,United States,USD
+VZ,Verizon,Communication Services,Telecom,/imgs/logo.png,United States,USD
+IBM,IBM,Technology,IT Services,/imgs/logo.png,United States,USD
+ORCL,Oracle,Technology,Software,/imgs/logo.png,United States,USD
+CRM,Salesforce,Technology,Software,/imgs/logo.png,United States,USD
+UBER,Uber,Industrials,Transportation,/imgs/logo.png,United States,USD
+SHOP,Shopify,Technology,Software,/imgs/logo.png,United States,USD
+BABA,Alibaba,Consumer Discretionary,E-commerce,/imgs/logo.png,United States,USD

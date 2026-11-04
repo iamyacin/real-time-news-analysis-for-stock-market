@@ -1,0 +1,1802 @@
+[
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Carmakers Gear Up to Restart Production: Can They Bounce Back?",
+    "description": "The global car industry has been witnessing a slump for the past few quarters, which was worsened due to the coronavirus outbreak.",
+    "url": "https://example.com/pfe-fixture/1",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/7/y/auto3.jpg",
+    "publishedAt": "2026-11-03T03:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Microsoft Stock Will Gain from Strong, Positive Catalysts",
+    "description": "Microsoft stock has multiple, positive catalysts over the short term and the long term. These catalysts will push the shares higher.",
+    "url": "https://example.com/pfe-fixture/2",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/h/h/mcr23.jpg",
+    "publishedAt": "2026-11-02T02:59:26Z",
+    "ticker": "MSFT",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "24/7 Wall Street"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "How Apple Stock Gets a Boost From 5G iPhone",
+    "description": "The future of smartphones in the United States and most other major nations is 5G, the fifth-generation standard for cell phone networks.",
+    "url": "https://example.com/pfe-fixture/3",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/l/56.jpg",
+    "publishedAt": "2026-11-01T01:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "3 Apple Analysts Lift Price Targets: Why They're Optimistic On iPhone's Trajectory",
+    "description": "Apple Inc. (NASDAQ: AAPL) analysts are projecting that Cupertino will weather the coronavirus pandemic and emerge in good shape.",
+    "url": "https://example.com/pfe-fixture/4",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/x/apple-9.jpg",
+    "publishedAt": "2026-10-31T00:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Is Nike a Buy?",
+    "description": "After a nice run-up, are the shares a good investment?",
+    "url": "https://example.com/pfe-fixture/5",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/i/nik233.jpg",
+    "publishedAt": "2026-10-30T11:59:26Z",
+    "ticker": "NKE",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "TechCrunch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "In surprise choice, Zoom hitches wagon to Oracle for growing infrastructure needs",
+    "description": "With the company growing in leaps and bounds, Zoom went shopping for a cloud infrastructure vendor to help it with its growing scale problem. In a surprising choice, the company went with Oracle Cloud Infrastructure.",
+    "url": "https://example.com/pfe-fixture/6",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/b/i/gettyimages-1208677866jpgw600.jpg",
+    "publishedAt": "2026-10-29T10:59:26Z",
+    "ticker": "ORCL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Tesla cuts prices by as much as 6% in North America to boost demand",
+    "description": "Tesla Inc  has cut prices of its electric vehicles by as much as 6% in North America following a decline in auto demand in the region during weeks of lockdown that have now started to ease.",
+    "url": "https://example.com/pfe-fixture/7",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/k/2019-tesla-model-s-long-range-44.jpg",
+    "publishedAt": "2026-10-28T09:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "The 5 Best 5G Stocks on the Market Today for Investors",
+    "description": "From chipmakers to wireless networks, these 5G stocks offer potential investors a few different angles to play the upcoming 5G rollout.",
+    "url": "https://example.com/pfe-fixture/8",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/u/b/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5309542fconnectivity-abstractjpgw700opresize.jpg",
+    "publishedAt": "2026-10-27T08:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Tesla's FSD Package Shows Automaker's Potential For Software Revenue",
+    "description": "Electric vehicle pioneer Tesla Inc (NASDAQ: TSLA) could be even more successful if it pivots its business model to generating software revenue, according to a Morgan Stanley analyst.",
+    "url": "https://example.com/pfe-fixture/9",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/n/p/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5184112ftesla-software-update-betx0ej.png",
+    "publishedAt": "2026-10-26T07:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "15 Tightly Wound Stocks With \u2018Pop\u2019 Potential",
+    "description": "For investors looking for home run hits, these 15 heavily shorted stocks with huge short squeeze potential are worth a look.",
+    "url": "https://example.com/pfe-fixture/10",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/w/q/short-squeeze1600-768x432.jpg",
+    "publishedAt": "2026-10-25T06:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Amazon Doesn't See Demand Slowing Anytime Soon",
+    "description": "It still has capacity constraints in its warehouses.",
+    "url": "https://example.com/pfe-fixture/11",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/c/f/105821343-1553842141852gettyimages-1131898584.jpeg",
+    "publishedAt": "2026-10-24T03:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Tableau CEO breaks down how the company will operate within Salesforce",
+    "description": "\"Our engineers can't wait to pop the hood on those and check out what things that we might use on behalf of our customers,\" CEO Adam Selipsky says.",
+    "url": "https://example.com/pfe-fixture/12",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/b/104939488-img-0852.jpg",
+    "publishedAt": "2026-10-23T02:59:26Z",
+    "ticker": "CRM",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "3 Streaming Video Stocks That Have a Killer Advantage",
+    "description": "Everybody's streaming, and every media company wants in on the fun. Let's look at three players whose secret weapons provide a leg up on the competition.",
+    "url": "https://example.com/pfe-fixture/13",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/d/d/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5762212fgettywomanwatchingtvjpgw700opresize.jpg",
+    "publishedAt": "2026-10-22T01:59:26Z",
+    "ticker": "DIS",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "3 High-Yield Tech Stocks to Buy in May",
+    "description": "Tech stocks aren't typically known for their dividends, but these three companies buck the trend with generous payouts.",
+    "url": "https://example.com/pfe-fixture/14",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/v/h/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5720702fdatacenterjpgw700opresize.jpg",
+    "publishedAt": "2026-10-21T00:59:26Z",
+    "ticker": "IBM",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Are Green Shoots of Recovery Emerging in China Auto Sales?",
+    "description": "Moody's expects auto sales in China to fall 10% year over year in 2020 but increase 2.5% in 2021.",
+    "url": "https://example.com/pfe-fixture/15",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/o/m/auto26.jpg",
+    "publishedAt": "2026-10-20T11:59:26Z",
+    "ticker": "GM",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "4 Stocks to Watch as Dow Breezes Past 25,000 Points",
+    "description": "Dow Jones' journey past 25,000 points this week could mark the beginning of a series of gains ahead, owing to some major tailwinds.",
+    "url": "https://example.com/pfe-fixture/16",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/n/b/q1-2020-big-oil-earnings-what-did-we-learn-from-dire-figures.jpg",
+    "publishedAt": "2026-10-19T10:59:26Z",
+    "ticker": "MSFT",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Forbes"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "What Could Be Salesforce.com's Revenue Growth Over The Next 3 Years Post Tableau's Acquisition?",
+    "description": "Trefis estimates that the acquisition of Tableau will potentially increase Salesforce.com\u2019s revenue to more than $24 billion by FY 2022 (ended January 2022).",
+    "url": "https://example.com/pfe-fixture/17",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/o/3/xsexrnq8lgev-1-1.jpg",
+    "publishedAt": "2026-10-18T09:59:26Z",
+    "ticker": "CRM",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "24/7 Wall Street"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "12 Floundering Defensive Stocks Are Successfully Becoming Defensive All Over Again",
+    "description": "When the economy began to face an instant recession from the coronavirus, even before the name COVID-19 became labeled a pandemic, the phenomena of buying defensive stocks was thrown out the window.",
+    "url": "https://example.com/pfe-fixture/18",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/h/l/105638005-1545256725122gettyimages-1084667734.jpg",
+    "publishedAt": "2026-10-17T08:59:26Z",
+    "ticker": "KO",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "There\u2019s Nothing Fake About These 10 Artificial Intelligence Stocks to Buy",
+    "description": "There's nothing \"artificial\" about these AI stocks to buy now. Each represents cutting-edge technology, and offers solid income along the way.",
+    "url": "https://example.com/pfe-fixture/19",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/3/ai1600c-768x432.jpg",
+    "publishedAt": "2026-10-16T07:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Elon Musk Collects Payout Valued at $775 Million from Tesla",
+    "description": "The Tesla CEO meets milestones to earn his first tranche of performance pay, but not all shareholders approve.",
+    "url": "https://example.com/pfe-fixture/20",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/n/p/tes6-2.jpg",
+    "publishedAt": "2026-10-15T06:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "5 Top Must-Buy Stocks Set to Beat on Q1 Earnings This Week",
+    "description": "Despite the coronavirus-led economic disaster, five stocks with a favorable Zacks Rank are set to beat Q1 earnings estimates this week.",
+    "url": "https://example.com/pfe-fixture/21",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/b/f/software27.jpg",
+    "publishedAt": "2026-10-14T03:59:26Z",
+    "ticker": "NFLX",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why Ford, General Motors, and Honda Stocks Are Up Today",
+    "description": "Auto factories are rolling again.",
+    "url": "https://example.com/pfe-fixture/22",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/l/0/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5759362fford-dearborn-truck-restart-precautions-051820jpgw700opresize.jpg",
+    "publishedAt": "2026-10-13T02:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "7 Stocks to Buy to Ride the Vegan Wave",
+    "description": "Plant-based foods have become big business in America. And these food stocks to buy show that America is crazy about meatless alternatives.",
+    "url": "https://example.com/pfe-fixture/23",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/y/c/vegan1600-768x432.jpg",
+    "publishedAt": "2026-10-12T01:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "The 1 Stock You've Been Overlooking For Your Roth IRA",
+    "description": "This staid company is possible to miss, but can deliver years of income for your retirement account.",
+    "url": "https://example.com/pfe-fixture/24",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/2/0/20110425-amsterdam-65-ibm-building-0-5.jpg",
+    "publishedAt": "2026-10-11T00:59:26Z",
+    "ticker": "IBM",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Should You Invest in Companies Likely to Benefit from the Great Lockdown?",
+    "description": "Is this a recipe for disaster, or could you beat the market by aiming to predict the future?",
+    "url": "https://example.com/pfe-fixture/25",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/x/0/the-5-safest-dividend-stocks-in-the-sp-500.jpg",
+    "publishedAt": "2026-10-10T11:59:26Z",
+    "ticker": "NFLX",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "5 Stocks to Start Investing in 2020",
+    "description": "These top businesses can form the foundation of your investment portfolio.",
+    "url": "https://example.com/pfe-fixture/26",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/u/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5758962fstart-investing-in-2020-gettyimages-1090501680jpgw700opresize.jpg",
+    "publishedAt": "2026-10-09T10:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Got $5,000? Buy These 3 Dividend Dynamos",
+    "description": "If you're looking for reliable income, these three companies have you covered.",
+    "url": "https://example.com/pfe-fixture/27",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/x/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5685792fman-handing-over-billsjpgw700opresize.jpg",
+    "publishedAt": "2026-10-08T09:59:26Z",
+    "ticker": "SBUX",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "GeekWire"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Salesforce real estate footprint at \u2018HQ2\u2019 in Seattle reaches 650K square feet with Tableau acquisition",
+    "description": "When Salesforce completes its deal to buy Tableau Software for $15.",
+    "url": "https://example.com/pfe-fixture/28",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/m/salesforce-7489-768x512.jpg",
+    "publishedAt": "2026-10-07T08:59:26Z",
+    "ticker": "CRM",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "3 Reliable Restaurant Stocks to Buy for Reopening Returns",
+    "description": "The restaurant industry has been suffering lately, but these 3 robust restaurant stocks to buy will continue to serve up tasty returns.",
+    "url": "https://example.com/pfe-fixture/29",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/b/fastfood1600-768x432.jpg",
+    "publishedAt": "2026-10-06T07:59:26Z",
+    "ticker": "MCD",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Alibaba Stock Remains Too Good an Investment Opportunity to Ignore",
+    "description": "Chinese technology behemoth Alibaba (NYSE:BABA) stock is a tricky one to evaluate. Source: zhu difeng / Shutterstock.com On one hand, it is hard to ignore the explosive growth potential of the world\u2019s largest e-commerce company, which has online sales that dwarf Amazon (NASDAQ:AMZN), eBay (NASDAQ:EBAY) and Walmart (NYSE:WMT) combined, not to mention its market leadership in artificial intelligence.",
+    "url": "https://example.com/pfe-fixture/30",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/b/ali22-3.jpg",
+    "publishedAt": "2026-10-05T06:59:26Z",
+    "ticker": "BABA",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Ford to gradually resume operations, production at Mexican plants",
+    "description": "Ford Motor Co  will gradually resume operations and production at several of its Mexican plants, the automaker said on Wednesday, as the sector begins to come back online as coronavirus contingencies are relaxed.",
+    "url": "https://example.com/pfe-fixture/31",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/4/9/fo99.jpg",
+    "publishedAt": "2026-10-04T03:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "3 Dividend Stocks That Are Perfect for Retirement",
+    "description": "These companies provide reliable dividend income for your retirement account even during tough economic times.",
+    "url": "https://example.com/pfe-fixture/32",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/r/gettyimages-500963600jpgw600.jpg",
+    "publishedAt": "2026-10-03T02:59:26Z",
+    "ticker": "MCD",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why Cramer Favors Chipotle, Starbucks And Wendy's Post-Coronavirus Shutdown",
+    "description": "The unfortunate and sad reality is the U.S. government needs to step in with new rescue options otherwise small businesses will perish and only \"big chains\" will survive, Jim Cramer said Thursday on \"Mad Money.",
+    "url": "https://example.com/pfe-fixture/33",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/o/r/wendys-4010578-1920-10.jpg",
+    "publishedAt": "2026-10-02T01:59:26Z",
+    "ticker": "SBUX",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Apple gets two price target boosts as store reopenings are a 'sign of improving trends'",
+    "description": "Deutsche Bank analyst Jeriel Ong raised his price target on Apple Inc.'s stock AAPL, -0.67% to $320 from $305 Wednesday, writing of increased optimism now that Apple plans to reopen dozens of U.S.",
+    "url": "https://example.com/pfe-fixture/34",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/s/g/iphone-4.jpeg",
+    "publishedAt": "2026-10-01T00:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Alibaba Stock Bulls Shouldn\u2019t Sweat Delisting",
+    "description": "A new hurdle for Alibaba stock is a push to delist Chinese stocks over strict accounting rules, but long-term investors should be fine.\r\nThe post Alibaba Stock Bulls Shouldn\u2019t Sweat Delisting appeared first on InvestorPlace.",
+    "url": "https://example.com/pfe-fixture/35",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/4/n/china1600b-768x432.jpg",
+    "publishedAt": "2026-09-30T11:59:26Z",
+    "ticker": "BABA",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "9 Boring Stocks to Buy You Should Never Let Go Of",
+    "description": "These nine boring stocks to buy won\u2019t elicit much excitement from the crowd, but they\u2019re worthy contenders as we head toward an uncertain future.",
+    "url": "https://example.com/pfe-fixture/36",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/z/f/stockstobuy1600-2-768x432.jpg",
+    "publishedAt": "2026-09-29T10:59:26Z",
+    "ticker": "DIS",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Kiplinger"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "13 Dividend Stocks That Have Paid Investors for 100+ Years",
+    "description": "When it comes to investing in dividend stocks, it's patience that results in the real payday for shareholders.",
+    "url": "https://example.com/pfe-fixture/37",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/1/c/intro.jpg",
+    "publishedAt": "2026-09-28T09:59:26Z",
+    "ticker": "KO",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC Television"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Shopify COO on how e-commerce is changing retail trends during the pandemic",
+    "description": "Consumers are shifting their spending from in-store to online making an e-commerce presence critical for businesses to stay afloat.",
+    "url": "https://example.com/pfe-fixture/38",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/2/a/shopify-coo-on-how-e-commerce-is-changing-retail-trends-during-the-pandemic.jpg",
+    "publishedAt": "2026-09-27T08:59:26Z",
+    "ticker": "SHOP",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "5 Stocks to Start Investing in 2020",
+    "description": "These top businesses can form the foundation of your investment portfolio.",
+    "url": "https://example.com/pfe-fixture/39",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/u/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5758962fstart-investing-in-2020-gettyimages-1090501680jpgw700opresize.jpg",
+    "publishedAt": "2026-09-26T07:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Kiplinger"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "The Best AI Stocks to Buy for 2021 and Beyond",
+    "description": "You're not imagining things.",
+    "url": "https://example.com/pfe-fixture/40",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/l/j/intro.jpg",
+    "publishedAt": "2026-09-25T06:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Positive",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "TechCrunch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Microsoft pitched its facial recognition tech to the DEA, new emails show",
+    "description": "Microsoft tried to sell its facial recognition technology to the Drug Enforcement Administration as far back as 2017, according to newly released emails. The American Civil Liberties Union obtained the emails through a public records lawsuit it filed in October, challenging the secrecy surrounding the DEA\u2019s facial recognition program.",
+    "url": "https://example.com/pfe-fixture/41",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/e/gettyimages-1080200068jpgw600.jpg",
+    "publishedAt": "2026-09-24T03:59:26Z",
+    "ticker": "MSFT",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why Is Tesla (TSLA) Up 3.1% Since Last Earnings Report?",
+    "description": "Tesla (TSLA) reported earnings 30 days ago. What's next for the stock?",
+    "url": "https://example.com/pfe-fixture/42",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/6/a/tesla-8.jpg",
+    "publishedAt": "2026-09-23T02:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Seeking Alpha"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Apple: Beyond iPhones, Services Become More Than A Sidekick",
+    "description": "Apple: Beyond iPhones, Services Become More Than A Sidekick",
+    "url": "https://example.com/pfe-fixture/43",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/1/k/apple-5.jpg",
+    "publishedAt": "2026-09-22T01:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Timing the Market, Is it Possible? - October 02, 2019",
+    "description": "In the long-run, does consistent market timing really matter to be a successful investor?",
+    "url": "https://example.com/pfe-fixture/44",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/s/t/stock-exchagne.jpeg",
+    "publishedAt": "2026-09-21T00:59:26Z",
+    "ticker": "BA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Better Buy: Alibaba vs. Alphabet",
+    "description": "These two technology giants are leaders in their respective markets. Discover what makes one a better investment choice.",
+    "url": "https://example.com/pfe-fixture/45",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/y/3/204-2.jpg",
+    "publishedAt": "2026-09-20T11:59:26Z",
+    "ticker": "BABA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Senate Bill Targets FAA Certification Process Used For 737 MAX",
+    "description": "Bipartisan legislation introduced in the Senate Tuesday would reform the way the Federal Aviation Administration certifies aircraft after investigations found problems with how the Boeing Co (NYSE: BA) 737 MAX was deemed airworthy before it suffered two mass-casualty crashes.",
+    "url": "https://example.com/pfe-fixture/46",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/h/o/105817830-1553714862196rts2e8dr.jpg",
+    "publishedAt": "2026-09-19T10:59:26Z",
+    "ticker": "BA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "10 Gaming Stocks That Will Power Through the New Normal",
+    "description": "Not all investment sectors floundered because of the coronavirus, as many gaming stocks demonstrated. Here are ten companies in particular that look interesting in the new normal.",
+    "url": "https://example.com/pfe-fixture/47",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/x/v/videogames1600c-768x432.jpg",
+    "publishedAt": "2026-09-18T09:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "This Is How the Amazon Juggernaut Will Finally Be Stopped",
+    "description": "When most competitive decisions are made first with Amazon in mind, it's only a matter of time before it starts to matter.",
+    "url": "https://example.com/pfe-fixture/48",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/5/u/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5789072fstop-signjpgw700opresize.jpg",
+    "publishedAt": "2026-09-17T08:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why Tesla 'Appears To Be Turning The Corner' Heading Into Summer",
+    "description": "Tesla Inc (NASDAQ: TSLA) shares have ticked higher over the past month and one analyst says mthe company appears to be turning the corner now that its Fremont plant is back up and running.",
+    "url": "https://example.com/pfe-fixture/49",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/7/l/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5209172fmodel-x.jpg",
+    "publishedAt": "2026-09-16T07:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Lotto-Ticket Ford Versus Larger-Cap, Long-Term Ferrari",
+    "description": "Ferrari's market cap is worth $10 billion more than Ford. Does that make Ferrari a better buy than F stock?",
+    "url": "https://example.com/pfe-fixture/50",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/x/i/auto35.jpg",
+    "publishedAt": "2026-09-15T06:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Forbes"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Buy Nike over Lulu Now?",
+    "description": "Nike stock has declined by close to 8% since early February after the WHO declared the Coronavirus a global health emergency, while Lululemon stock has also lost around 7% of its market capitalization. The lockdown in various parts of the world has hurt the apparel industry worldwide.",
+    "url": "https://example.com/pfe-fixture/51",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/h/z/buy-nike-over-lulu-now.jpg",
+    "publishedAt": "2026-09-14T03:59:26Z",
+    "ticker": "NKE",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "All 3 Detroit automakers had workers test positive for COVID-19 since plants reopened",
+    "description": "In the week since U.S. auto factories reopened after coronavirus lockdowns, workers at all three Detroit automakers have tested positive for COVID-19 but only Ford Motor Co  has temporarily closed plants.",
+    "url": "https://example.com/pfe-fixture/52",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/s/7/m02d20200527t2i1520067762rlynxmpeg4q1g8w640.jpg",
+    "publishedAt": "2026-09-13T02:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Where Will Coca-Cola Be in 1 Year?",
+    "description": "A restaurant apocalypse could devastate one of Coca-Cola's biggest markets.",
+    "url": "https://example.com/pfe-fixture/53",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/x/z/coca-cola-10jpgquality90stripall.jpg",
+    "publishedAt": "2026-09-12T01:59:26Z",
+    "ticker": "KO",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Jeff Bezos Asks Amazon Employees To Honor Juneteenth By Canceling All Meetings",
+    "description": "Jeff Bezos, CEO of Amazon Inc (NASDAQ: AMZN), wrote to employees Tuesday asking them to \u201creflect, learn and support each other\u201d on Juneteenth, the June 19 commemoration of the reading of the Emancipation Proclamation in 1865 by Gen.",
+    "url": "https://example.com/pfe-fixture/54",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/z/r/amz0.jpg",
+    "publishedAt": "2026-09-11T00:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "GM, Ford turn to fast-payment programs to aid suppliers hit by shutdowns",
+    "description": "General Motors Co  and Ford Motor Co  are using fast-payment programs set up with financial lenders to help cash-strapped small suppliers survive production shutdowns caused by the coronavirus pandemic.",
+    "url": "https://example.com/pfe-fixture/55",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/p/g/m02d20200528t2i1520176881rlynxmpeg4r0ypw640.jpg",
+    "publishedAt": "2026-09-10T11:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Mark Zuckerberg says Trump's posts do not violate Facebook policy",
+    "description": "Facebook CEO Mark Zuckerberg on Friday said a post by President Donald Trump in which he says \"when the looting starts, the shooting starts\" does not violate the company's policies and will remain online.",
+    "url": "https://example.com/pfe-fixture/56",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/j/4/ze2-2.jpg",
+    "publishedAt": "2026-09-09T10:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Will Disney World Find a Way to Make Its Kingdom Magic Again?",
+    "description": "The details of the reopening of the world's most visited theme park resort aren't pretty, but there's still time to turn dust into pixie dust.",
+    "url": "https://example.com/pfe-fixture/57",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/v/q/ds82.jpg",
+    "publishedAt": "2026-09-08T09:59:26Z",
+    "ticker": "DIS",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Read the email Tim Cook sent to Apple employees about George Floyd",
+    "description": "In a memo to employees on Sunday, Apple CEO Cook wrote \"George Floyd's death is shocking and tragic proof that we must aim far higher than a 'normal' future, and build one that lives up to the highest ideals of equality and justice.\"",
+    "url": "https://example.com/pfe-fixture/58",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/v/w/app0.jpg",
+    "publishedAt": "2026-09-07T08:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "US automakers, set to reopen factories Monday, wait and watch on word from Mexico",
+    "description": "Mexico will delay the restart of its \"essential\" manufacturing operations, including automotive, until June 1, the government said Thursday.",
+    "url": "https://example.com/pfe-fixture/59",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/1/0/106122861-1568161129013gettyimages-932946168.jpeg",
+    "publishedAt": "2026-09-06T07:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "How College Is a-Changin\u2019",
+    "description": "Studies have shown colleges can become hotbeds of virus transmission, so what\u2019s the way going forward?",
+    "url": "https://example.com/pfe-fixture/60",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/5/tech1600a-768x432.jpg",
+    "publishedAt": "2026-09-05T06:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Amazon, Target and Apple scale back business in cities hit hard by protests",
+    "description": "Some major retailers closed hundreds of stores as protests against police violence rolled on this weekend.",
+    "url": "https://example.com/pfe-fixture/61",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/s/x/stocks1-2.jpg",
+    "publishedAt": "2026-11-03T03:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNET"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "IBM now has 18 quantum computers in its fleet of weird machines",
+    "description": "That's actually a lot given how expensive, finicky and complex quantum computers are.",
+    "url": "https://example.com/pfe-fixture/62",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/n/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5193252fibms-global-center-for-watson-iot-in-munich-germanyjpg-4.jpg",
+    "publishedAt": "2026-11-02T02:59:26Z",
+    "ticker": "IBM",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Better Buy: Verizon Communications vs. AT&T",
+    "description": "Which 5G provider will yield investors more profit?",
+    "url": "https://example.com/pfe-fixture/63",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/7/o/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5759752fgettyimages-1144870926jpgw700opresize.jpg",
+    "publishedAt": "2026-11-01T01:59:26Z",
+    "ticker": "T",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC Television"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Michigan Sen. Gary Peters on safely reopening auto plants",
+    "description": "Roughly seven weeks after the Big 3 shut down their North American auto plants due to COVID-19, the assembly lines are scheduled to be up and running again.",
+    "url": "https://example.com/pfe-fixture/64",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/m/q/michigan-sen-gary-peters-on-safely-reopening-auto-plants.jpg",
+    "publishedAt": "2026-10-31T00:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Yahoo Finance"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "New IBM President discusses working remotely, transitioning businesses to the cloud and THINK",
+    "description": "In this episode of Yahoo Finance Presents, IBM President Jim Whitehurst talks to Andy Serwer about his new role and what IBM is doing to help businesses adapt to the coronavirus crisis.",
+    "url": "https://example.com/pfe-fixture/65",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/s/t/new-ibm-president-discusses-working-remotely-transitioning-businesses-to-the-cloud-and-think.jpg",
+    "publishedAt": "2026-10-30T11:59:26Z",
+    "ticker": "IBM",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Elon Musk Has Forgotten Tesla's Market",
+    "description": "The Tesla CEO's aggressive criticism of stay-at-home orders could alienate wealthy coastal liberals, who make up the brand's core demographic.",
+    "url": "https://example.com/pfe-fixture/66",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/i/105867814-1556076647937gettyimages-1129556839530x298.jpeg",
+    "publishedAt": "2026-10-29T10:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC Television"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Elon Musk earned his first performance-based payout",
+    "description": "CNBC's Phil LeBeau joins \"Closing Bell\" to report that Elon Musk earned his first performance-based payout.",
+    "url": "https://example.com/pfe-fixture/67",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/m/q/elon-musk-earned-his-first-performance-based-payout.jpg",
+    "publishedAt": "2026-10-28T09:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "J.P. Morgan Chase adds IBM Chairman Ginni Rometty to its board of directors",
+    "description": "J.P. Morgan Chase & Co. JPM, -0.11% said Tuesday that it has elected Virginia \"Ginni\" Rometty to its board of directors, effective immediately.",
+    "url": "https://example.com/pfe-fixture/68",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/n/9/ibm3.jpg",
+    "publishedAt": "2026-10-27T08:59:26Z",
+    "ticker": "IBM",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "TechCrunch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Interview: Apple\u2019s Schiller says position on Hey app is unchanged and no rules changes are imminent",
+    "description": "In a brief call today about Basecamp\u2019s Hay email app from the iOS App Store, Apple\u2019s Phil Schiller told me that there would currently be no changes to its rules that would allow the app to continue to be offered.",
+    "url": "https://example.com/pfe-fixture/69",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/p/apple-liveblog0523jpgw600.jpg",
+    "publishedAt": "2026-10-26T07:59:26Z",
+    "ticker": "AAPL",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "GeekWire"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "New filing on Salesforce\u2019s Tableau deal reveals tough six-month negotiations, $552M break-up fee",
+    "description": "Salesforce\u2019s $15.",
+    "url": "https://example.com/pfe-fixture/70",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/u/i/df17-nba-8693-641x427.jpg",
+    "publishedAt": "2026-10-25T06:59:26Z",
+    "ticker": "CRM",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Better Buy: Nike vs. Stitch Fix",
+    "description": "Nike has been a steady performer for investors over the years, but Stitch Fix is aiming to disrupt the global apparel industry with data science.",
+    "url": "https://example.com/pfe-fixture/71",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/r/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5720372fgettyimages-1030235128jpgw700opresize.jpg",
+    "publishedAt": "2026-10-24T03:59:26Z",
+    "ticker": "NKE",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "GlobeNewsWire"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Verizon and Los Angeles Unified to Enable Distance Learning for Hundreds of Thousands More California Students",
+    "description": "The original Verizon-Los Angeles Unified agreement of March 23 has been amended to allow other school districts in the State of California to benefit The original Verizon-Los Angeles Unified agreement of March 23 has been amended to allow other school districts in the State of California to benefit",
+    "url": "https://example.com/pfe-fixture/72",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/p/press4-3.jpg",
+    "publishedAt": "2026-10-23T02:59:26Z",
+    "ticker": "VZ",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "24/7 Wall Street"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Will President Trump\u2019s Executive Order Pummel Facebook Stock?",
+    "description": "Facebook Inc. (NASDAQ: FB) CEO Mark Zuckerberg once again finds himself sideways with the political establishment.",
+    "url": "https://example.com/pfe-fixture/73",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/v/j/m02d20190509t2i1385364613rlynxnpef481eaw640.jpg",
+    "publishedAt": "2026-10-22T01:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "GlobeNewsWire"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Verizon Business Survey Finds 68% of Small Businesses Believe They Can Recoup COVID-19 Related Losses",
+    "description": "Survey Results Show Signs of Optimism and Hope Survey Results Show Signs of Optimism and Hope",
+    "url": "https://example.com/pfe-fixture/74",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/1/press4-2.jpg",
+    "publishedAt": "2026-10-21T00:59:26Z",
+    "ticker": "VZ",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Uber-rival Bolt raises 100 million euros",
+    "description": "Ride-hailing service Bolt said on Tuesday it has raised 100 million euros ($109 million) from London-based investment firm Naya Capital Management in a deal valuing the European rival of Uber at 1.7 billion euros.",
+    "url": "https://example.com/pfe-fixture/75",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/w/t/m02d20190724t2i1411316658rlynxnpef6n067w640.jpg",
+    "publishedAt": "2026-10-20T11:59:26Z",
+    "ticker": "UBER",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "U.S. Auto Industry Engine Restarts: Testing Times Ahead",
+    "description": "Even with U.S. auto manufacturing plants back online, production and sales are unlikely to rebound anytime soon.",
+    "url": "https://example.com/pfe-fixture/76",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/b/s/200424101545-toyota-plant-ky-aug-2019-super-169.jpg",
+    "publishedAt": "2026-10-19T10:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Better Buy: IBM vs. McDonald's",
+    "description": "Two iconic brands go head-to-head. Learn which is positioned for success after the COVID-19 pandemic.",
+    "url": "https://example.com/pfe-fixture/77",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/9/fwf22-1.jpg",
+    "publishedAt": "2026-10-18T09:59:26Z",
+    "ticker": "IBM",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC Television"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "What stock is a conservative buy in this volatile market? #AskHalftime",
+    "description": "The \"Halftime Report\" traders answer viewer questions in #AskHalftime.",
+    "url": "https://example.com/pfe-fixture/78",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/w/o/woedkw2.jpg",
+    "publishedAt": "2026-10-17T08:59:26Z",
+    "ticker": "KO",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Stocks To Watch This Week",
+    "description": "Last week, the market saw yet another glimpse of optimism as investors pushed the Dow Jones Industrial Average higher, over 3%.",
+    "url": "https://example.com/pfe-fixture/79",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/0/r/workday-3.jpg",
+    "publishedAt": "2026-10-16T07:59:26Z",
+    "ticker": "CRM",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Facebook, Google and Snap have found their knight in shining armor as ad spending craters",
+    "description": "As pandemic-related impacts started to cut advertiser budgets with big tech companies in the first quarter, one area of spend spend appeared to stay strong: Direct response.",
+    "url": "https://example.com/pfe-fixture/80",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/k/q/105359961-1532771045283gettyimages-988165418.jpg",
+    "publishedAt": "2026-10-15T06:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Neutral",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Netflix's stock falls toward longest losing streak in nearly 10 months",
+    "description": "Shares of Netflix Inc. NFLX, -1.95% dropped 2.0% in morning trading Tuesday, as the streaming video giant extended the pullback that appears to have been fueled by growing optimism over the easing of COVID-19-related lockdown restrictions.",
+    "url": "https://example.com/pfe-fixture/81",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/z/w/89.jpg",
+    "publishedAt": "2026-10-14T03:59:26Z",
+    "ticker": "NFLX",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "24/7 Wall Street"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "European Auto Sales Down by 55% in March, 25% for Q1",
+    "description": "The European Automobile Manufacturers Association (ACEA) reported that new registrations (a proxy for sales) in March fell by 55.1% year over year.",
+    "url": "https://example.com/pfe-fixture/82",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/1/0/105537382-1540835283427rtx6gy4l-2.jpg",
+    "publishedAt": "2026-10-13T02:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Trump Signs Executive Order to Limit Editorial Powers of Social Media Services",
+    "description": "Executive Order 13925 could open up social networks to legal liability claims.",
+    "url": "https://example.com/pfe-fixture/83",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/z/y/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5763352fgavel-and-us-flagjpgw700opresize.jpg",
+    "publishedAt": "2026-10-12T01:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "7 Obviously Overvalued Stocks to Avoid at All Costs",
+    "description": "The market's swift rebound has sent a number of stocks into overbought territory. These seven overvalued stocks to sell carry extreme risk right now.",
+    "url": "https://example.com/pfe-fixture/84",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/q/t/sell-exchange-tickers-768x432.jpg",
+    "publishedAt": "2026-10-11T00:59:26Z",
+    "ticker": "BA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Disney Gets Downgraded After Coming 'Too Far, Too Fast'",
+    "description": "Questions about its theme parks and movie business overshadow its comeback performance.",
+    "url": "https://example.com/pfe-fixture/85",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/i/105866544-1556032630911gettyimages-1138836501.jpeg",
+    "publishedAt": "2026-10-10T11:59:26Z",
+    "ticker": "DIS",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Seeking Alpha"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why There's Less To This Oil Price Rally Than Meets The Eye",
+    "description": "Spot crude oil prices have jumped about $5+ per barrel from the lows to Friday morning.",
+    "url": "https://example.com/pfe-fixture/86",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/c/r/cru72-2.jpg",
+    "publishedAt": "2026-10-09T10:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNN Business"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Uber lays off 600 people in India as the coronavirus pandemic hurts business",
+    "description": "Uber's last big stand in Asia just got a lot smaller.",
+    "url": "https://example.com/pfe-fixture/87",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/n/m02d20190509t2i1385418281rlynxnpef481q7w640.jpg",
+    "publishedAt": "2026-10-08T09:59:26Z",
+    "ticker": "UBER",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Seeking Alpha"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why There's Less To This Oil Price Rally Than Meets The Eye",
+    "description": "Spot crude oil prices have jumped about $5+ per barrel from the lows to Friday morning.",
+    "url": "https://example.com/pfe-fixture/88",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/c/r/cru72-2.jpg",
+    "publishedAt": "2026-10-07T08:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "AT&T (T) Stock Sinks As Market Gains: What You Should Know",
+    "description": "In the latest trading session, AT&T (T) closed at $30.86, marking a -0.64% move from the previous day.",
+    "url": "https://example.com/pfe-fixture/89",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/d/u/at5-2.jpg",
+    "publishedAt": "2026-10-06T07:59:26Z",
+    "ticker": "T",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "24/7 Wall Street"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Cost Cuts, Other Moves Won\u2019t Save Uber Stock From the Law",
+    "description": "Since posting a year-to-date high near $42 a share in mid-February, Uber Technologies Inc.",
+    "url": "https://example.com/pfe-fixture/90",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/6/t/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5236552fuber-dara-khosrowshahijpgampw700ampopresize.jpg",
+    "publishedAt": "2026-10-05T06:59:26Z",
+    "ticker": "UBER",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Trump Today: Trump signs order aimed at curbing social-media companies amid brawl with Twitter",
+    "description": "President Donald Trump on Thursday signed an executive order he says will limit liability protections enjoyed by social-media companies, as he escalated a fight with Twitter over its fact checks of his statements.",
+    "url": "https://example.com/pfe-fixture/91",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/w/twitter-292994-1920-51.jpg",
+    "publishedAt": "2026-10-04T03:59:26Z",
+    "ticker": "GOOGL",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "GeekWire"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Salesforce and Tableau in regulatory purgatory: UK review stymies integration of $15.7B acquisition",
+    "description": "Hold on, didn\u2019t Salesforce complete its $15.",
+    "url": "https://example.com/pfe-fixture/92",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/z/a/benioff-768x512.jpg",
+    "publishedAt": "2026-10-03T02:59:26Z",
+    "ticker": "CRM",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Trump Signs Executive Order to Limit Editorial Powers of Social Media Services",
+    "description": "Executive Order 13925 could open up social networks to legal liability claims.",
+    "url": "https://example.com/pfe-fixture/93",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/z/y/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5763352fgavel-and-us-flagjpgw700opresize.jpg",
+    "publishedAt": "2026-10-02T01:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC Television"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Alibaba shares drop as profits fall and US-China tensions grow",
+    "description": "CNBC's Deirdre Bosa reports on Alibaba's quarterly earnings and the risk political tensions pose to the stock.",
+    "url": "https://example.com/pfe-fixture/94",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/5/i/alibaba-shares-drop-as-profits-fall-and-us-china-tensions-grow.jpg",
+    "publishedAt": "2026-10-01T00:59:26Z",
+    "ticker": "BABA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Uber India cuts 600 jobs amid coronavirus outbreak",
+    "description": "Ride hailing company Uber Technologies Inc's  Indian arm will cut 600 jobs across functions, as it navigates a strict coronavirus lockdown that has brought businesses to a grinding halt, Uber India President Pradeep Parameswaran said on Tuesday.",
+    "url": "https://example.com/pfe-fixture/95",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/l/p/tes724.jpg",
+    "publishedAt": "2026-09-30T11:59:26Z",
+    "ticker": "UBER",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNN Business"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Uber disposes of tens of thousands of bikes, sparking backlash",
+    "description": "Videos and photos are surfacing of thousands of Uber's Jump bikes and scooters stripped of parts and crammed into trucks to be scrapped.",
+    "url": "https://example.com/pfe-fixture/96",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/8/0/ub222.jpg",
+    "publishedAt": "2026-09-29T10:59:26Z",
+    "ticker": "UBER",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "'Stay at home' tech stocks fall as some pandemic lockdowns end",
+    "description": "Shares of Netflix, Shopify, Peloton and Zoom, all companies that once benefited from consumers sheltering in place across the country, closed lower Tuesday.",
+    "url": "https://example.com/pfe-fixture/97",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/s/asset-management8-58.jpg",
+    "publishedAt": "2026-09-28T09:59:26Z",
+    "ticker": "NFLX",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNBC Television"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Global auto sales will fall 22 percent due to Covid-19: IHS Markit report",
+    "description": "IHS Markit is projecting that global auto sales will fall 22 percent this year due to the coronavirus pandemic.",
+    "url": "https://example.com/pfe-fixture/98",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/8/m/global-auto-sales-will-fall-22-percent-due-to-covid-19-ihs-markit-report.jpg",
+    "publishedAt": "2026-09-27T08:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Trump's Executive Order To Expose Social Media To Lawsuits Over Content Policies",
+    "description": "President Donald Trump is scheduled to sign an executive order that would expose social media companies to lawsuits related to content curation and site moderation, according to CNN.",
+    "url": "https://example.com/pfe-fixture/99",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/p/apps-blur-button-close-up-267350-0.jpg",
+    "publishedAt": "2026-09-26T07:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "NIKE (NKE) Expects Soft Q4 Results on Coronavirus Qualms",
+    "description": "NIKE (NKE) expects Q4 results to be hurt by global store closures since mid-March, and short supplies to wholesale customers due to the coronavirus outbreak.",
+    "url": "https://example.com/pfe-fixture/100",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/r/h/nik223.jpg",
+    "publishedAt": "2026-09-25T06:59:26Z",
+    "ticker": "NKE",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "CNN Business"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Europe vows to move ahead with taxes that could hit Google and Amazon after US blows up talks",
+    "description": "Europe is vowing to move ahead with taxes that could hit Google, Amazon and Facebook after the United States slammed the brakes on international negotiations aimed at overhauling how online sales are taxed.",
+    "url": "https://example.com/pfe-fixture/101",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/y/h/200618055812-bruno-le-maire-steve-mnuchin-2018-file-super-169.jpg",
+    "publishedAt": "2026-09-24T03:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Forbes"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Amazon Was Temporarily Down For Some Users",
+    "description": "Amazon\u2019s website was down for at least 40 minutes on Thursday.",
+    "url": "https://example.com/pfe-fixture/102",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/a/m/amazon-was-temporarily-down-for-some-users.jpg",
+    "publishedAt": "2026-09-23T02:59:26Z",
+    "ticker": "AMZN",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "3 Ad Stocks Missing Sports More Than We Are",
+    "description": "With the pandemic impacting live sports, these three ad stocks could see big losses in the near-term",
+    "url": "https://example.com/pfe-fixture/103",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/s/advertising1600-768x432.jpg",
+    "publishedAt": "2026-09-22T01:59:26Z",
+    "ticker": "DIS",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Investopedia"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Netflix Stock Could Fail Breakout",
+    "description": "Netflix stock still hasn't cleared tough 2018 resistance, raising the odds for a failed breakout.",
+    "url": "https://example.com/pfe-fixture/104",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/u/c/netflix-4.jpeg",
+    "publishedAt": "2026-09-21T00:59:26Z",
+    "ticker": "NFLX",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Investors Business Daily"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Nike Rival Adidas Estimates Staggering Q1 Sales Loss In China",
+    "description": "Adidas warned on the coronavirus' impact, while rival Puma issued a similar warning over the outbreak.\r\nThe post Nike Rival Adidas Estimates Staggering Q1 Sales Loss In China appeared first on Investor's Business Daily.",
+    "url": "https://example.com/pfe-fixture/105",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/d/d/adw2w-1.jpg",
+    "publishedAt": "2026-09-20T11:59:26Z",
+    "ticker": "NKE",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Earnings Results: Alibaba sees China retail volume growing near pre-pandemic levels but stock falls amid U.S.-China tensions",
+    "description": "Alibaba Group Holding Ltd. said that volume on its China retail marketplaces was back to growing at near pre-pandemic rates, but its shares dropped about 4% in Friday morning trading on a weak day for Chinese internet stocks given new fears about U.S.",
+    "url": "https://example.com/pfe-fixture/106",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/d/t/ali23-2.jpg",
+    "publishedAt": "2026-09-19T10:59:26Z",
+    "ticker": "BABA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Fox Business"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Coronavirus-hit restaurants taking a stand against food delivery app fees",
+    "description": "FOX Business Kristina Partsinevelos reports on restaurants taking a stand against commission fees charged by delivery companies.",
+    "url": "https://example.com/pfe-fixture/107",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/m/q/coronavirus-hit-restaurants-taking-a-stand-against-food-delivery-app-fees.jpg",
+    "publishedAt": "2026-09-18T09:59:26Z",
+    "ticker": "UBER",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Investors Business Daily"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Software Growth Stocks, Work-From-Home Plays Fall As States Reopen",
+    "description": "Shopify, Zoom Video, ServiceNow and other software growth stocks fell on Wednesday as the coronavirus lockdown eased and investors took profits on work-from-home and e-commerce plays.\r\nThe post Software Growth Stocks, Work-From-Home Plays Fall As States Reopen appeared first on Investor's Business Daily.",
+    "url": "https://example.com/pfe-fixture/108",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/v/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5669102fglowing-red-stock-chart-arrow-trending-downjpgw700opresize.jpg",
+    "publishedAt": "2026-09-17T08:59:26Z",
+    "ticker": "SHOP",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Benzinga"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Trump Signs Executive Order To End Social Media Legal Immunity For Third-Party Content",
+    "description": "President Donald Trump signed an executive order late Thursday aimed at limiting social media platforms immunity from legal actions arising out of third-party content posted on their platform.",
+    "url": "https://example.com/pfe-fixture/109",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/t/r/trump-signs.jpg",
+    "publishedAt": "2026-09-16T07:59:26Z",
+    "ticker": "FB",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "U.S. FAA chief to testify at hearing on jet certification after 737 MAX crashes",
+    "description": "The head of the Federal Aviation Administration is set to testify on Wednesday before a Senate committee on the safety certification of jetliners like Boeing Co's  737 MAX, still grounded after fatal crashes.",
+    "url": "https://example.com/pfe-fixture/110",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/w/v/skynews-boeing-max-4654375jpg20190429201344.jpg",
+    "publishedAt": "2026-09-15T06:59:26Z",
+    "ticker": "BA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Bloomberg Technology"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Musk's Tesla 'Price Too High' Tweet Potentially Breached SEC Accord: Harvey Pitt",
+    "description": "Harvey Pitt, former U.S. Securities and Exchange Commission chairman, discusses the regulatory implications of Chief Executive Officer Elon Musk's tweet about Tesla's share price. He speaks with Bloomberg's Scarlet Fu on \"What'd You Miss?\"",
+    "url": "https://example.com/pfe-fixture/111",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/c/r/musks-tesla-price-too-high-tweet-potentially-breached-sec-accord-harvey-pitt.jpg",
+    "publishedAt": "2026-09-14T03:59:26Z",
+    "ticker": "TSLA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "GM truck production plans delayed by parts shortage: WSJ",
+    "description": "A shortage of parts from Mexico is hampering the General Motors Co.'s plans to increase its production of pickup trucks, according to a report by The Wall Street Journal that cited a union official and other people familiar with the matter.",
+    "url": "https://example.com/pfe-fixture/112",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/2/h/m02d20190522t2i1389927470rlynxnpef4l1yqw640.jpg",
+    "publishedAt": "2026-09-13T02:59:26Z",
+    "ticker": "GM",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Reuters"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "FAA 'stonewalling' Boeing 737 MAX probe after fatal crashes: senator",
+    "description": "The U.S. Federal Aviation Administration has been \"stonewalling\" senators conducting an investigation into the design and development of Boeing Co's  737 MAX in the wake of deadly crashes, a top Republican senator told a hearing on Wednesday.",
+    "url": "https://example.com/pfe-fixture/113",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/q/w/106029869-1563569461659gettyimages-1152411531.jpeg",
+    "publishedAt": "2026-09-12T01:59:26Z",
+    "ticker": "BA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why Tech Stocks Are Plunging Today",
+    "description": "With earnings season on tap, investors are letting some air out of the bubble that's formed in the last few weeks.",
+    "url": "https://example.com/pfe-fixture/114",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/s/t/stocks2-24.jpg",
+    "publishedAt": "2026-09-11T00:59:26Z",
+    "ticker": "SHOP",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Starbucks (SBUX) Stock Sinks As Market Gains: What You Should Know",
+    "description": "In the latest trading session, Starbucks (SBUX) closed at $77.99, marking a -0.7% move from the previous day.",
+    "url": "https://example.com/pfe-fixture/115",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/d/k/tnw2zvhk5qcv-5.jpg",
+    "publishedAt": "2026-09-10T11:59:26Z",
+    "ticker": "SBUX",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "24/7 Wall Street"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "European Car Sales Drop 76% in April, Ford and Fiat Chrysler Hammered",
+    "description": "Car sales in Europe imploded in April, down an extraordinary 76.3%. The drop was unprecedented and hurt the ambitions of two of America\u2019s largest car companies.",
+    "url": "https://example.com/pfe-fixture/116",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/g/c/auto40.jpg",
+    "publishedAt": "2026-09-09T10:59:26Z",
+    "ticker": "F",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Market Watch"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Disney downgraded to underperform at Imperial on concerns about theme parks, film business in pandemic",
+    "description": "Imperial Capital downgraded Walt Disney Co. shares DIS, +0.48% to underperform from in-line on Thursday, on expectations the company's theme parks and film business will be hurt by the coronavirus pandemic.",
+    "url": "https://example.com/pfe-fixture/117",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/j/y/dn2.jpg",
+    "publishedAt": "2026-09-08T09:59:26Z",
+    "ticker": "DIS",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "InvestorPlace"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "How to Trade Alibaba Stock After Underwhelming Earnings Fizzled Its Takeoff",
+    "description": "Earnings upended Alibaba stock's breakout, and now the charts a mess. Steer clear for now, or sell credit spreads to bank on the chop.",
+    "url": "https://example.com/pfe-fixture/118",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/i/j/jmc8.jpg",
+    "publishedAt": "2026-09-07T08:59:26Z",
+    "ticker": "BABA",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "The Motley Fool"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Why Many Cloud Computing Stocks Crashed Today",
+    "description": "The stocks behind popular cloud-based business services such as Okta, Datadog, and Twilio fell sharply on Wednesday.",
+    "url": "https://example.com/pfe-fixture/119",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/f/7/urlhttps3a2f2fgfoolcdncom2feditorial2fimages2f5761222fag-coronavirus-working-from-homejpgw700opresize.jpg",
+    "publishedAt": "2026-09-06T07:59:26Z",
+    "ticker": "SHOP",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  },
+  {
+    "source": {
+      "id": "pfe-fixture",
+      "name": "Zacks Investment Research"
+    },
+    "author": "PFE 2020 dataset",
+    "title": "Nike (NKE) Dips More Than Broader Markets: What You Should Know",
+    "description": "Nike (NKE) closed the most recent trading day at $98.46, moving -1.41% from the previous trading session.",
+    "url": "https://example.com/pfe-fixture/120",
+    "urlToImage": "https://cdn.snapi.dev/images/v1/x/j/nik99.jpg",
+    "publishedAt": "2026-09-05T06:59:26Z",
+    "ticker": "NKE",
+    "expected_sentiment": "Negative",
+    "expected_business": 1
+  }
+]

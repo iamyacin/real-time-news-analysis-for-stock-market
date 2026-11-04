@@ -1,0 +1,362 @@
+[
+  {
+    "text": "$F Carmakers Gear Up to Restart Production: Can They Bounce Back? The global car industry has been witnessing a slump for the past few quarters, which was worsened due to the coronavirus outbreak.",
+    "created_at": "2026-11-03T03:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "F"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$MSFT Microsoft Stock Will Gain from Strong, Positive Catalysts Microsoft stock has multiple, positive catalysts over the short term and the long term. These catalysts will push the shares higher.",
+    "created_at": "2026-11-02T02:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "MSFT"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AAPL How Apple Stock Gets a Boost From 5G iPhone The future of smartphones in the United States and most other major nations is 5G, the fifth-generation standard for cell phone networks.",
+    "created_at": "2026-11-01T01:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "AAPL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AAPL 3 Apple Analysts Lift Price Targets: Why They're Optimistic On iPhone's Trajectory Apple Inc. (NASDAQ: AAPL) analysts are projecting that Cupertino will weather the coronavirus pandemic and emerge in good shape.",
+    "created_at": "2026-10-31T00:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "AAPL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$NKE Is Nike a Buy? After a nice run-up, are the shares a good investment?",
+    "created_at": "2026-10-30T11:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "NKE"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$ORCL In surprise choice, Zoom hitches wagon to Oracle for growing infrastructure needs With the company growing in leaps and bounds, Zoom went shopping for a cloud infrastructure vendor to help it with its growing scale problem. In a surprising choice, the company we",
+    "created_at": "2026-10-29T10:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "ORCL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$TSLA Tesla cuts prices by as much as 6% in North America to boost demand Tesla Inc  has cut prices of its electric vehicles by as much as 6% in North America following a decline in auto demand in the region during weeks of lockdown that have now started",
+    "created_at": "2026-10-28T09:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "TSLA"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AAPL The 5 Best 5G Stocks on the Market Today for Investors From chipmakers to wireless networks, these 5G stocks offer potential investors a few different angles to play the upcoming 5G rollout.",
+    "created_at": "2026-10-27T08:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "AAPL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$TSLA Tesla's FSD Package Shows Automaker's Potential For Software Revenue Electric vehicle pioneer Tesla Inc (NASDAQ: TSLA) could be even more successful if it pivots its business model to generating software revenue, according to a Morgan Stanley analys",
+    "created_at": "2026-10-26T07:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "TSLA"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$TSLA 15 Tightly Wound Stocks With \u2018Pop\u2019 Potential For investors looking for home run hits, these 15 heavily shorted stocks with huge short squeeze potential are worth a look.",
+    "created_at": "2026-10-25T06:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "TSLA"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AMZN Amazon Doesn't See Demand Slowing Anytime Soon It still has capacity constraints in its warehouses.",
+    "created_at": "2026-10-24T03:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "AMZN"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$CRM Tableau CEO breaks down how the company will operate within Salesforce \"Our engineers can't wait to pop the hood on those and check out what things that we might use on behalf of our customers,\" CEO Adam Selipsky says.",
+    "created_at": "2026-10-23T02:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "CRM"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$DIS 3 Streaming Video Stocks That Have a Killer Advantage Everybody's streaming, and every media company wants in on the fun. Let's look at three players whose secret weapons provide a leg up on the competition.",
+    "created_at": "2026-10-22T01:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "DIS"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$IBM 3 High-Yield Tech Stocks to Buy in May Tech stocks aren't typically known for their dividends, but these three companies buck the trend with generous payouts.",
+    "created_at": "2026-10-21T00:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "IBM"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$GM Are Green Shoots of Recovery Emerging in China Auto Sales? Moody's expects auto sales in China to fall 10% year over year in 2020 but increase 2.5% in 2021.",
+    "created_at": "2026-10-20T11:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "GM"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$MSFT 4 Stocks to Watch as Dow Breezes Past 25,000 Points Dow Jones' journey past 25,000 points this week could mark the beginning of a series of gains ahead, owing to some major tailwinds.",
+    "created_at": "2026-10-19T10:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "MSFT"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$CRM What Could Be Salesforce.com's Revenue Growth Over The Next 3 Years Post Tableau's Acquisition? Trefis estimates that the acquisition of Tableau will potentially increase Salesforce.com\u2019s revenue to more than $24 billion by FY 2022 (ended January 2022).",
+    "created_at": "2026-10-18T09:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "CRM"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$KO 12 Floundering Defensive Stocks Are Successfully Becoming Defensive All Over Again When the economy began to face an instant recession from the coronavirus, even before the name COVID-19 became labeled a pandemic, the phenomena of buying defensive stocks was thro",
+    "created_at": "2026-10-17T08:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "KO"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AMZN There\u2019s Nothing Fake About These 10 Artificial Intelligence Stocks to Buy There's nothing \"artificial\" about these AI stocks to buy now. Each represents cutting-edge technology, and offers solid income along the way.",
+    "created_at": "2026-10-16T07:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "AMZN"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$TSLA Elon Musk Collects Payout Valued at $775 Million from Tesla The Tesla CEO meets milestones to earn his first tranche of performance pay, but not all shareholders approve.",
+    "created_at": "2026-10-15T06:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "TSLA"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$NFLX 5 Top Must-Buy Stocks Set to Beat on Q1 Earnings This Week Despite the coronavirus-led economic disaster, five stocks with a favorable Zacks Rank are set to beat Q1 earnings estimates this week.",
+    "created_at": "2026-10-14T03:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "NFLX"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$F Why Ford, General Motors, and Honda Stocks Are Up Today Auto factories are rolling again.",
+    "created_at": "2026-10-13T02:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "F"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AMZN 7 Stocks to Buy to Ride the Vegan Wave Plant-based foods have become big business in America. And these food stocks to buy show that America is crazy about meatless alternatives.",
+    "created_at": "2026-10-12T01:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "AMZN"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$IBM The 1 Stock You've Been Overlooking For Your Roth IRA This staid company is possible to miss, but can deliver years of income for your retirement account.",
+    "created_at": "2026-10-11T00:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "IBM"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$NFLX Should You Invest in Companies Likely to Benefit from the Great Lockdown? Is this a recipe for disaster, or could you beat the market by aiming to predict the future?",
+    "created_at": "2026-10-10T11:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "NFLX"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AAPL 5 Stocks to Start Investing in 2020 These top businesses can form the foundation of your investment portfolio.",
+    "created_at": "2026-10-09T10:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "AAPL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$SBUX Got $5,000? Buy These 3 Dividend Dynamos If you're looking for reliable income, these three companies have you covered.",
+    "created_at": "2026-10-08T09:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "SBUX"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$CRM Salesforce real estate footprint at \u2018HQ2\u2019 in Seattle reaches 650K square feet with Tableau acquisition When Salesforce completes its deal to buy Tableau Software for $15.",
+    "created_at": "2026-10-07T08:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "CRM"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$MCD 3 Reliable Restaurant Stocks to Buy for Reopening Returns The restaurant industry has been suffering lately, but these 3 robust restaurant stocks to buy will continue to serve up tasty returns.",
+    "created_at": "2026-10-06T07:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "MCD"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$BABA Alibaba Stock Remains Too Good an Investment Opportunity to Ignore Chinese technology behemoth Alibaba (NYSE:BABA) stock is a tricky one to evaluate. Source: zhu difeng / Shutterstock.com On one hand, it is hard to ignore the explosive growth pote",
+    "created_at": "2026-10-05T06:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "BABA"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$F Ford to gradually resume operations, production at Mexican plants Ford Motor Co  will gradually resume operations and production at several of its Mexican plants, the automaker said on Wednesday, as the sector begins to come back online as corona",
+    "created_at": "2026-10-04T03:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "F"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$MCD 3 Dividend Stocks That Are Perfect for Retirement These companies provide reliable dividend income for your retirement account even during tough economic times.",
+    "created_at": "2026-10-03T02:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "MCD"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$SBUX Why Cramer Favors Chipotle, Starbucks And Wendy's Post-Coronavirus Shutdown The unfortunate and sad reality is the U.S. government needs to step in with new rescue options otherwise small businesses will perish and only \"big chains\" will survive, Jim Crame",
+    "created_at": "2026-10-02T01:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "SBUX"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AAPL Apple gets two price target boosts as store reopenings are a 'sign of improving trends' Deutsche Bank analyst Jeriel Ong raised his price target on Apple Inc.'s stock AAPL, -0.67% to $320 from $305 Wednesday, writing of increased optimism now that Apple plans to reope",
+    "created_at": "2026-10-01T00:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "AAPL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$BABA Alibaba Stock Bulls Shouldn\u2019t Sweat Delisting A new hurdle for Alibaba stock is a push to delist Chinese stocks over strict accounting rules, but long-term investors should be fine.\r\nThe post Alibaba Stock Bulls Shouldn\u2019t Swea",
+    "created_at": "2026-09-30T11:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "BABA"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$DIS 9 Boring Stocks to Buy You Should Never Let Go Of These nine boring stocks to buy won\u2019t elicit much excitement from the crowd, but they\u2019re worthy contenders as we head toward an uncertain future.",
+    "created_at": "2026-09-29T10:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "DIS"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$KO 13 Dividend Stocks That Have Paid Investors for 100+ Years When it comes to investing in dividend stocks, it's patience that results in the real payday for shareholders.",
+    "created_at": "2026-09-28T09:59:26Z",
+    "user": "MarketWatch",
+    "tickers": [
+      "KO"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$SHOP Shopify COO on how e-commerce is changing retail trends during the pandemic Consumers are shifting their spending from in-store to online making an e-commerce presence critical for businesses to stay afloat.",
+    "created_at": "2026-09-27T08:59:26Z",
+    "user": "CNBC",
+    "tickers": [
+      "SHOP"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AAPL 5 Stocks to Start Investing in 2020 These top businesses can form the foundation of your investment portfolio.",
+    "created_at": "2026-09-26T07:59:26Z",
+    "user": "ReutersBiz",
+    "tickers": [
+      "AAPL"
+    ],
+    "expected_sentiment": "Positive"
+  },
+  {
+    "text": "$AMZN The Best AI Stocks to Buy for 2021 and Beyond You're not imagining things.",
+    "created_at": "2026-09-25T06:59:26Z",
+    "user": "YahooFinance",
+    "tickers": [
+      "AMZN"
+    ],
+    "expected_sentiment": "Positive"
+  }
+]
